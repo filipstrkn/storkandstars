@@ -1,36 +1,88 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        storkandstars
-      </h1>
-      <h2 class="subtitle">
-        studio site
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+    <component
+        v-if="story.content.component"
+        :key="story.content._uid"
+        :blok="story.content"
+        :is="story.content.component">
+    </component>
+    <!-- Logo -->
+
+    <!--
+      # intro block
+      - setting title
+      - setting cycling
+      - setting
+      - setting background color
+      - setting foreground color
+      - setting bacground video / image
+      - video / image toggle
+     -->
+
+    <!--
+      Burger
+     -->
+
+     <!--
+       # HomePage
+       1) intro // video s rukama : rychly sestrich
+       2) top projects
+       4) blog / articles
+       5) footer
+      -->
+
+      <!--
+        WE BUILD:
+        - slick
+        - icy
+        - fast
+        - together
+        - value
+        - sprints
+        - physical
+       -->
 </template>
 
+
+
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+
+import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 
 export default {
-  components: {
-    AppLogo
-  }
-}
+
+
+    data() {
+    return {
+        story: {
+        content: {}
+        }
+    }
+    },
+
+
+    mixins: [storyblokLivePreview],
+
+
+    asyncData (context) {
+    // Check if we are in the editor mode
+    let version = context.query._storyblok || context.isDev ? 'draft' : 'published'
+
+    // Load the JSON from the API
+    return context.app.$storyapi.get('cdn/stories/home', {
+        version: version
+    }).then((res) => {
+        return res.data
+    }).catch((res) => {
+        context.error({ statusCode: res.response.status, message: res.response.data })
+    })
+    },
+
+
+    components: {}
+    }
 </script>
+
+
 
 <style>
 .container {

@@ -13,6 +13,12 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  modules: [
+    ['storyblok-nuxt', {accessToken: 'QnXlb6vo8JjKti7gkDI0Dgtt', cacheProvider: 'memory'}]
+  ],
+  plugins: [
+    '~/plugins/components'
+  ],
   /*
   ** Customize the progress bar color
   */
@@ -20,20 +26,20 @@ module.exports = {
   /*
   ** Build configuration
   */
-  build: {
-    /*
-    ** Run ESLint on save
-    */
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
-  }
+  // build: {
+  //   /*
+  //   ** Run ESLint on save
+  //   */
+  //   extend (config, { isDev, isClient }) {
+  //     if (isDev && isClient) {
+  //       config.module.rules.push({
+  //         enforce: 'pre',
+  //         test: /\.(js|vue)$/,
+  //         loader: 'eslint-loader',
+  //         exclude: /(node_modules)/
+  //       })
+  //     }
+  //   }
+  // }
 }
 

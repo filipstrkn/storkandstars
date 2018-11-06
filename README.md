@@ -1,6 +1,6 @@
 # storkandstars
 
-> studio site
+Welcome Stork, close your eyes and dream about a big ideas among stars.
 
 ## Build Setup
 
