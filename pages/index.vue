@@ -30,16 +30,6 @@
        5) footer
       -->
 
-      <!--
-        WE BUILD:
-        - slick
-        - icy
-        - fast
-        - together
-        - value
-        - sprints
-        - physical
-       -->
 </template>
 
 
