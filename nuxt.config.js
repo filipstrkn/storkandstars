@@ -1,3 +1,5 @@
+const stylusLoader = require('stylus-loader')
+
 module.exports = {
   /*
   ** Headers of the page
