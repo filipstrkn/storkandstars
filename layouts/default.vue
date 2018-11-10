@@ -5,9 +5,14 @@
 </template>
 
 <style lang="stylus">
+
+
 html
-  // font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
-  font-family: "Heebo", "Helvetica Neue", Arial, sans-serif
+  // font-family: 'Source Sans Pro', sans-serif
+  font-family: 'Karma', serif
+  font-style: normal
+  color #333333
+  font-style: normal
   font-size: 16px
   word-spacing: 1px
   -ms-text-size-adjust: 100%
@@ -15,6 +20,10 @@ html
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   box-sizing: border-box
+
+a
+  text-decoration none
+  color inherit
 
 *, *:before, *:after
   box-sizing: border-box
@@ -48,6 +57,38 @@ html
 .button--grey:hover
   color: #fff
   background-color: #35495e
+
+
+h1, h2, h3, h4
+  font-family: 'Source Sans Pro', sans-serif
+
+
+.link
+  font-weight 400
+  font-size 1rem
+  font-family: 'Karma', serif
+  font-style normal
+  position relative
+  z-index 2
+  &::before
+    content "+"
+    display inline-block
+    font-weight bold
+    margin-right .5em
+  &::after
+    content ""
+    position absolute
+    left -5%
+    top -20%
+    height 100% + (-@top)
+    width 0
+    background-color alpha(#000, .046)
+    transition width 250ms ease-in-out
+
+  &:hover::after
+    width 140%
+
+
 
 </style>
 

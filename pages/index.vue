@@ -5,31 +5,6 @@
         :blok="story.content"
         :is="story.content.component">
     </component>
-    <!-- Logo -->
-
-    <!--
-      # intro block
-      - setting title
-      - setting cycling
-      - setting
-      - setting background color
-      - setting foreground color
-      - setting bacground video / image
-      - video / image toggle
-     -->
-
-    <!--
-      Burger
-     -->
-
-     <!--
-       # HomePage
-       1) intro // video s rukama : rychly sestrich
-       2) top projects
-       4) blog / articles
-       5) footer
-      -->
-
 </template>
 
 

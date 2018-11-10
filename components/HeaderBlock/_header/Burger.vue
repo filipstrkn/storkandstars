@@ -28,8 +28,8 @@ export default {
 
 #Burger
     position relative
-    width 24px
-    height 10px
+    width 22px
+    height 8px
     cursor pointer
     &.opened::before,
     &.closed::after

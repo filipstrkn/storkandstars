@@ -1,5 +1,5 @@
 <template>
-    <main id="HorizontalPage" v-editable="blok">
+    <main id="HorizontalPage">
 
         <header-block></header-block>
 
@@ -52,8 +52,10 @@ export default {
     display flex
     align-items center
     overflow-x auto
+    // overflow hidden
     padding-top 5em
-    // background #cdcdcd
+    &::-webkit-scrollbar
+        display: none
 
 
 

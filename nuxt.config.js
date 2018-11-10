@@ -12,8 +12,12 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'studio site' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheets',
+        href: 'https://fonts.googleapis.com/css?family=Karma:300,400|Source+Sans+Pro:300,400,600,700&amp;subset=latin-ext'
+      }
+    ],
   },
   modules: [
     ['storyblok-nuxt', {accessToken: 'QnXlb6vo8JjKti7gkDI0Dgtt', cacheProvider: 'memory'}]
