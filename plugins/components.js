@@ -5,12 +5,10 @@ import Page from '~/components/Page'
 import HorizontalPage from '~/components/HorizontalPage'
 
 // Blocks
-import HorizontalContent from '~/components/HorizontalContent'
+import Intro from '~/components/Intro'
 import Special from '~/components/Special'
-import Thumb from '~/components/Thumb'
-import Post from '~/components/Post'
-import HeaderBlock from '~/components/HeaderBlock'
-import Block from '~/components/Block'
+import HomeProjects from '~/components/HomeProjects'
+import HomePosts from '~/components/HomePosts'
 
 
 
@@ -31,12 +29,10 @@ Vue.component('horizontal_page', HorizontalPage)
 |==========================================================================
 |
 |*/
-Vue.component('horizontal_content', HorizontalContent)
-Vue.component('special', Special)
-Vue.component('thumb', Thumb)
-Vue.component('post', Post)
-Vue.component('header_block', HeaderBlock)
-Vue.component('block', Block)
+Vue.component('home_intro', Intro)
+Vue.component('home_special', Special)
+Vue.component('home_projects', HomeProjects)
+Vue.component('home_posts', HomePosts)
 
 
 

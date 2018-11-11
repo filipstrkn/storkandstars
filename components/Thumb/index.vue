@@ -1,5 +1,5 @@
 <template>
-    <div class="thumb" v-editable="blok">
+    <div class="thumb">
         <h3>HumanCall</h3>
         <div class="thumb__content"></div>
     </div>
@@ -9,7 +9,7 @@
 <script>
 export default {
     name: 'Thumb',
-    props: ['blok'],
+    props: ['project'],
     data() {
         return {
             loading: false
@@ -34,7 +34,7 @@ $duration = 350ms
 .thumb
     width 60vh
     height calc(90vh - 5em)
-    margin-right 5em
+    margin 0 2rem
     position relative
     &:hover
         cursor pointer

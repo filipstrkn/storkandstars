@@ -1,10 +1,12 @@
 <template>
-    <a href="">
-        <div class="special" v-editable="blok">
-            <h3 :style="textColor">{{ blok.title }}</h3>
-            <div class="special__content"></div>
-        </div>
-    </a>
+    <section id="Special">
+        <nuxt-link :to="blok.link_to.cached_url">
+            <div class="special" v-editable="blok">
+                <h3 :style="textColor">{{ blok.title }}</h3>
+                <div class="special__content"></div>
+            </div>
+        </nuxt-link>
+    </section>
 </template>
 
 
@@ -31,10 +33,14 @@ export default {
 
 $duration = 350ms
 
+#Special
+    display inline-block
+    vertical-align top
+
 .special
-    width 60vh
+    width 70vh
     height calc(90vh - 5em)
-    margin-right 5em
+    // margin-right 5em
     position relative
 
     h3
@@ -48,7 +54,7 @@ $duration = 350ms
      &:hover
         cursor pointer
         h3
-            color #ff5711 !important
+            color #fb116e !important
         .special__content::after
             opacity 1
 

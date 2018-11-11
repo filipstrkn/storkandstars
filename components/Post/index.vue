@@ -1,12 +1,12 @@
 <template>
     <article class="post">
-        <a href="">
+        <nuxt-link to="/">
             <div class="post__image"></div>
             <div class="post__details">
-                <h3>Titulek</h3>
-                <p>iwubcw eibdw dwdbwd wdbwd wedowqdq oqbnsa xwubconsad xubx qxobqw oqw x qowubdx qz xouw xqwoisbz  xqob haixs.</p>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.description }}</p>
             </div>
-        </a>
+        </nuxt-link>
     </article>
 </template>
 
@@ -14,7 +14,8 @@
 
 <script>
 export default {
-    name: 'Post'
+    name: 'Post',
+    props: ['post']
 }
 </script>
 
@@ -23,7 +24,9 @@ export default {
 <style lang="stylus">
 
 .post
-    margin 0 5em
+    display inline-block
+    vertical-align top
+    margin 0 2.4rem
     vertical-align top
     width 50vh
     white-space pre-wrap
@@ -39,6 +42,8 @@ export default {
     &:hover
         background-color #f9f9f9
         box-shadow 0 0 0 2em @background-color
+        h3
+            color #fb116e !important
 .post__image
     height 30vh
     background-color #f0f0f0

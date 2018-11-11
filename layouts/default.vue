@@ -86,7 +86,7 @@ h1, h2, h3, h4
     transition width 250ms ease-in-out
 
   &:hover::after
-    width 140%
+    width calc(100% + 30px)
 
 
 

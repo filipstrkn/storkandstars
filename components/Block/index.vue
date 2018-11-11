@@ -1,10 +1,8 @@
 <template>
-    <div class="block" v-editable="blok">
-        <div>
-            <h3>{{ blok.title }}</h3>
-            <p>{{ blok.description }}</p>
-            <a href="" class="link">{{ blok.link_name }}</a>
-        </div>
+    <div class="block">
+        <h3>{{ ctx.title }}</h3>
+        <p>{{ ctx.description }}</p>
+        <nuxt-link :to="ctx.link.to" class="link">{{ ctx.link.name }}</nuxt-link>
     </div>
 </template>
 
@@ -13,7 +11,7 @@
 <script>
 export default {
     name: 'Block',
-    props: ['blok']
+    props: ['ctx']
 }
 </script>
 
@@ -22,12 +20,13 @@ export default {
 <style lang="stylus">
 
 .block
-    margin 0 2.4rem 0 6em
+    display inline-block
+    margin 0 4em 0 12em
     max-width 18rem
     vertical-align top
 
     h3
-        font-size 1.8rem
+        font-size 1.6rem
         margin-bottom 1.6rem
 
     p

@@ -3,15 +3,14 @@
 
         <header-block></header-block>
 
-        <section class="horizontal__body">
+        <draggable>
             <component
                 :key="blok._uid"
                 v-for="blok in blok.body"
-                v-if="blok.component !== 'header_block'"
                 :blok="blok"
                 :is="blok.component">
             </component>
-        </section>
+        </draggable>
     </main>
 </template>
 
@@ -20,43 +19,31 @@
 <script>
 
 import HeaderBlock from './HeaderBlock'
+import Draggable from './Draggable'
 
 export default {
     name: 'HorizontalPage',
     props: ['blok'],
+
     components: {
-        'header-block' : HeaderBlock
-    },
-    // computed: {
-    //     isHeader() {
-    //         return this.blok.body.map(component => component.component === 'header_block')
-    //     }
-    // }
+        'header-block' : HeaderBlock,
+        'draggable': Draggable
+    }
 }
 </script>
 
 
 
 <style lang="stylus">
-@import '../assets/stylus/variables'
 
 #HorizontalPage
     min-height 100vh
     display flex
     flex-direction column
 
-.horizontal__body
-    box-sizing border-box
-    flex-grow 1
-    height 100%
-    display flex
-    align-items center
-    overflow-x auto
-    // overflow hidden
-    padding-top 5em
-    &::-webkit-scrollbar
-        display: none
-
+    & > *
+        flex-grow 1
+        flex-shrink 0
 
 
 
