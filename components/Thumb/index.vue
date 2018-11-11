@@ -1,27 +1,44 @@
 <template>
-    <div class="thumb">
-        <h3>HumanCall</h3>
-        <div class="thumb__content"></div>
-    </div>
+
+    <article class="thumb">
+
+        <!-- If Thumbnail is Loading -->
+        <thumb-loading v-if="isLoading"></thumb-loading>
+
+        <!-- Thumb body -->
+        <nuxt-link :to="project.full_slug" v-show="!isLoading">
+            <div :id="`Thumb${project.id}`" class="thumb__body">
+                <h3>{{ project.name }}</h3>
+                <div class="thumbnail">
+                    <img :src="project.content.thumbnail">
+                </div>
+            </div>
+        </nuxt-link>
+    </article>
 </template>
 
 
 <script>
+
+import ThumbLoading from './_thumb/ThumbLoading'
+
 export default {
     name: 'Thumb',
     props: ['project'],
+    components: {
+        'thumb-loading': ThumbLoading
+    },
     data() {
         return {
-            loading: false
+            isLoading: true
         }
     },
-    computed: {
-        isLoading() {
-            // loading logic
-            return false
-        }
-    },
-    components: {}
+    mounted() {
+        const image = document.querySelector(`#Thumb${this.project.id} img`)
+        if (image) image.addEventListener('load', () => this.isLoading = false)
+        else if (!image ) console.error('Project thumbnail does not exists')
+        else this.isLoading = true
+    }
 }
 </script>
 
@@ -29,63 +46,51 @@ export default {
 
 <style lang="stylus">
 
+@import '../../assets/stylus/variables'
+
 $duration = 350ms
 
 .thumb
-    width 60vh
+    width $thumb-size
     height calc(90vh - 5em)
     margin 0 2rem
     position relative
     &:hover
         cursor pointer
-        .thumb__content
-            width 98%
-            height @width
-            background-size 110%
-
-            &::after
-                opacity 1
-        h3
-            // opacity 1
-            color #ff1f64 !important
-
+        .thumbnail
+            transform translate(-50%, -50%) scale(.97)
 
     h3
-        // opacity 0
         position absolute
         margin 0
         top 5%
         left 5%
-        // top 50%
-        // left 50%
-        // transform translate(-50%, -50%)
         transition all $duration ease-in-out
-        z-index 2
+        z-index 3
 
-.thumb__content
+.thumbnail
     position absolute
     top 50%
     left 50%
     transform translate(-50%, -50%)
     width 100%
     height 100%
-    background-color #b1e8ff
     z-index 1
-    background-image url(https://i.pinimg.com/564x/5e/86/7c/5e867c34085496e5a61c8b514c1c6de0.jpg)
-    background-position center
-    background-size 100%
     transition all $duration ease-in-out
+    overflow hidden
 
-    &::after
-        content ""
-        opacity 0
+    img
         position absolute
-        width 100%
-        height 100%
-        top 0
-        left 0
-        background-color alpha(#fff, .65)
-        transition all $duration ease-in-out
+        top 50%
+        left 50%
+        transform translate(-50%, -50%)
+        min-height 100%
+        min-width 100%
+        max-height 200%
+        z-index 1
+        transition transform $duration ease-in-out
+
+
 
 </style>
 

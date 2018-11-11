@@ -1,5 +1,5 @@
 <template>
-    <section id="HomePosts" v-editable="blok">
+    <section id="TopArticles" v-editable="blok">
         <block :ctx="content"></block>
         <post
             v-for="post in posts"
@@ -17,7 +17,7 @@ import post from '../Post'
 import block from '../Block'
 
 export default {
-    name: 'HomePosts',
+    name: 'TopArticles',
     data() {
         return {
             content: {
@@ -46,7 +46,7 @@ export default {
 
 
 <style lang="stylus">
-#HomePosts
+#TopArticles
     & > *
         display inline-block
         vertical-align top

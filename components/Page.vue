@@ -1,34 +1,51 @@
 <template>
-    <main id="Page" v-editable="blok" :class="{'DARK': blok.dark_mode}">
-        <component
-            :key="blok._uid"
-            v-for="blok in blok.body"
-            :blok="blok"
-            :is="blok.component">
-        </component>
+    <main id="Page">
+
+        <header-block></header-block>
+
+        <draggable>
+            <component
+                :key="blok._uid"
+                v-for="blok in blok.body"
+                :blok="blok"
+                :is="blok.component">
+            </component>
+        </draggable>
     </main>
 </template>
 
 
+
 <script>
+
+import HeaderBlock from './HeaderBlock'
+import Draggable from './Draggable'
+
 export default {
     name: 'Page',
-    props: ['blok']
+    props: ['blok'],
+
+    components: {
+        'header-block' : HeaderBlock,
+        'draggable': Draggable
+    }
 }
 </script>
 
 
+
 <style lang="stylus">
-@import '../assets/stylus/variables'
 
 #Page
-    min-height 100%
-    color: #4b4e58
+    min-height 100vh
+    display flex
+    flex-direction column
+
+    & > *
+        flex-grow 1
+        flex-shrink 0
 
 
-#Page.DARK
-    background-color: $black
-    color: $white
 
 </style>
 

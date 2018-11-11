@@ -1,8 +1,8 @@
 <template>
-    <section id="HomeProjects" v-editable="blok">
+    <section id="TopProjects" v-editable="blok">
         <block :ctx="content"></block>
         <thumb
-            v-for="project in projects"
+            v-for="project in tops"
             :key="project._uid"
             :project="project">
         </thumb>
@@ -13,11 +13,13 @@
 
 <script>
 
+import { mapActions } from 'vuex'
+
 import block from '../Block'
 import thumb from '../Thumb'
 
 export default {
-    name: 'HomeProjects',
+    name: 'TopProjects',
     data() {
         return {
             content: {
@@ -30,23 +32,26 @@ export default {
             }
         }
     },
-    computed: {
-        projects() {
-            return 3
-        }
-    },
     props: ['blok'],
     components: {
         block,
         thumb
-    }
+    },
+    computed: {
+        tops() {
+            return this.$store.getters.top
+        }
+    },
+    created() {
+        if (this.tops.length === 0 ) this.$store.dispatch('loadTop')
+    },
 }
 </script>
 
 
 
 <style lang="stylus">
-#HomeProjects
+#TopProjects
     // display flex
     & > *
         display inline-block
