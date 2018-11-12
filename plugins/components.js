@@ -8,6 +8,7 @@ import Intro from '~/components/Intro'
 import Special from '~/components/Special'
 import TopProjects from '~/components/TopProjects'
 import TopArticles from '~/components/TopArticles'
+import Post from '~/components/Post'
 
 
 
@@ -33,6 +34,7 @@ Vue.component('intro', Intro)
 Vue.component('special', Special)
 Vue.component('top_projects', TopProjects)
 Vue.component('top_articles', TopArticles)
+Vue.component('article_unit', Post)
 
 
 

@@ -1,11 +1,12 @@
 <template>
     <section id="TopArticles" v-editable="blok">
         <block :ctx="content"></block>
-        <post
-            v-for="post in posts"
-            :key="post._uid"
-            :post="post">
-        </post>
+        <component
+            :key="blok._uid"
+            v-for="blok in blok.articles"
+            :blok="blok"
+            :is="blok.component">
+        </component>
     </section>
 </template>
 
@@ -13,7 +14,7 @@
 
 <script>
 
-import post from '../Post'
+// import post from '../Post'
 import block from '../Block'
 
 export default {
@@ -31,15 +32,7 @@ export default {
         }
     },
     props: ['blok'],
-    components: {
-        post,
-        block
-    },
-    computed: {
-        posts() {
-            return 2
-        }
-    }
+    components: { block }
 }
 </script>
 

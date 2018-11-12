@@ -21,6 +21,7 @@
 <script>
 
 import ThumbLoading from './_thumb/ThumbLoading'
+import imageLoader from '~/mixins/imageLoader'
 
 export default {
     name: 'Thumb',
@@ -28,16 +29,11 @@ export default {
     components: {
         'thumb-loading': ThumbLoading
     },
+    mixins: [imageLoader],
     data() {
         return {
-            isLoading: true
+            imageSelector: `#Thumb${this.project.id}`
         }
-    },
-    mounted() {
-        const image = document.querySelector(`#Thumb${this.project.id} img`)
-        if (image) image.addEventListener('load', () => this.isLoading = false)
-        else if (!image ) console.error('Project thumbnail does not exists')
-        else this.isLoading = true
     }
 }
 </script>
