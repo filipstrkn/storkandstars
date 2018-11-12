@@ -1,6 +1,6 @@
 <template>
     <div class="block">
-        <h3>{{ ctx.title }}</h3>
+        <h3 class="title--h3">{{ ctx.title }}</h3>
         <p>{{ ctx.description }}</p>
         <nuxt-link :to="ctx.link.to" class="link">{{ ctx.link.name }}</nuxt-link>
     </div>
@@ -24,10 +24,6 @@ export default {
     margin 0 4em 0 12em
     max-width 18rem
     vertical-align top
-
-    h3
-        font-size 1.6rem
-        margin-bottom 1.6rem
 
     p
         white-space pre-wrap

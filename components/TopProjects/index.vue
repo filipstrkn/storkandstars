@@ -1,6 +1,6 @@
 <template>
-    <section id="TopProjects" v-editable="blok">
-        <block :ctx="content"></block>
+    <section id="TopProjects">
+        <block :ctx="content" v-editable="blok"></block>
         <thumb
             v-for="project in tops"
             :key="project._uid"

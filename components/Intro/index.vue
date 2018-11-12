@@ -1,7 +1,7 @@
 <template>
-    <div class="intro" v-editable="blok">
-        <div class="intro__body">
-            <h1 class="title" v-editable="blok">{{ blok.title }}</h1>
+    <div class="intro">
+        <div class="intro__body" v-editable="blok">
+            <h1 class="title">{{ blok.title }}</h1>
             <nuxt-link :to="blok.link_to" class="link">{{ blok.link_name }}</nuxt-link>
         </div>
     </div>

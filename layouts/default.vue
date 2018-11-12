@@ -90,5 +90,10 @@ h1, h2, h3, h4
 
 
 
+.title--h3
+    font-size 1.6rem
+    margin-bottom 1.6rem
+
+
 </style>
 

@@ -1,9 +1,10 @@
 <template>
-    <section id="TopArticles" v-editable="blok">
-        <block :ctx="content"></block>
+    <section id="TopArticles">
+        <block :ctx="content" v-editable="blok"></block>
         <component
             :key="blok._uid"
             v-for="blok in blok.articles"
+            v-editable="blok"
             :blok="blok"
             :is="blok.component">
         </component>

@@ -25,6 +25,7 @@ module.exports = {
   plugins: [
     '~/plugins/components'
   ],
+  serverMiddleware: ['~/api'],
   /*
   ** Customize the progress bar color
   */
