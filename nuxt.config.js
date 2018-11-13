@@ -1,4 +1,5 @@
-const stylusLoader = require('stylus-loader')
+require('dotenv').config()
+
 
 module.exports = {
   /*
@@ -20,7 +21,8 @@ module.exports = {
     ],
   },
   modules: [
-    ['storyblok-nuxt', {accessToken: 'QnXlb6vo8JjKti7gkDI0Dgtt', cacheProvider: 'memory'}]
+    ['storyblok-nuxt', { accessToken: 'QnXlb6vo8JjKti7gkDI0Dgtt', cacheProvider: 'memory' }],
+    '@nuxtjs/dotenv'
   ],
   plugins: [
     '~/plugins/components'

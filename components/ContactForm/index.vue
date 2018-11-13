@@ -1,20 +1,12 @@
 <template>
-    <section id="ContactForm">
-        <h1
-            v-if="!$store.getters.isMessageSent"
-            class="title--h3"
-            v-editable="blok">
-            {{ blok.title }}
-        </h1>
+    <section id="ContactForm" v-editable="blok">
+
+        <form-message :message="message"></form-message>
 
         <form-block
             v-if="!$store.getters.isMessageSent && !$store.state.contactForm.status"
             :placeholder="placeholder">
         </form-block>
-        <form-message
-            v-else
-            :message="message">
-        </form-message>
 
     </section>
 </template>
@@ -38,9 +30,12 @@ export default {
         return {
             placeholder: {
                 email: this.blok.email,
-                message: this.blok.message
+                message: this.blok.message,
+                submit: this.blok.submit
             },
             message: {
+                default: this.blok.title,
+                processing: this.blok.message_processing,
                 success: this.blok.message_success,
                 fail: this.blok.message_fail
             }
@@ -59,11 +54,11 @@ export default {
     box-sizing border-box
     margin-left 12em
     display flex
+    height calc(90vh - 5em)
     flex-direction column
     min-width $thumb-size + 20
     & > form
         flex-grow 1
-        max-height 40em
 
 </style>
 

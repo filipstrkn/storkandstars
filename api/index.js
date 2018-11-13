@@ -7,13 +7,13 @@ app.use(express.json())
 app.use(sendMessage)
 
 
-
 function sendMessage(req, res, next) {
+
 
     const request = require('request')
     const options = {
         method: 'POST',
-        uri: 'https://fleep.io/hook/HuKWHiQVQOmioRiqiFvAIg',
+        uri: process.env.FLEEP_URL,
         formData: {
             user: req.body.user,
             message: req.body.message

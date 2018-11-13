@@ -1,21 +1,23 @@
 <template>
-    <form id="FormBlock" @submit="sendMessage">
+    <transition name="slide">
+        <form id="FormBlock" @submit="sendMessage">
 
-        <!-- Email -->
-        <div :class="{'is-full': isEmailFull}">
-            <input v-model="email" type="text" :placeholder="placeholder.email ||  `Your email`">
-        </div>
+            <!-- Email -->
+            <div :class="{'is-full': isEmailFull}">
+                <input v-model="email" type="text" :placeholder="placeholder.email ||  `Your email`">
+            </div>
 
-        <!-- Message -->
-        <textarea v-model="message" :placeholder="placeholder.message || `Your message`"></textarea>
+            <!-- Message -->
+            <textarea v-model="message" :placeholder="placeholder.message || `Your message`"></textarea>
 
 
-        <!-- Submit button -->
-        <transition name="fade">
-            <button v-if="isEmail" type="submit">Send</button>
-        </transition>
+            <!-- Submit button -->
+            <transition name="fade">
+                <button v-if="isEmail" type="submit">{{ placeholder.submit }}</button>
+            </transition>
 
-    </form>
+        </form>
+    </transition>
 </template>
 
 
@@ -92,35 +94,45 @@ export default {
 
 
         sendMessage(e) {
+            // preventing default behaviour of the form
             e.preventDefault()
 
+            // getting stage names and values
+            const { SUCCESS, PROCESSING, FAIL } = this.$store.state.contactForm.stages
+
+            // Defining body of the request
             const BODY = {
                 message: this.message,
                 user: this.email
             }
+
+            // Defining header of the request
             const HEADER = {
                 'Accept': 'application/json',
                 'Content-type': 'application/json'
             }
-           fetch(`${window.location.origin}/api/new_message`,
+
+            // Setting form status to being processed
+            this.$store.commit('updateStatus', PROCESSING)
+
+            // ----------------------------------------------------------------
+            // Request
+            // ----------------------------------------------------------------
+            fetch(`${window.location.origin}/api/new_message`,
             {
                 method: 'POST',
                 headers: HEADER,
                 body: JSON.stringify(BODY)
-            }).then( res => {
-                if ( res.status === 200 ) {
-                    return res.json()
-                }
-            }).then(json => {
-                if (json.message === 200) {
-                    this.$store.commit('updateStatus', 'success')
-                } else {
-                    this.$store.commit('updateStatus', 'fail')
-                }
+            })
+            .then( res => res.status === 200 && res.json())
+            .then(json => {
+                (json.message === 200)
+                ? this.$store.commit('updateStatus', SUCCESS)
+                : this.$store.commit('updateStatus', FAIL)
             })
             .catch( err => {
+                this.$store.commit('updateStatus', fail)
                 console.error(err)
-                this.$store.commit('updateStatus', 'fail')
             })
         }
     }
@@ -133,8 +145,9 @@ export default {
 #FormBlock
     display flex
     flex-direction column
-    background-color #ffe8c9
+    background-color #ffefd9
     padding 2rem 4rem
+    margin-top 1.6rem
 
     input, textarea
         border none
@@ -169,8 +182,6 @@ export default {
         resize none
 
 
-
-
     textarea
         flex 1
 
@@ -194,10 +205,18 @@ export default {
 
 
 .fade-enter-active, .fade-leave-active
-    transition: opacity .5s
+    transition: opacity .4s
 
 .fade-enter, .fade-leave-to
-    opacity: 0;
+    opacity: 0
+
+
+.slide-enter-active, .slide-leave-active
+    transition: all .4s
+
+.slide-enter, .slide-leave-to
+    opacity: 0
+    transform translateY(100%)
 
 
 </style>

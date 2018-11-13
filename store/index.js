@@ -37,7 +37,11 @@ export default function createStore() {
                         message: null
                     },
                     status: null,
-                    error: {}
+                    stages: {
+                        PROCESSING: 'processing',
+                        SUCCESS: 'success',
+                        FAIL: 'fail'
+                    }
                 }
             },
 
