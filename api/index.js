@@ -1,34 +1,44 @@
 const express = require('express')
 const app = express()
 
+
+
 app.use(express.json())
+app.use(sendMessage)
 
 
-function sendMessage(chunk) {
+
+function sendMessage(req, res, next) {
 
     const request = require('request')
     const options = {
         method: 'POST',
         uri: 'https://fleep.io/hook/HuKWHiQVQOmioRiqiFvAIg',
         formData: {
-            user: chunk.user,
-            message: chunk.message
+            user: req.body.user,
+            message: req.body.message
         }
     }
 
+    request(options, (err, response, body) => {
 
-    request(options, (err, res, body) => {
-        if (err) throw new Error(err)
+        res.isNewMessageSuccess = response && response.statusCode
+        if (err) {
+            next()
+            throw new Error(err)
+        }
+        next()
     })
 
 }
 
 
+
 app.use('/', (req, res) => {
-    const { body } = req
-    sendMessage(body)
-    res.end()
+    const sendMessageStatus = { message: res.isNewMessageSuccess }
+    res.end(JSON.stringify(sendMessageStatus))
 })
+
 
 
 module.exports = {

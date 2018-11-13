@@ -1,12 +1,20 @@
 <template>
     <form id="FormBlock" @submit="sendMessage">
-        <div :class="{'is-full': emailFull}">
-            <input v-model="email" type="text" name="" id="" placeholder="Your email">
+
+        <!-- Email -->
+        <div :class="{'is-full': isEmailFull}">
+            <input v-model="email" type="text" :placeholder="placeholder.email ||  `Your email`">
         </div>
-        <textarea v-model="message" name="" id="" placeholder="What's your project?"></textarea>
-        <transition name="pop">
+
+        <!-- Message -->
+        <textarea v-model="message" :placeholder="placeholder.message || `Your message`"></textarea>
+
+
+        <!-- Submit button -->
+        <transition name="fade">
             <button v-if="isEmail" type="submit">Send</button>
         </transition>
+
     </form>
 </template>
 
@@ -17,27 +25,18 @@ export default {
 
 
     name: 'FormBlock',
-
-
-
-    data() {
-        return {
-            email: '',
-            message: '',
-            status: ''
-        }
-    },
-
+    props: ['placeholder'],
 
 
     computed: {
-
         /*
          |---------------------------------------------------------------------
-         | Validation
+         | Validating email
          |---------------------------------------------------------------------
          |
-         | Basic email validation using RegEx
+         | Email has two basic validations
+         | 1. First is retrieved via RegEx
+         | 2. Second is simple control whether input is empty or not
          |
          */
         isEmail() {
@@ -45,38 +44,53 @@ export default {
 
             return regEmail.test(this.email)
         },
+        isEmailFull() {
+            const email = this.$store.state.contactForm.body.user
+            return email && email.length > 0
+        },
 
 
 
         /*
          |---------------------------------------------------------------------
-         | Validation
+         | Form Values
          |---------------------------------------------------------------------
          |
          | Basic email validation using RegEx
          |
+         |
+         | ### Message and User
+         | Message and User objects have getters and setters
+         | which process value in the svuex store.
+         |
+         |
+         |
          */
-        emailFull() {
-            return this.email && this.email.length > 0
+        email: {
+            get() {
+                return this.$store.state.contactForm.body.user
+            },
+
+            set(value) {
+                this.$store.commit('updateUser', value)
+            },
+        },
+        message: {
+            get() {
+                return this.$store.state.contactForm.body.message
+            },
+
+            set(value) {
+                this.$store.commit('updateMessage', value)
+            }
         }
     },
 
 
 
     methods: {
-        resetForm(){
-            this.email = '',
-            this.message = ''
-        },
-        setStatus(status) {
-            switch(status) {
-                case 200:
-                    this.status = 'success'
-                    break
-                default:
-                    this.status = 'error'
-            }
-        },
+
+
         sendMessage(e) {
             e.preventDefault()
 
@@ -95,12 +109,19 @@ export default {
                 body: JSON.stringify(BODY)
             }).then( res => {
                 if ( res.status === 200 ) {
-                    this.setStatus(res.status)
-                    this.resetForm()
-                } else {
-                    console.error(res.status)
+                    return res.json()
                 }
-            } )
+            }).then(json => {
+                if (json.message === 200) {
+                    this.$store.commit('updateStatus', 'success')
+                } else {
+                    this.$store.commit('updateStatus', 'fail')
+                }
+            })
+            .catch( err => {
+                console.error(err)
+                this.$store.commit('updateStatus', 'fail')
+            })
         }
     }
 }
@@ -114,11 +135,9 @@ export default {
     flex-direction column
     background-color #ffe8c9
     padding 2rem 4rem
-    // box-sizing border-box
 
     input, textarea
         border none
-        // border-bottom solid 1px
         background none
         font-size 1.6rem
         padding 0
@@ -137,7 +156,7 @@ export default {
             outline none
 
     input[type="text"]
-        margin 2em 0
+        margin 6% 0
         font-size 1rem
         height 2rem
     .is-full::before
@@ -171,6 +190,14 @@ export default {
         &:disabled
             display none
 
+
+
+
+.fade-enter-active, .fade-leave-active
+    transition: opacity .5s
+
+.fade-enter, .fade-leave-to
+    opacity: 0;
 
 
 </style>

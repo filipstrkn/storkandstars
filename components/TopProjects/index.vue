@@ -2,7 +2,7 @@
     <section id="TopProjects">
         <block :ctx="content" v-editable="blok"></block>
         <thumb
-            v-for="project in tops"
+            v-for="project in $store.state.top"
             :key="project._uid"
             :project="project">
         </thumb>
@@ -12,8 +12,6 @@
 
 
 <script>
-
-import { mapActions } from 'vuex'
 
 import block from '../Block'
 import thumb from '../Thumb'
@@ -37,13 +35,8 @@ export default {
         block,
         thumb
     },
-    computed: {
-        tops() {
-            return this.$store.getters.top
-        }
-    },
     created() {
-        if (this.tops.length === 0 ) this.$store.dispatch('loadTop')
+        if (this.$store.state.top.length === 0 ) this.$store.dispatch('loadTop')
     },
 }
 </script>
@@ -51,11 +44,11 @@ export default {
 
 
 <style lang="stylus">
-#TopProjects
-    // display flex
-    & > *
-        display inline-block
-        vertical-align top
+
+#TopProjects > *
+    display inline-block
+    vertical-align top
+
 </style>
 
 

@@ -2,11 +2,14 @@ import { Store } from 'vuex'
 
 
 /*
-|==========================================================================
+|==============================================================================
 | Store
-|==========================================================================
+|==============================================================================
 |
 | Vuex store
+| ---
+| Exporting a function that creates a new Vuex instance
+| is a Nuxt way of doing things
 |
 |*/
 /**
@@ -16,48 +19,96 @@ import { Store } from 'vuex'
 
 export default function createStore() {
 
-    // const baseURL = `api.storyblok.com/v1/cdn`
+
 
     return new Store(
         {
 
 
 
-            // --------------------------------------------------------------------
+            // ----------------------------------------------------------------
             // States
-            // --------------------------------------------------------------------
+            // ----------------------------------------------------------------
             state: {
-                baseUrl: 'api.storyblok.com/v1/cdn',
                 top: [],
+                contactForm: {
+                    body: {
+                        user: null,
+                        message: null
+                    },
+                    status: null,
+                    error: {}
+                }
             },
 
 
 
-            // --------------------------------------------------------------------
+            // ================================================================
             // Mutations
-            // --------------------------------------------------------------------
+            // ================================================================
             mutations: {
-                setTop(state, payload) {
+
+
+
+                // ------------------------------------------------------------
+                //  Top Project
+                // ------------------------------------------------------------
+                setTopProjects(state, payload) {
                     state.top = payload
+                },
+
+
+                // ------------------------------------------------------------
+                //  Updating Contact Form
+                // ------------------------------------------------------------
+                updateMessage(state, payload) {
+                    state.contactForm.body.message = payload
+                },
+                updateUser(state, payload) {
+                    state.contactForm.body.user = payload
+                },
+                updateStatus(state, payload) {
+                    state.contactForm.status = payload
                 }
+
 
             },
 
 
 
+            // ================================================================
+            // Actions
+            // ================================================================
             actions: {
+
+
+                // ------------------------------------------------------------
+                //  Fetching Top Projects
+                // ------------------------------------------------------------
                 async loadTop({ commit, ctx }) {
-                    const top = await this.$storyapi.get(`cdn/stories`, {version: 'draft', starts_with: 'projects/', with_tag: 'top'})
-                        .then(res => {
-                            const topSection = res.data.stories.splice(0, 3)
-                            commit('setTop', topSection)
-                        } )
+                    await this.$storyapi.get(`cdn/stories`,
+                    {
+                        version: 'draft',
+                        starts_with: 'projects/',
+                        with_tag: 'top'
+                    })
+                    .then(res => {
+                        const topThree = res.data.stories.splice(0, 3)
+                        commit('setTopProjects', topThree)
+                    })
                 }
+
+
             },
 
+
+
+            // ================================================================
+            //  Getters
+            // ================================================================
             getters: {
-                top(state) {
-                    return state.top
+                isMessageSent(state) {
+                    return state.contactForm.status === 'success'
                 }
             }
         }
@@ -65,8 +116,3 @@ export default function createStore() {
     )
 
 }
-
-
-
-// // exporting a function that creates a new Vuex instance is a Nuxt way of doing things
-// export default () => new Vuex.Store(store)
