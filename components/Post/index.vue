@@ -70,6 +70,9 @@ export default {
             text-decoration underline
 .post__image
     height 30vh
+    background-size cover
+    background-position center
+    background-repeat no-repeat
 
 
 </style>
