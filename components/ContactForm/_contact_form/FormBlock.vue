@@ -3,12 +3,28 @@
         <form id="FormBlock" @submit="sendMessage">
 
             <!-- Email -->
-            <div :class="{'is-full': isEmailFull}">
-                <input v-model="email" type="text" :placeholder="placeholder.email ||  `Your email`">
+            <div :class="{'is-full': isEmailFull}" class="container--email">
+                <span>{{ placeholder.from }}</span>
+                <input
+                    v-model="email"
+                    :id="`ContactFormEmail${identificator}`">
+                <label
+                    for="`ContactFormEmail${identificator}`">
+                    {{ placeholder.email }}
+                </label>
             </div>
 
             <!-- Message -->
-            <textarea v-model="message" :placeholder="placeholder.message || `Your message`"></textarea>
+            <div :class="{'is-full': isMessageFull}" class="container--message">
+                <textarea
+                    v-model="message"
+                    :id="`ContactFormMessage${identificator}`">
+                </textarea>
+                <label
+                    :for="`ContactFormMessage${identificator}`">
+                    {{ placeholder.message }}
+                </label>
+            </div>
 
 
             <!-- Submit button -->
@@ -21,13 +37,14 @@
 </template>
 
 
+
 <script>
 export default {
 
 
 
     name: 'FormBlock',
-    props: ['placeholder'],
+    props: ['placeholder', 'identificator'],
 
 
     computed: {
@@ -51,21 +68,19 @@ export default {
             return email && email.length > 0
         },
 
-
+        isMessageFull() {
+            const message = this.$store.state.contactForm.body.message
+            return message && message.length > 0
+        },
 
         /*
          |---------------------------------------------------------------------
          | Form Values
          |---------------------------------------------------------------------
          |
-         | Basic email validation using RegEx
-         |
-         |
          | ### Message and User
          | Message and User objects have getters and setters
          | which process value in the svuex store.
-         |
-         |
          |
          */
         email: {
@@ -91,6 +106,7 @@ export default {
 
 
     methods: {
+
 
 
         sendMessage(e) {
@@ -142,81 +158,83 @@ export default {
 
 
 <style lang="stylus" scoped>
+
+
+@import '~assets/stylus/variables'
+@import '~assets/stylus/transitions'
+@import '~assets/stylus/reset'
+
+
 #FormBlock
     display flex
     flex-direction column
-    background-color #ffefd9
-    padding 2rem 4rem
-    margin-top 1.6rem
-
-    input, textarea
-        border none
-        background none
-        font-size 1.6rem
-        padding 0
-        width 100%
-
-        &::placeholder
-            text-decoration underline
-            font-weight 300
-            font-size 1.6rem
-            color alpha(#000, .25)
-            transition color 250ms ease-in-out
-
-        &:hover::placeholder
-            color black
-        &:focus
-            outline none
-
-    input[type="text"]
-        margin 6% 0
-        font-size 1rem
-        height 2rem
-    .is-full::before
-        content "from"
-        display inline-block
-        margin-right .6em
-
-
-    textarea
-        resize none
-
-
-    textarea
-        flex 1
+    width 100%
+    overflow hidden
 
     button
-        margin 2em 0
+        margin 0 2rem 0 0
         background #000
         color #fff
-        padding 1em
-        font-size 1rem
         text-transform uppercase
         letter-spacing .2em
-        margin 0
-        border none
-        cursor pointer
-        outline none
 
         &:disabled
             display none
 
+    input, textarea
+        font-size 1.6rem
+        width 100%
+        padding-right 2rem
+        font-family: 'Karma', serif
+
+        &:focus ~ label,
+        &:hover ~ label
+            color $black
+            &::after
+                bottom -1rem
+                background-color $black
+        & ~ label
+            position absolute
+            top 0
+            left 0
+            width 100%
+            pointer-events none
+            font-family: 'Karma', serif
+            color alpha(#000, .3)
+            font-size 1.6rem
+            &::after
+                content ""
+                height 1px
+                width 100%
+                position absolute
+                bottom -.4em
+                left 0
+                background-color alpha(#000, .3)
+                transition bottom 250ms ease-in-out, opacity 250ms ease-in-out
 
 
+.container--email,
+.container--message
+    position relative
+    width 100%
 
-.fade-enter-active, .fade-leave-active
-    transition: opacity .4s
+    &.is-full
+        & label
+            display none
 
-.fade-enter, .fade-leave-to
-    opacity: 0
+.container--email
+    span
+        vertical-align text-bottom
+        display none
+    &.is-full
+        span
+            display inline-block
 
-
-.slide-enter-active, .slide-leave-active
-    transition: all .4s
-
-.slide-enter, .slide-leave-to
-    opacity: 0
-    transform translateY(100%)
+.container--message
+    flex 1
+    display flex
+    flex-direction column
+    margin-top 10%
 
 
 </style>

@@ -1,11 +1,14 @@
 <template>
     <section id="ContactForm" v-editable="blok">
 
+        <!-- Text -->
         <form-message :message="message"></form-message>
 
+        <!-- Form -->
         <form-block
             v-if="!$store.getters.isMessageSent && !$store.state.contactForm.status"
-            :placeholder="placeholder">
+            :placeholder="placeholder"
+            :identificator="blok._uid">
         </form-block>
 
     </section>
@@ -19,6 +22,7 @@ import FormBlock from './_contact_form/FormBlock'
 import FormMessage from './_contact_form/FormMessage'
 
 
+
 export default {
     name: 'ContactForm',
     props: ['blok'],
@@ -30,6 +34,7 @@ export default {
         return {
             placeholder: {
                 email: this.blok.email,
+                from: this.blok.email_from,
                 message: this.blok.message,
                 submit: this.blok.submit
             },
@@ -45,18 +50,18 @@ export default {
 </script>
 
 
+
 <style lang="stylus" scoped>
 
 @import '~assets/stylus/variables'
 
 #ContactForm
-    padding 0
-    box-sizing border-box
-    margin-left 12em
     display flex
-    height calc(90vh - 5em)
     flex-direction column
+    height calc(90vh - 5em)
     min-width $thumb-size + 20
+    margin-left 12em
+
     & > form
         flex-grow 1
 

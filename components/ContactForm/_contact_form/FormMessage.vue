@@ -2,7 +2,7 @@
     <div id="FormMessage" :class="`status--${$store.state.contactForm.status}`">
         <h1
             class="title--h3">
-            {{ messageText }}
+            <span>{{ messageText.emoji }}</span>{{ messageText.text }}
         </h1>
     </div>
 </template>
@@ -18,13 +18,23 @@ export default {
             const { status } = this.$store.state.contactForm
 
             if ( status === 'processing') {
-                return this.message.processing
+                return {
+                    emoji: '',
+                    text: this.message.processing
+                    }
             } else if ( this.$store.getters.isMessageSent && status === 'success' ) {
-                return this.message.success
+                return {
+                    emoji: '🤘',
+                    text: this.message.success}
             } else if ( !this.$store.getters.isMessageSent && status === 'fail' ) {
-                return this.message.fail
+                return {
+                    emoji: '🔥',
+                    text: this.message.fail
+                }
             } else {
-                return this.message.default
+                return {
+                    emoji: '',
+                    text: this.message.default}
             }
         }
     }
@@ -37,20 +47,25 @@ export default {
 #FormMessage
     transition all .4s ease-in-out
 
-    h1
-        margin 0
+    // h1
+    //     margin 0
 
-.status--success
-    background-color #c9ffe7
-    box-shadow 0 0 0 2rem @background-color
+// .status--success::before
+//     content "\xE2\x9C\x8C"
+//     display inline-block
+
+.status--success,
+.status--processing,
+.status--fail
+    h1
+        font-family: 'Karma', serif !important
+        span
+            margin-right .2em
 
 .status--processing
     h1
         color alpha(#000, .4)
 
-.status--fail
-    background-color #ffd559
-    box-shadow 0 0 0 2rem @background-color
 
 </style>
 

@@ -1,0 +1,32 @@
+.title--h2
+    font-size: 1.8rem
+
+.title--h3
+    font-size: 1.6rem
+    margin-bottom 1.6rem
+
+
+.link
+    font-weight 400
+    font-size 1rem
+    font-family: 'Karma', serif
+    font-style normal
+    position relative
+    z-index 2
+    &::before
+        content "+"
+        display inline-block
+        font-weight bold
+        margin-right .5em
+    &::after
+        content ""
+        position absolute
+        left -5%
+        top -20%
+        height 100% + (-@top)
+        width 0
+        background-color alpha(#000, .046)
+        transition width 250ms ease-in-out
+
+    &:hover::after
+        width calc(100% + 30px)
