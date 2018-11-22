@@ -1,35 +1,45 @@
 <template>
     <article class="post-loading">
-        <div class="post-loading__image"></div>
-            <div class="post__details">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+
+
+
+        <!-- //////////////////////////////////////////////////////////////////////
+            Image Placeholder
+        ////////////////////////////////////////////////////////////////////// -->
+        <div class="post__image post-loading__image"></div>
+
+
+
+        <!-- //////////////////////////////////////////////////////////////////////
+            Text Placeholders
+        ////////////////////////////////////////////////////////////////////// -->
+        <div class="post--loading__details">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+
     </article>
 </template>
 
 
 
 <script>
-export default {
-    name: 'PostLoading'
-}
+export default { name: 'PostLoading' }
 </script>
 
 
 
 <style lang="stylus">
 
-
-@import '../../../assets/stylus/variables'
-
+@import '~assets/stylus/variables'
 
 .post-loading__image
-    height 30vh
     background-color $grey--lighter
 
-.post__details
+.post--loading__details
     span
         display block
         width 100%
