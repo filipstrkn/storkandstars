@@ -9,6 +9,7 @@
             <slot></slot>
         </section>
         <!-- <scroll-display></scroll-display> -->
+        <follower></follower>
     </div>
 </template>
 
@@ -17,11 +18,16 @@
 <script>
 
 import ScrollDisplay from './_draggable/ScrollDisplay'
+import Follower from './_draggable/Follower'
 
 export default {
     name: 'Draggable',
     data() {
         return {
+            following: {
+                top: 0,
+                left: 0
+            },
             totalWidth: 0,
             scroller: {
                 isDown: false
@@ -31,6 +37,7 @@ export default {
     props: ['position'],
     components: {
         'scroll-display': ScrollDisplay,
+        'follower': Follower
     },
     // beforeUpdate() {
     //     this.$store.commit('resetProgress', 0)
@@ -57,7 +64,7 @@ export default {
         isWalking(e) {
             const { isDown, startX, scrollLeft } = this.$store.state.scrolls.current
             const x = e.pageX
-            const walk = (x - startX) * 2.2
+            const walk = (x - startX) * 2.4
 
             if (Math.abs(walk) > 3) {
                 if (!isDown) return
@@ -73,9 +80,8 @@ export default {
                 // Walk action
                 this.$el.childNodes[0].scrollLeft = scrollLeft - walk
             }
-
-
         }
+
     }
 }
 </script>

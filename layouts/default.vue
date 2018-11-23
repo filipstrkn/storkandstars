@@ -18,6 +18,7 @@ html
   font-size: 16px
   // word-spacing: 1px
   user-select none
+  background-color #0e0e0e
 
   img
     pointer-events none !important

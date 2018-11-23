@@ -1,5 +1,5 @@
 <template>
-    <div id="Burger" :class="menu"></div>
+    <div id="Burger" :class="menu" class="_clickable"></div>
 </template>
 
 
@@ -45,7 +45,8 @@ export default {
         height 2px
         width 100%
         left 0
-        background-color $black
+        // background-color $black
+        background-color $white
 
     &::before
         top 0

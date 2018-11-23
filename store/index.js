@@ -53,6 +53,13 @@ export default function createStore() {
                         startX: null,
                         scrollLeft: null
                     }
+                },
+                follower: {
+                    position: {
+                        top: 0,
+                        left: 0
+                    },
+                    clickable: false
                 }
             },
 
@@ -98,6 +105,11 @@ export default function createStore() {
                 },
                 setProgress(state, payload) {
                     state.scrolls.progress += payload
+                },
+
+
+                setFollower(state, payload) {
+                    state.follower = payload
                 }
 
 

@@ -1,5 +1,5 @@
 <template>
-    <main id="Page">
+    <main id="Page" @mousemove="followThatMouse">
 
         <header-block></header-block>
 
@@ -28,6 +28,20 @@ export default {
     components: {
         'header-block' : HeaderBlock,
         'draggable': Draggable
+    },
+    methods: {
+        followThatMouse(e) {
+            const left = e.clientX || e.pageX
+            const top = e.clientY || e.pageY
+            const clickable = e.target.classList.contains('_clickable') ? true : false
+            this.$store.commit('setFollower', { clickable, position: {top, left} })
+        }
+        // follow({ commit }, e) {
+        //             const left = e.clientX || e.pageX
+        //             const top = e.clientY || e.pageY
+        //             const clickable = e.target.classList.contains('_clickable') ? true : false
+        //             commit('setFollower', { clickable, position: {top, left} })
+        //         },
     }
 }
 </script>

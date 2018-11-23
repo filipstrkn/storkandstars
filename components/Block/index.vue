@@ -2,7 +2,7 @@
     <div class="block">
         <h3 class="title--h3">{{ ctx.title }}</h3>
         <p>{{ ctx.description }}</p>
-        <nuxt-link :to="ctx.link.to" class="link">{{ ctx.link.name }}</nuxt-link>
+        <nuxt-link :to="ctx.link.to" class="link _clickable">{{ ctx.link.name }}</nuxt-link>
     </div>
 </template>
 

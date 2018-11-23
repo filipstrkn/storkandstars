@@ -3,7 +3,7 @@
         <div class="intro">
             <div class="intro__body" v-editable="blok">
                 <h1 class="title">{{ blok.title }}</h1>
-                <nuxt-link :to="blok.link_to" class="link">{{ blok.link_name }}</nuxt-link>
+                <nuxt-link :to="blok.link_to" class="link _clickable">{{ blok.link_name }}</nuxt-link>
             </div>
         </div>
     </section>
