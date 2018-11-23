@@ -1,32 +1,34 @@
 <template>
-    <section id="Special" v-editable="blok">
-        <nuxt-link :to="blok.link_to.cached_url">
-            <div class="_container--thumb">
+    <section>
+        <div id="Special" v-editable="blok">
+            <nuxt-link :to="blok.link_to.cached_url">
+                <div class="_container--thumb">
 
 
 
-                <!-- //////////////////////////////////////////////////////////
-                    Text Elements
-                /////////////////////////////////////////////////////////// -->
-                <div class="text" :style="textColor">
-                    <h3>{{ blok.title }}</h3>
-                    <p>{{ blok.note }}</p>
+                    <!-- //////////////////////////////////////////////////////////
+                        Text Elements
+                    /////////////////////////////////////////////////////////// -->
+                    <div class="text" :style="textColor">
+                        <h3>{{ blok.title }}</h3>
+                        <p>{{ blok.note }}</p>
+                    </div>
+
+
+
+                    <!-- //////////////////////////////////////////////////////////
+                        Image Loader
+                    /////////////////////////////////////////////////////////// -->
+                    <image-loader
+                        class="_thumbnail"
+                        :image="blok.attachment">
+                    </image-loader>
+
+
+
                 </div>
-
-
-
-                <!-- //////////////////////////////////////////////////////////
-                    Image Loader
-                /////////////////////////////////////////////////////////// -->
-                <image-loader
-                    class="_thumbnail"
-                    :image="blok.attachment">
-                </image-loader>
-
-
-
-            </div>
-        </nuxt-link>
+            </nuxt-link>
+        </div>
     </section>
 </template>
 
@@ -53,6 +55,7 @@
 |*/
 
 import ImageLoader from '~/components/Loaders/ImageLoader'
+// import setWidthOfElement from '~/mixins/setWidthOfElement'
 
 
 export default {
@@ -67,6 +70,7 @@ export default {
     // Properties
     // ========================================================================
     props: ['blok'],
+    // mixins: [setWidthOfElement],
 
 
 

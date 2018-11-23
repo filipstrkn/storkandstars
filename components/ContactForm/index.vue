@@ -1,16 +1,18 @@
 <template>
-    <section id="ContactForm" v-editable="blok">
+    <section>
+        <div id="ContactForm" v-editable="blok">
 
-        <!-- Text -->
-        <form-message :message="message"></form-message>
+            <!-- Text -->
+            <form-message :message="message"></form-message>
 
-        <!-- Form -->
-        <form-block
-            v-if="!$store.getters.isMessageSent && !$store.state.contactForm.status"
-            :placeholder="placeholder"
-            :identificator="blok._uid">
-        </form-block>
+            <!-- Form -->
+            <form-block
+                v-if="!$store.getters.isMessageSent && !$store.state.contactForm.status"
+                :placeholder="placeholder"
+                :identificator="blok._uid">
+            </form-block>
 
+        </div>
     </section>
 </template>
 
@@ -20,12 +22,14 @@
 
 import FormBlock from './_contact_form/FormBlock'
 import FormMessage from './_contact_form/FormMessage'
+// import setWidthOfElement from '~/mixins/setWidthOfElement'
 
 
 
 export default {
     name: 'ContactForm',
     props: ['blok'],
+    // mixins: [setWidthOfElement],
     components: {
         'form-block': FormBlock,
         'form-message': FormMessage
@@ -59,9 +63,11 @@ export default {
     display flex
     flex-direction column
     height calc(90vh - 5em)
-    min-width $thumb-size + 20
-    margin-left 12em
-
+    min-width $thumb-size + 30
+    // margin-left 12em
+    // padding-left 12em
+    & > *
+        padding-left 12rem
     & > form
         flex-grow 1
 

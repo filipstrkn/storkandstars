@@ -1,27 +1,30 @@
 <template>
-    <div class="intro">
-        <div class="intro__body" v-editable="blok">
-            <h1 class="title" v-cloak>{{ blok.title }}</h1>
-            <nuxt-link :to="blok.link_to" class="link">{{ blok.link_name }}</nuxt-link>
+    <section>
+        <div class="intro">
+            <div class="intro__body" v-editable="blok">
+                <h1 class="title">{{ blok.title }}</h1>
+                <nuxt-link :to="blok.link_to" class="link">{{ blok.link_name }}</nuxt-link>
+            </div>
         </div>
-    </div>
+    </section>
 </template>
 
 
 
 <script>
+
+// import setWidthOfElement from '~/mixins/setWidthOfElement'
+
 export default {
     name: 'Intro',
-    props: ['blok']
+    props: ['blok'],
+    // mixins: [setWidthOfElement]
 }
 </script>
 
 
 
 <style lang="stylus">
-
-[v-cloak]
-    display: none
 
 .intro
     display flex

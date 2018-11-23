@@ -1,12 +1,12 @@
 <template>
-    <transition name="fade" v-if="!loading">
-        <component
-            v-if="story.content.component && !loading"
-            :key="story.content._uid"
-            :blok="story.content"
-            :is="story.content.component">
-        </component>
-    </transition>
+    <component
+        v-if="story.content.component && !loading"
+        :key="story.content._uid"
+        :blok="story.content"
+        :is="story.content.component">
+    </component>
+
+    <h1 v-else>LOADING from PAGE COMPONENTS</h1>
 
 </template>
 
@@ -38,7 +38,7 @@ export default {
 
         // Load the JSON from the API
 
-        return context.app.$storyapi.get('cdn/stories/home', {
+        return context.app.$storyapi.get('cdn/stories/projects', {
             version: version
         }).then((res) => {
             return res.data
@@ -49,6 +49,9 @@ export default {
 
 
     mounted () {
+
+        console.log('I am Project Page')
+
         this.$nextTick(() => {
             this.$nuxt.$loading.start()
 

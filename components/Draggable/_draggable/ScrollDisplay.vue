@@ -1,5 +1,5 @@
 <template>
-    <div id="ScrollDisplay" :style="{width: position}"></div>
+    <div id="ScrollDisplay" :style="{width: progress}"></div>
 </template>
 
 
@@ -9,7 +9,13 @@
 
 export default {
     name: 'ScrollDisplay',
-    props: ['position']
+    computed: {
+        progress(e) {
+            const { progress, scrollPosition } = this.$store.state.scrolls
+            const totalWidth = progress - window.innerWidth
+            return Math.floor(((e.pageX / scrollPosition) * 100))
+        }
+    },
 }
 </script>
 
@@ -25,6 +31,7 @@ export default {
     background-color #000
     pointer-events none
     z-index 998
+    // transition width 100ms
     &::after
         content ""
         position fixed

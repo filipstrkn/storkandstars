@@ -42,6 +42,17 @@ export default function createStore() {
                         SUCCESS: 'success',
                         FAIL: 'fail'
                     }
+                },
+                scrolls: {
+                    progress: 0,
+                    walking: false,
+                    scrollPosition: 0,
+                    history: {},
+                    current: {
+                        isDown: false,
+                        startX: null,
+                        scrollLeft: null
+                    }
                 }
             },
 
@@ -73,6 +84,20 @@ export default function createStore() {
                 },
                 updateStatus(state, payload) {
                     state.contactForm.status = payload
+                },
+
+                setWalk(state, payload) {
+                    state.scrolls = {
+                        ...state.scrolls,
+                        ...payload
+                    }
+                },
+
+                resetProgress(state, payload) {
+                    state.scrolls.progress = payload
+                },
+                setProgress(state, payload) {
+                    state.scrolls.progress += payload
                 }
 
 

@@ -1,13 +1,15 @@
 <template>
-    <section id="TopArticles">
-        <block :ctx="content" v-editable="blok"></block>
-        <component
-            :key="blok._uid"
-            v-for="blok in blok.articles"
-            v-editable="blok"
-            :blok="blok"
-            :is="blok.component">
-        </component>
+    <section>
+        <div id="TopArticles">
+            <block :ctx="content" v-editable="blok"></block>
+            <component
+                :key="blok._uid"
+                v-for="blok in blok.articles"
+                v-editable="blok"
+                :blok="blok"
+                :is="blok.component">
+            </component>
+        </div>
     </section>
 </template>
 
@@ -17,6 +19,8 @@
 
 // import post from '../Post'
 import block from '../Block'
+// import setWidthOfElement from '~/mixins/setWidthOfElement'
+
 
 export default {
     name: 'TopArticles',
@@ -33,6 +37,7 @@ export default {
         }
     },
     props: ['blok'],
+    // mixins: [setWidthOfElement],
     components: { block }
 }
 </script>

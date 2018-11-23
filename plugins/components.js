@@ -20,7 +20,7 @@ import ContactForm from '~/components/ContactForm'
 |
 |*/
 Vue.component('home_page', Page)
-Vue.component('product_page', Page)
+Vue.component('project_page', Page)
 Vue.component('listing_page', Page)
 
 

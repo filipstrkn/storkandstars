@@ -17,6 +17,10 @@ html
   font-style: normal
   font-size: 16px
   // word-spacing: 1px
+  user-select none
+
+  img
+    pointer-events none !important
 
 
 h1, h2, h3, h4

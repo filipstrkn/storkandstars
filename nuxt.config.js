@@ -31,7 +31,11 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: {
+    name: 'pulse',
+    color: '#3B8070',
+    background: '#000000',
+  },
   /*
   ** Build configuration
   */
