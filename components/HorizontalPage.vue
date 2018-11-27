@@ -1,11 +1,10 @@
 <template>
-    <main id="Page" @mousemove="launchFollower">
+    <main id="HorizontalPage" @mousemove="launchFollower">
 
         <!--
             Header
          -->
         <header-block></header-block>
-
 
 
         <!--
@@ -19,6 +18,7 @@
                 :is="blok.component">
             </component>
         </draggable>
+
 
 
 
@@ -45,7 +45,7 @@ import Follower from '~/components/Draggable/_draggable/Follower'
 export default {
 
 
-    name: 'Page',
+    name: 'HorizontalPage',
 
 
     props: ['blok'],
@@ -78,11 +78,10 @@ export default {
 <style lang="stylus">
 
 
-#Page
+#HorizontalPage
     min-height 100vh
     display flex
     flex-direction column
-    background-color blue
 
     & > *
         flex-grow 1

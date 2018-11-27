@@ -1,6 +1,6 @@
 <template>
 
-    <nuxt-link :to="blok.link" class="thumb--spacer">
+    <nuxt-link :to="blok.link.cached_url" class="thumb--spacer">
         <article class="thumb">
 
 

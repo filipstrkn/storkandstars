@@ -92,6 +92,10 @@ export default {
     mounted() {
         this._setFinnish()
         window.addEventListener('resize', () => this._setFinnish('reset'))
+
+        if (this.$store.state.scrolls.scrollPosition !== 0) {
+            this.$el.childNodes[0].scrollLeft = this.$store.state.scrolls.scrollPosition
+        }
     },
 
 
@@ -181,7 +185,6 @@ export default {
         //
         //
         _setPosition(scroll) {
-
             // Get the percentage value of scroll
             const progress = Math.floor(((scroll / (this.finnish - window.innerWidth)) * 100))
             // If progress is between 0 - 100% set its value

@@ -1,5 +1,5 @@
 <template>
-    <section id="TopProjects">
+    <section id="TopProjects" v-editable="blok">
         <!-- <link-block :ctx="content" v-editable="blok"></link-block> -->
 
         <component
@@ -7,7 +7,6 @@
             v-for="blok in blok.projects"
             :blok="blok"
             :is="blok.component">
-            d
         </component>
 
 

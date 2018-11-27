@@ -1,9 +1,14 @@
 <template>
     <div>
 
+        <h1>TEST PROJECT PAGE</h1>
+
+        <!-- <nuxt-child></nuxt-child> -->
 
 
-        <transition name="fade" v-if="!loading">
+
+        <!-- <transition name="fade" v-if="!loading">
+
 
 
             <component
@@ -15,10 +20,7 @@
 
 
 
-        </transition>
-
-
-
+        </transition> -->
     </div>
 
 </template>
@@ -33,12 +35,12 @@ export default {
 
 
     data() {
-        return {
-            story: {
-            content: {}
-            },
-            loading: true
-        }
+    return {
+        story: {
+        content: {}
+        },
+        loading: true
+    }
     },
 
 
@@ -51,7 +53,7 @@ export default {
 
         // Load the JSON from the API
 
-        return context.app.$storyapi.get('cdn/stories/home', {
+        return context.app.$storyapi.get(`cdn/stories/projects/${context.params.slug}`, {
             version: version
         }).then((res) => {
             return res.data
@@ -61,16 +63,16 @@ export default {
     },
 
 
-    mounted () {
-        this.$nextTick(() => {
-            this.$nuxt.$loading.start()
+    // mounted () {
+    //     this.$nextTick(() => {
+    //         this.$nuxt.$loading.start()
 
-            this.$nextTick( () => {
-                this.$nuxt.$loading.finish()
-                this.loading = false
-            })
-        })
-    }
+    //         this.$nextTick( () => {
+    //             this.$nuxt.$loading.finish()
+    //             this.loading = false
+    //         })
+    //     })
+    // }
 }
 </script>
 

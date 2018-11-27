@@ -1,7 +1,9 @@
 import Vue from 'vue'
 
 // Content Types
+import HorizontalPage from '~/components/HorizontalPage'
 import Page from '~/components/Page'
+// import Home from '~/components/Page'
 
 // Blocks
 import Intro from '~/components/Intro'
@@ -21,9 +23,8 @@ import Thumb from '~/components/Thumb'
 |==========================================================================
 |
 |*/
-Vue.component('home_page', Page)
-Vue.component('project_page', Page)
-Vue.component('listing_page', Page)
+Vue.component('home_page', HorizontalPage)
+Vue.component('project', Page)
 
 
 
