@@ -1,46 +1,94 @@
 <template>
-    <div id="ScrollDisplay" :style="{width: progress}"></div>
+    <transition name="fade">
+
+
+
+        <!-- //////////////////////////////////////////////////////////////////
+            Scroll Progress Bar
+        /////////////////////////////////////////////////////////////////// -->
+        <div id="Scroller">
+            <span :style="progress"></span>
+        </div>
+
+
+
+    </transition>
 </template>
 
 
 <script>
-
-
-
-
-
 export default {
+
+
     name: 'ScrollDisplay',
+
+
+    // ========================================================================
+    // Computed Properties
+    // ========================================================================
     computed: {
-        progress(e) {
-            const { progress, scrollPosition } = this.$store.state.scrolls
-            const totalWidth = progress - window.innerWidth
-            return Math.floor(((e.pageX / scrollPosition) * 100))
+
+
+        // --------------------------------------------------------------------
+        //  Progress Status
+        // --------------------------------------------------------------------
+        //
+        // Setting the progress into percentage
+        //
+        //
+        progress () {
+            return {
+                'left': this.$store.state.scrolls.progress + '%'
+            }
         }
+
+
+
     },
+
+
 }
 </script>
 
 
+
 <style lang="stylus" scoped>
 
-#ScrollDisplay
+
+@import '~assets/stylus/variables'
+
+
+#Scroller
     position fixed
-    bottom 0
-    left 0
-    height 6px
-    width 60%
-    background-color #000
+    bottom 5%
+    left 50%
+    transform translateX(-50%)
+    width 70%
+    height 1rem
     pointer-events none
-    z-index 998
-    // transition width 100ms
-    &::after
+
+    &::before
         content ""
-        position fixed
+        position absolute
+        top 0
+        left 0
         width 100%
-        height 6px
-        background-color alpha(#000, .1)
-        z-index 997
+        height 1px
+        background-color $grey--light
+
+    span
+        position absolute
+        top 0
+        left 0
+        width .6rem
+        height @width
+        border-radius 100%
+        transform translateY(-50%)
+
+        background-color $grey--light - 25
+        transition left 600ms ease-out
+
+
 
 </style>
 

@@ -8,24 +8,22 @@
 
 @import '~assets/stylus/reset'
 @import '~assets/stylus/common'
+@import '~assets/stylus/variables'
 
 html
-  // font-family: 'Source Sans Pro', sans-serif
-  font-family: 'Karma', serif
   font-style: normal
-  color #333333
   font-style: normal
-  font-size: 16px
-  // word-spacing: 1px
+  font-size: 14px
   user-select none
-  background-color #0e0e0e
+  font-family $main-font
+  cursor default
 
   img
     pointer-events none !important
 
 
-h1, h2, h3, h4
-    font-family: 'Source Sans Pro', sans-serif
+// h1, h2, h3, h4
+//     font-family: 'Source Sans Pro', sans-serif
 
 
 

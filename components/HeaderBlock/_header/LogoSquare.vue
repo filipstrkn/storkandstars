@@ -20,7 +20,7 @@ export default {
 
 
 #LogoSquare
-    width 2.25em
-    height 3em
+    width 2.5em
+    height 3.35em
     fill: $black
 </style>

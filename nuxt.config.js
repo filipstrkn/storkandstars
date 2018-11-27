@@ -16,7 +16,12 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheets',
-        href: 'https://fonts.googleapis.com/css?family=Karma:300,400|Source+Sans+Pro:300,400,600,700&amp;subset=latin-ext'
+        href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700|Lora:400,400i,700&amp;subset=latin-ext'
+        // href: 'https://fonts.googleapis.com/css?family=Karma:300,400|Source+Sans+Pro:300,400,600,700&amp;subset=latin-ext'
+      },
+      {
+        rel: 'stylesheets',
+        href: 'href="https://use.typekit.net/oqr0cnm.css'
       }
     ],
   },

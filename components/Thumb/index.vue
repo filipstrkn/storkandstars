@@ -1,22 +1,25 @@
 <template>
 
-    <nuxt-link :to="project.full_slug" class="thumb--spacer">
-        <article class="_container--thumb thumb">
+    <nuxt-link :to="blok.link" class="thumb--spacer">
+        <article class="thumb">
 
 
 
             <!-- //////////////////////////////////////////////////////////////
                 Title
             ////////////////////////////////////////////////////////////// -->
-            <h3>{{ project.name }}</h3>
+            <div class="name">
+                <h3>{{ blok.name }}</h3>
+            </div>
+
 
 
             <!-- //////////////////////////////////////////////////////////////
                 Image
             ////////////////////////////////////////////////////////////// -->
             <image-block
-                class="_thumbnail"
-                :image="project.content.thumbnail">
+                class="_thumbnail _clickable thumbnail--projects"
+                :image="blok.thumbnail">
             </image-block>
 
 
@@ -35,7 +38,7 @@ import ImageBlock from '~/components/Loaders/ImageLoader'
 
 export default {
     name: 'Thumb',
-    props: ['project'],
+    props: ['blok'],
     components: {
         'image-block': ImageBlock
     }
@@ -47,15 +50,32 @@ export default {
 <style lang="stylus">
 
 @import '~assets/stylus/variables'
+@import '~assets/stylus/mixins'
 
-.thumb--spacer
-    margin 0 $spacing--small
 
-.thumb:hover
-    cursor pointer
+.thumb
+    position relative
+    margin 0 4em
+
+    .name
+        transform rotate(90deg)
+        position absolute
+        top 0
+        left -2em
+        z-index 1
+        width 1em
+        white-space nowrap
+
+    h3
+        font-weight 400
+        pointer-events none
+
     ._thumbnail
-        transform translate(-50%, -50%) scale(.97)
+        transition all 250ms ease-in-out
 
+    &:hover
+        ._thumbnail
+            transform scale(.96)
 
 
 </style>

@@ -45,8 +45,8 @@ export default {
         height 2px
         width 100%
         left 0
-        // background-color $black
-        background-color $white
+        background-color $black
+        // background-color $white
 
     &::before
         top 0

@@ -1,33 +1,28 @@
 <template>
-    <section>
-        <div id="Special" v-editable="blok">
-            <nuxt-link :to="blok.link_to.cached_url">
-                <div class="_container--thumb">
+    <section id="Special">
+        <div class="_container--thumb special__container" v-editable="blok">
 
 
 
-                    <!-- //////////////////////////////////////////////////////////
-                        Text Elements
-                    /////////////////////////////////////////////////////////// -->
-                    <div class="text" :style="textColor">
-                        <h3>{{ blok.title }}</h3>
-                        <p>{{ blok.note }}</p>
-                    </div>
-
-
-
-                    <!-- //////////////////////////////////////////////////////////
-                        Image Loader
-                    /////////////////////////////////////////////////////////// -->
-                    <image-loader
-                        class="_thumbnail"
-                        :image="blok.attachment">
-                    </image-loader>
-
-
-
-                </div>
+            <!-- //////////////////////////////////////////////////////////////
+                Link
+            /////////////////////////////////////////////////////////////// -->
+            <nuxt-link :to="blok.link_to.cached_url" class="_link--underlined text _clickable">
+                {{ blok.title }}
             </nuxt-link>
+
+
+
+            <!-- //////////////////////////////////////////////////////////////
+                Thumnail
+            /////////////////////////////////////////////////////////////// -->
+            <image-loader
+                class="_thumbnail thumbnail--special"
+                :image="blok.attachment">
+            </image-loader>
+
+
+
         </div>
     </section>
 </template>
@@ -117,15 +112,26 @@ export default {
 
 <style lang="stylus">
 
+
 #Special
-    display inline-block
-    vertical-align top
+    padding-right 4em
+    padding-left 20em
+    box-sizing border-box
+
 
     .text
-        width 90%
-        p
-            margin 0
-            white-space pre-wrap
+        position absolute
+        top 50%
+        left 0
+        transform translate(-50%, -50%)
+
+    .thumbnail--special
+        // position: absolute
+        // top: 50%
+        // left 50%
+        // transform: translateY(-50%)
+        // transition all $duration ease-in-out
+        z-index 1
 
 </style>
 

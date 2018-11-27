@@ -1,11 +1,13 @@
 <template>
-    <section>
-        <div class="intro">
-            <div class="intro__body" v-editable="blok">
-                <h1 class="title">{{ blok.title }}</h1>
-                <nuxt-link :to="blok.link_to" class="link _clickable">{{ blok.link_name }}</nuxt-link>
-            </div>
-        </div>
+
+
+    <!-- //////////////////////////////////////////////////////////////////////
+        Intro text
+    /////////////////////////////////////////////////////////////////////// -->
+    <section class="intro" :style="size">
+        <h1 class="title" :class="{'isGone': isGone}">
+            {{ blok.title }}
+        </h1>
     </section>
 </template>
 
@@ -13,12 +15,44 @@
 
 <script>
 
-// import setWidthOfElement from '~/mixins/setWidthOfElement'
 
 export default {
     name: 'Intro',
     props: ['blok'],
-    // mixins: [setWidthOfElement]
+
+
+
+    // ========================================================================
+    // Computed Propertiees
+    // ========================================================================
+    computed: {
+
+
+
+        // --------------------------------------------------------------------
+        //  When scroll hide the ttitle
+        // --------------------------------------------------------------------
+        //
+        isGone() {
+            return this.$store.state.scrolls.scrollPosition > 300
+        },
+
+
+
+        // --------------------------------------------------------------------
+        //  Get the size from CMS
+        // --------------------------------------------------------------------
+        //
+        size() {
+            const { size } = this.blok
+            return {
+                'font-size': size + 'vw'
+            }
+        }
+
+
+
+    }
 }
 </script>
 
@@ -26,21 +60,26 @@ export default {
 
 <style lang="stylus">
 
+
+@import '~assets/stylus/variables'
+
+
 .intro
     display flex
-    align-items flex-end
-    margin 0 10em
-    padding-bottom 6%
+    align-items center
     box-sizing border-box
-    width 100%
-    max-width 42em
-    white-space pre-wrap
     .title
+        padding 0 .1em
         position relative
-        font-size 7vh
-        font-size: calc(3.4rem + 6 * ((100vh - 320px) / 680))
-        margin-bottom 16%
         font-style: normal
+        font-weight 900
+        transition color 200ms ease-out
+        color $black
+        z-index 1
+
+        &.isGone
+            color $grey--lighter
+
 
 </style>
 

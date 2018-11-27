@@ -32,6 +32,7 @@ export default function createStore() {
             state: {
                 top: [],
                 contactForm: {
+                    visible: false,
                     body: {
                         user: null,
                         message: null
@@ -92,6 +93,9 @@ export default function createStore() {
                 updateStatus(state, payload) {
                     state.contactForm.status = payload
                 },
+                setFormVisibility(state, payload) {
+                    state.contactForm.visible = payload
+                },
 
                 setWalk(state, payload) {
                     state.scrolls = {
@@ -100,11 +104,11 @@ export default function createStore() {
                     }
                 },
 
-                resetProgress(state, payload) {
-                    state.scrolls.progress = payload
-                },
+                // resetProgress(state, payload) {
+                //     state.scrolls.progress = payload
+                // },
                 setProgress(state, payload) {
-                    state.scrolls.progress += payload
+                    state.scrolls.progress = payload
                 },
 
 
@@ -126,18 +130,18 @@ export default function createStore() {
                 // ------------------------------------------------------------
                 //  Fetching Top Projects
                 // ------------------------------------------------------------
-                async loadTop({ commit, ctx }) {
-                    await this.$storyapi.get(`cdn/stories`,
-                    {
-                        version: 'draft',
-                        starts_with: 'projects/',
-                        with_tag: 'top'
-                    })
-                    .then(res => {
-                        const topThree = res.data.stories.splice(0, 3)
-                        commit('setTopProjects', topThree)
-                    })
-                }
+                // async loadTop({ commit, ctx }) {
+                //     await this.$storyapi.get(`cdn/stories`,
+                //     {
+                //         version: 'draft',
+                //         starts_with: 'projects/',
+                //         with_tag: 'top'
+                //     })
+                //     .then(res => {
+                //         const topThree = res.data.stories.splice(0, 3)
+                //         commit('setTopProjects', topThree)
+                //     })
+                // }
 
 
             },

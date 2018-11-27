@@ -13,7 +13,7 @@ export default {
 
 <style lang="stylus">
 
-@import '../../../assets/stylus/animations'
+@import '~assets/stylus/animations'
 
 .thumb--loading
     width 60vh

@@ -2,6 +2,7 @@
     <header id="Header">
         <div class="header__left">
             <logo-square></logo-square>
+            <!-- <logo></logo> -->
         </div>
         <div class="header__right">
             <burger></burger>
@@ -38,6 +39,7 @@ export default {
     left 0
     width 100%
     padding 2em 2.5em
+    padding 3% 5%
     z-index 99
     pointer-events none
 

@@ -1,13 +1,21 @@
 <template>
-    <section>
-        <div id="TopProjects">
-            <block :ctx="content" v-editable="blok"></block>
-            <thumb
-                v-for="project in $store.state.top"
-                :key="project._uid"
-                :project="project">
-            </thumb>
-        </div>
+    <section id="TopProjects">
+        <!-- <link-block :ctx="content" v-editable="blok"></link-block> -->
+
+        <component
+            :key="blok._uid"
+            v-for="blok in blok.projects"
+            :blok="blok"
+            :is="blok.component">
+            d
+        </component>
+
+
+        <!-- <thumb
+            v-for="project in $store.state.top"
+            :key="project._uid"
+            :project="project">
+        </thumb> -->
     </section>
 </template>
 
@@ -15,29 +23,29 @@
 
 <script>
 
-import block from '../Block'
+import LinkBlock from '~/components/LinkBlock'
 import thumb from '../Thumb'
 // import setWidthOfElement from '~/mixins/setWidthOfElement'
 
 
 export default {
     name: 'TopProjects',
-    data() {
-        return {
-            content: {
-                title: this.blok.title,
-                description: this.blok.description,
-                link: {
-                    name: this.blok.link_name,
-                    to: this.blok.link_to.cached_url
-                }
-            }
-        }
-    },
+    // data() {
+    //     return {
+    //         content: {
+    //             title: this.blok.title,
+    //             description: this.blok.description,
+    //             link: {
+    //                 name: this.blok.link_name,
+    //                 to: this.blok.link_to.cached_url
+    //             }
+    //         }
+    //     }
+    // },
     props: ['blok'],
     // mixins: [setWidthOfElement],
     components: {
-        block,
+        'link-block': LinkBlock,
         thumb
     },
     methods: {
@@ -49,9 +57,9 @@ export default {
             console.log('LOADED BRO')
         }
     },
-    created() {
-        if (this.$store.state.top.length === 0 ) this.$store.dispatch('loadTop')
-    },
+    // created() {
+    //     if (this.$store.state.top.length === 0 ) this.$store.dispatch('loadTop')
+    // },
 }
 </script>
 
@@ -61,7 +69,7 @@ export default {
 
 #TopProjects > *
     display inline-block
-    vertical-align top
+    vertical-align middle
 
 </style>
 

@@ -1,7 +1,7 @@
 <template>
     <section>
         <div id="TopArticles">
-            <block :ctx="content" v-editable="blok"></block>
+            <link-block :ctx="content" v-editable="blok"></link-block>
             <component
                 :key="blok._uid"
                 v-for="blok in blok.articles"
@@ -18,7 +18,7 @@
 <script>
 
 // import post from '../Post'
-import block from '../Block'
+import LinkBlock from '~/components/LinkBlock'
 // import setWidthOfElement from '~/mixins/setWidthOfElement'
 
 
@@ -38,7 +38,9 @@ export default {
     },
     props: ['blok'],
     // mixins: [setWidthOfElement],
-    components: { block }
+    components: {
+        'link-block': LinkBlock
+    }
 }
 </script>
 

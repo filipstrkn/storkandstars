@@ -10,6 +10,8 @@ import TopProjects from '~/components/TopProjects'
 import TopArticles from '~/components/TopArticles'
 import Post from '~/components/Post'
 import ContactForm from '~/components/ContactForm'
+import Thumb from '~/components/Thumb'
+// import FavoriteLink from '~/components/Draggable/_draggable/FavoriteLink'
 
 
 
@@ -37,6 +39,8 @@ Vue.component('top_projects', TopProjects)
 Vue.component('top_articles', TopArticles)
 Vue.component('article_unit', Post)
 Vue.component('contact_form', ContactForm)
+Vue.component('project_thumb', Thumb)
+// Vue.component('favorite_link', FavoriteLink)
 
 
 
