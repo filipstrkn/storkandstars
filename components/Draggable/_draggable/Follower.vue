@@ -49,7 +49,6 @@ $arrow = 5px
     &::after
         right -1em
 
-// #Follower.isMoving
 
     // &::before,
     // &::after
@@ -87,17 +86,17 @@ $arrow = 5px
     &::before
         left -2em
         border-width $arrow $arrow $arrow 0
-        border-color alpha($black, 0) alpha($black, .6) alpha($black, 0) alpha($black, 0)
+        border-color alpha($black, 0) $black alpha($black, 0) alpha($black, 0)
     &::after
         right -2em
         border-width $arrow 0 $arrow $arrow
-        border-color alpha($black, 0) alpha($black, 0) alpha($black, 0) alpha($black, .6)
+        border-color alpha($black, 0) alpha($black, 0) alpha($black, 0) $black
 
 
     &.isClickable
         width 2.8rem
         height @width
-        background-color none
+        background none
         border solid 2px $black
 
         &.isDown

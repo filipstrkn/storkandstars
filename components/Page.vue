@@ -1,31 +1,36 @@
 <template>
-    <main id="Page" @mousemove="launchFollower">
+    <main id="Page">
 
         <!--
             Header
          -->
-        <header-block></header-block>
+        <!-- <header-block></header-block> -->
 
-
+        <component
+            :key="blok._uid"
+            v-for="blok in blok.body"
+            :blok="blok"
+            :is="blok.component">
+        </component>
 
         <!--
             Draggable Components
          -->
-        <draggable>
+        <!-- <draggable>
             <component
                 :key="blok._uid"
                 v-for="blok in blok.body"
                 :blok="blok"
                 :is="blok.component">
             </component>
-        </draggable>
+        </draggable> -->
 
 
 
         <!--
             Cursor's stalker
          -->
-        <follower></follower>
+        <!-- <follower></follower> -->
 
 
     </main>
@@ -37,8 +42,6 @@
 
 // componets
 import HeaderBlock from '~/components/HeaderBlock'
-import Draggable from '~/components/Draggable'
-import Follower from '~/components/Draggable/_draggable/Follower'
 
 
 
@@ -52,21 +55,19 @@ export default {
 
 
     components: {
-        'header-block' : HeaderBlock,
-        'draggable': Draggable,
-        'follower': Follower
+        'header-block' : HeaderBlock
     },
 
 
     methods: {
 
 
-        launchFollower(e) {
-            const left = e.clientX || e.pageX
-            const top = e.clientY || e.pageY
-            const clickable = e.target.classList.contains('_clickable') ? true : false
-            this.$store.commit('setFollower', { clickable, position: {top, left} })
-        }
+        // launchFollower(e) {
+        //     const left = e.clientX || e.pageX
+        //     const top = e.clientY || e.pageY
+        //     const clickable = e.target.classList.contains('_clickable') ? true : false
+        //     this.$store.commit('setFollower', { clickable, position: {top, left} })
+        // }
 
 
     }
@@ -78,15 +79,14 @@ export default {
 <style lang="stylus">
 
 
-#Page
-    min-height 100vh
-    display flex
-    flex-direction column
-    background-color blue
+// #Page
+//     // min-height 100vh
+//     // display flex
+//     // flex-direction column
 
-    & > *
-        flex-grow 1
-        flex-shrink 0
+//     & > *
+//         flex-grow 1
+//         flex-shrink 0
 
 
 </style>

@@ -4,7 +4,7 @@
         <!--
             Header
          -->
-        <header-block></header-block>
+        <!-- <header-block></header-block> -->
 
 
         <!--
@@ -25,7 +25,7 @@
         <!--
             Cursor's stalker
          -->
-        <follower></follower>
+        <!-- <follower></follower> -->
 
 
     </main>

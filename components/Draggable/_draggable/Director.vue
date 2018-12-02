@@ -14,16 +14,8 @@
 
 
 <script>
-
-// Components
-import ScrollDisplay from '~/components/Draggable/_draggable/ScrollDisplay'
-
-
 export default {
     name: 'Director',
-    components: {
-        'scroll-display': ScrollDisplay
-    },
 
 
 
@@ -42,7 +34,7 @@ export default {
         //
         //
         isShown() {
-            return this.$store.state.scrolls.scrollPosition < 100 && !this.$store.state.scrolls.walking ? true : false
+            return this.$store.state.scrolls.progress < 20 && !this.$store.state.scrolls.walking ? true : false
         }
 
 
@@ -64,10 +56,10 @@ export default {
 
 #Director
     position fixed
-    right 3%
+    right 5%
     bottom 5%
-    height 1px
-    width 6rem
+    height 2px
+    width 3rem
     margin-bottom calc(1rem - 1px)
     background-color $black
 
@@ -76,7 +68,7 @@ export default {
         content ""
         position absolute
         right 0
-        height 1px
+        height 2px
         background-color #000
         width .5rem
 

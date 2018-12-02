@@ -10,6 +10,7 @@
 <script>
 export default {
 
+    // transition: 'fade',
 
     asyncData(context) {
           // Check if we are in the editor mode

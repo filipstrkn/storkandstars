@@ -66,6 +66,7 @@ export default {
     width 70%
     height 1rem
     pointer-events none
+    overflow hidden
 
     &::before
         content ""
@@ -73,20 +74,21 @@ export default {
         top 0
         left 0
         width 100%
-        height 1px
+        height 2px
         background-color $grey--light
 
     span
         position absolute
         top 0
         left 0
-        width .6rem
-        height @width
-        border-radius 100%
-        transform translateY(-50%)
-
-        background-color $grey--light - 25
-        transition left 600ms ease-out
+        height 2px
+        width 12%
+        max-width 10rem
+        min-width 2rem
+        transform translateX(-50%)
+        // background $black
+        background linear-gradient(to left, #00000000 0%,#000000 50%,#00000000 100%)
+        transition left 450ms ease-out
 
 
 

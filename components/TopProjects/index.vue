@@ -47,15 +47,15 @@ export default {
         'link-block': LinkBlock,
         thumb
     },
-    methods: {
-        start () {
-            $nuxt.$loading.start()
-        },
-        finish () {
-            $nuxt.$loading.finish()
-            console.log('LOADED BRO')
-        }
-    },
+    // methods: {
+    //     start () {
+    //         $nuxt.$loading.start()
+    //     },
+    //     finish () {
+    //         $nuxt.$loading.finish()
+    //         console.log('LOADED BRO')
+    //     }
+    // },
     // created() {
     //     if (this.$store.state.top.length === 0 ) this.$store.dispatch('loadTop')
     // },

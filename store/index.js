@@ -1,5 +1,6 @@
+import fetch from 'node-fetch'
 import { Store } from 'vuex'
-
+import { GLOBALS } from '~/config/globals'
 
 /*
 |==============================================================================
@@ -30,20 +31,27 @@ export default function createStore() {
             // States
             // ----------------------------------------------------------------
             state: {
-                top: [],
-                contactForm: {
-                    visible: false,
-                    body: {
-                        user: null,
-                        message: null
-                    },
-                    status: null,
-                    stages: {
-                        PROCESSING: 'processing',
-                        SUCCESS: 'success',
-                        FAIL: 'fail'
-                    }
-                },
+                dark: false,
+                // cache: {},
+                forms: {},
+                // contactForm: {
+                //     // total: 0,
+                //     // current: {},
+                //     // values: [],
+                //     // status: null,
+                //     steps: 0,
+                //     step: 0,
+                //     body: {
+                //         user: null,
+                //         message: null
+                //     },
+                //     status: null,
+                //     stages: {
+                //         PROCESSING: 'processing',
+                //         SUCCESS: 'success',
+                //         FAIL: 'fail'
+                //     }
+                // },
                 scrolls: {
                     progress: 0,
                     walking: false,
@@ -63,6 +71,7 @@ export default function createStore() {
                     clickable: false
                 }
             },
+
 
 
 
@@ -114,8 +123,24 @@ export default function createStore() {
 
                 setFollower(state, payload) {
                     state.follower = payload
-                }
+                },
 
+
+
+                setDarkMode(state, payload) {
+                    state.dark = payload
+                },
+
+                nextStep(state, form) {
+                    state.forms[form].current++
+                    console.log('STEPING')
+                },
+                previousStep(state, form) {
+                    state.forms[form].current--
+                },
+                saveStep(state, { form, name, value }) {
+                    state.forms[form].values[name] = value
+                }
 
             },
 
@@ -144,6 +169,65 @@ export default function createStore() {
                 // }
 
 
+
+                submitForm({ commit }, { action, form }) {
+                    switch (action) {
+                        case 'proposal':
+                            this.dispatch('_sendProject', form)
+                            break;
+
+
+                        default:
+                            console.error('Set a submit action of the form')
+                            break;
+                    }
+                },
+
+                _sendProject({ commit }, payload) {
+                    console.log('SENDING')
+                    // getting stage names and values
+                    // const { SUCCESS, PROCESS, FAIL } = GLOBALS
+
+                    // // Defining body of the request
+                    // const BODY = {
+                    //     message: this.message,
+                    //     user: this.email
+                    // }
+
+                    // // Defining header of the request
+                    // const HEADER = {
+                    //     'Accept': 'application/json',
+                    //     'Content-type': 'application/json'
+                    // }
+
+                    // // Setting form status to being processed
+                    // this.commit('updateStatus', PROCESS)
+
+                    // // ----------------------------------------------------------------
+                    // // Request
+                    // // ----------------------------------------------------------------
+                    // fetch(`http://localhost:3000/api/new_message`,
+                    // {
+                    //     method: 'POST',
+                    //     headers: HEADER,
+                    //     body: JSON.stringify(BODY)
+                    // })
+                    // .then( res => res.status === 200 && res.json())
+                    // .then(json => {
+                    //     (json.message === 200)
+                    //     ? this.$store.commit('updateStatus', SUCCESS)
+                    //     : this.$store.commit('updateStatus', FAIL)
+                    //     this.state.contactForm.step = 0
+                    // })
+                    // .catch( err => {
+                    //     this.$store.commit('updateStatus', fail)
+                    //     console.error(err)
+                    //     this.state.contactForm.step = 0
+                    // })
+
+                },
+
+
             },
 
 
@@ -152,9 +236,15 @@ export default function createStore() {
             //  Getters
             // ================================================================
             getters: {
-                isMessageSent(state) {
-                    return state.contactForm.status === 'success'
-                }
+                // isMessageSent(state) {
+                //     return state.contactForm.status === 'success'
+                // },
+                // currentStep(state) {
+                //     return state.contactForm.step
+                // },
+                // totalSteps(state) {
+                //     return state.contactForm.steps > 0 ? state.contactForm.steps - 1 : state.contactForm.steps
+                // }
             }
         }
 

@@ -1,7 +1,10 @@
 <template>
     <header id="Header">
         <div class="header__left">
-            <logo-square></logo-square>
+            <nuxt-link :to="'/'" class="_clickable">
+                <logo-brand></logo-brand>
+            </nuxt-link>
+            <!-- <logo-square></logo-square> -->
             <!-- <logo></logo> -->
         </div>
         <div class="header__right">
@@ -15,6 +18,7 @@
 
 import Logo from './_header/Logo'
 import LogoSquare from './_header/LogoSquare'
+import LogoBrand from './_header/LogoBrand'
 import Burger from './_header/Burger'
 
 export default {
@@ -22,6 +26,7 @@ export default {
     components: {
         'logo': Logo,
         'logo-square': LogoSquare,
+        'logo-brand': LogoBrand,
         'burger': Burger
     }
 }

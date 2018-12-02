@@ -7,7 +7,7 @@
             <!-- //////////////////////////////////////////////////////////////
                 Link
             /////////////////////////////////////////////////////////////// -->
-            <nuxt-link :to="blok.link_to.cached_url" class="_link--underlined text _clickable">
+            <nuxt-link :to="blok.link_to.cached_url" class="_link--underlined text _clickable" @mousedown="block" draggable="false">
                 {{ blok.title }}
             </nuxt-link>
 
@@ -101,6 +101,15 @@ export default {
 
 
 
+    },
+
+
+    methods: {
+        block(e) {
+            console.log()
+            e.preventDefault()
+            return false
+        }
     }
 
 
@@ -115,7 +124,7 @@ export default {
 
 #Special
     padding-right 4em
-    padding-left 20em
+    padding-left 16em
     box-sizing border-box
 
 
@@ -125,13 +134,7 @@ export default {
         left 0
         transform translate(-50%, -50%)
 
-    .thumbnail--special
-        // position: absolute
-        // top: 50%
-        // left 50%
-        // transform: translateY(-50%)
-        // transition all $duration ease-in-out
-        z-index 1
+
 
 </style>
 

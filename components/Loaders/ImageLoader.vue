@@ -1,20 +1,23 @@
 <template>
     <article>
-        <transition name="fade">
-
-            <!-- //////////////////////////////////////////////////////////////
-                Image Loading screen
-             ////////////////////////////////////////////////////////////// -->
-            <div v-if="isLoading" class="_image--loading"></div>
 
 
 
-            <!-- //////////////////////////////////////////////////////////////
-                Loaded Image
-             ////////////////////////////////////////////////////////////// -->
-            <img v-else :src="src">
+        <!-- //////////////////////////////////////////////////////////////
+            Image Loading screen
+        ////////////////////////////////////////////////////////////// -->
+        <div  v-if="isLoading" class="_image--loading"></div>
 
+
+        <!-- //////////////////////////////////////////////////////////////
+            Loaded Image
+            ////////////////////////////////////////////////////////////// -->
+        <transition name="fade" v-else>
+            <img :src="src" draggable="false">
         </transition>
+
+
+
     </article>
 </template>
 
@@ -45,3 +48,15 @@ export default {
     mixins: [loadingImage]
 }
 </script>
+
+
+
+<style lang="stylus">
+
+.fade-enter-active, .fade-leave-active
+    transition: opacity .5s
+
+.fade-enter, .fade-leave-to
+    opacity: 0
+
+</style>

@@ -3,19 +3,14 @@
 
 
 
-        <transition name="fade" v-if="!loading">
+        <component
+            v-if="story.content.component"
+            :key="story.content._uid"
+            :blok="story.content"
+            :is="story.content.component">
+        </component>
 
 
-            <component
-                v-if="story.content.component && !loading"
-                :key="story.content._uid"
-                :blok="story.content"
-                :is="story.content.component">
-            </component>
-
-
-
-        </transition>
 
 
 
@@ -36,9 +31,19 @@ export default {
         return {
             story: {
             content: {}
-            },
-            loading: true
+            }
         }
+    },
+
+
+
+    transition(to, from) {
+
+        const projects = /^\/projects/
+        const form = /^\/form/
+        if (from && projects.test(from.path)) return 'page-slide-down'
+        // else if (from && form.test(from.path)) return 'page-slide-left'
+        else return 'fade'
     },
 
 
@@ -61,16 +66,13 @@ export default {
     },
 
 
-    mounted () {
-        this.$nextTick(() => {
-            this.$nuxt.$loading.start()
+    // mounted () {
+    //     this.$nextTick(() => {
+    //         this.$nuxt.$loading.start()
 
-            this.$nextTick( () => {
-                this.$nuxt.$loading.finish()
-                this.loading = false
-            })
-        })
-    }
+    //         setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+    //     })
+    // }
 }
 </script>
 

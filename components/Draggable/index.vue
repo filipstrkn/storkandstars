@@ -19,7 +19,7 @@
         <!-- //////////////////////////////////////////////////////////////////
             Favorite Link
         /////////////////////////////////////////////////////////////////// -->
-        <favorite-link :favorite="favorite" v-if="!$store.state.scrolls.walking"></favorite-link>
+        <!-- <favorite-link :favorite="favorite" v-if="!$store.state.scrolls.walking"></favorite-link> -->
 
 
 
@@ -154,7 +154,7 @@ export default {
         //
         isWalking(e) {
             const { isDown, startX, scrollLeft } = this.$store.state.scrolls.current
-            const walk = (e.pageX - startX) * 6
+            const walk = (e.pageX - startX) * 3
 
             if (Math.abs(walk) > 3) {
                 if (!isDown) return
@@ -236,7 +236,10 @@ export default {
 #Draggable
     display flex
     overflow hidden
-    background-color $black + 40
+    // background-color $grey--light - 10
+    background-color $grey--light
+    // cursor grab
+    // background-color $black
 
     & > *
         display flex
@@ -263,6 +266,7 @@ export default {
     &.IamWalkinHere
         transform scale(.96)
         transition transform 600ms ease-out, background-color 600ms ease-in-out !important
+        // cursor grabbing
 
         *
             pointer-events none
