@@ -24,6 +24,7 @@ export default {
             return this.$store.state.scrolls.current.isDown
         }
     }
+
 }
 </script>
 
@@ -39,8 +40,6 @@ $arrow = 5px
 
 
 #Follower.isDown
-    width 1rem
-    height @width
     &::before,
     &::after
         opacity 1
@@ -49,28 +48,27 @@ $arrow = 5px
     &::after
         right -1em
 
+#Follower.isMoving
+    cursor grabbing !important
 
-    // &::before,
-    // &::after
-    //     opacity 1
-    // &::before
-    //     left -1em
-    // &::after
-    //     right -1em
-
+#Follower.isClickable
+    width 30px
+    height @width
+    background none
+    border solid 2px $purple
 
 #Follower
     position fixed
     z-index 1000
     width 1.6rem
+    width 2rem
+    width 6px
     height @width
     border-radius 100%
-    border solid 1px alpha($black, .1)
-    // background-color alpha($black, .05)
-    transition width $duration ease-out, height $duration ease-out, border $duration ease-out
+    background #935BF9
+    transition width $duration ease-out, height $duration ease-out, border $duration ease-out, background $duration ease-out
     transform translate(-50%, -50%)
     pointer-events none
-
 
     &::before,
     &::after
@@ -91,22 +89,6 @@ $arrow = 5px
         right -2em
         border-width $arrow 0 $arrow $arrow
         border-color alpha($black, 0) alpha($black, 0) alpha($black, 0) $black
-
-
-    &.isClickable
-        width 2.8rem
-        height @width
-        background none
-        border solid 2px $black
-
-        &.isDown
-            width 2em
-            height @width
-
-            &::before,
-            &::after
-                opacity 0
-
 
 
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div @mousemove="launchFollower">
-    <header-block />
     <nuxt/>
     <follower></follower>
   </div>
@@ -9,14 +8,10 @@
 
 <script>
 
-
-import HeaderBlock from '~/components/HeaderBlock'
 import Follower from '~/components/Draggable/_draggable/Follower'
-
 
 export default {
   components: {
-    'header-block': HeaderBlock,
     'follower': Follower
   },
   methods: {
@@ -24,7 +19,10 @@ export default {
           const left = e.clientX || e.pageX
           const top = e.clientY || e.pageY
           const clickable = e.target.classList.contains('_clickable') ? true : false
-          this.$store.commit('setFollower', { clickable, position: {top, left} })
+          setTimeout(() => {
+            this.$store.commit('setFollower', { clickable, position: {top: top, left} })
+            // this.$store.commit('setFollower', { position: {top: top, left} })
+          }, 20)
       }
   }
 }
@@ -45,12 +43,15 @@ html
   user-select none
   font-family $main-font
   // cursor default
-  cursor url("~assets/pointer.png") 3 3, auto
+  cursor url("~assets/prpl.png") 5 5, auto
+  // background-color #0d0d0d
+  // scroll-behavior smooth
 
-  *
-    cursor url("~assets/pointer.png") 3 3, auto
-    // cursor none
+  // *
+  //   cursor url("~assets/cursor.png") 5 5, auto
 
+  // &._clickable
+    // cursor none !important
   // *
     // cursor none
 
@@ -63,7 +64,6 @@ html
 
 // h1, h2, h3, h4
 //     font-family: 'Source Sans Pro', sans-serif
-
 
 
 </style>

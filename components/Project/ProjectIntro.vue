@@ -5,7 +5,7 @@
 
         <div class="title_container">
             <transition name="fade-late">
-                <h1 class="brand">{{ blok.brand }}</h1>
+                <h1 class="brand" :class="{loaded}">{{ blok.brand }}</h1>
             </transition>
             <h1 class="title">{{ blok.brand }}</h1>
             <h1 class="subtitle">{{ blok.subtitle }}</h1>
@@ -42,6 +42,15 @@ export default {
     props: ['blok'],
     components: {
         'image-loader': ImageLoader
+    },
+    data() {
+        return {
+            loaded: false
+        }
+    },
+
+    mounted() {
+        this.loaded = true
     }
 }
 </script>
@@ -53,12 +62,13 @@ export default {
 
 @import '~assets/stylus/variables'
 @import '~assets/stylus/mixins'
+@import '~assets/stylus/animations'
 
 
 #ProjectIntro
     padding-top 5em
     // padding-bottom 2rem
-    border-bottom solid 1px $grey--light
+    // border-bottom solid 1px $grey--light
     .title_container
         position relative
         padding 20% 0 5% 0
@@ -79,6 +89,10 @@ export default {
             transform translate(-50%, -50%)
             margin 0
             font-weight 900
+            opacity 0
+
+            &.loaded
+                animation slide .65s ease-out forwards
 
         .title
             font-weight 600
@@ -92,6 +106,8 @@ export default {
         // margin 0 0 0 auto
         // margin-right 16%
         margin-left auto
+        margin-top 5%
+        margin-bottom 5%
         height 0
         // height 60vh
         width 60%
@@ -103,17 +119,18 @@ export default {
             width 100%
 
     p
-        max-width 30em
+        max-width 26em
         width 100%
         font-size 1.5rem
         font-weight 300
         padding 10% 0
         // padding 5em 0
-        line-height 1.6
+        line-height 1.8
         margin-right auto
         // margin-left 16%
         margin-bottom 0
         color alpha($black, .45)
+        font-size calc(1rem + 5 * (100vw / 400))
 
 
 </style>

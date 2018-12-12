@@ -1,8 +1,9 @@
 <template>
     <header id="Header">
         <div class="header__left">
-            <nuxt-link :to="'/'" class="_clickable">
-                <logo-brand></logo-brand>
+            <nuxt-link :to="'/'">
+                <!-- <logo-brand></logo-brand> -->
+                <logo-square></logo-square>
             </nuxt-link>
             <!-- <logo-square></logo-square> -->
             <!-- <logo></logo> -->
@@ -43,7 +44,8 @@ export default {
     top 0
     left 0
     width 100%
-    padding 2em 2.5em
+    padding 2em 4em
+    // padding 1% 3%
     padding 3% 5%
     z-index 99
     pointer-events none

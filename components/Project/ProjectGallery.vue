@@ -1,11 +1,13 @@
 <template>
     <section id="ProjectGallery">
 
+        <draggable>
+            <img
+                v-for="(image, index) in blok.images"
+                :key="index"
+                :src="image.filename">
+        </draggable>
 
-        <img
-            v-for="(image, index) in blok.images"
-            :key="index"
-            :src="image.filename">
 
 
 
@@ -15,8 +17,14 @@
 
 
 <script>
+
+import Draggable from '~/components/Draggable'
+
 export default {
     name: 'ProjectGallery',
-    props: ['blok']
+    props: ['blok'],
+    components: {
+        'draggable': Draggable
+    }
 }
 </script>

@@ -7,7 +7,7 @@
         /////////////////////////////////////////////////////////////////// -->
         <!-- Back -->
         <div
-            class="back _clickable"
+            class="back"
             v-if="$store.getters.currentStep > 0"
             @click.prevent="$store.commit('previousStep')">
             <span></span
@@ -15,7 +15,7 @@
 
         <!-- Forward -->
         <div
-            class="forward _clickable"
+            class="forward"
             v-if="nextStepExists"
             @click.prevent="$emit('submitStep', validation)">
             <span></span>

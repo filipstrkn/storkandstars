@@ -18,7 +18,7 @@
 
 
                     <span
-                        class="input _clickable"
+                        class="input"
                         contenteditable="true"
                         @keyup="updateInput"
                         @keydown="onEnter"
@@ -37,12 +37,12 @@
 
                     <input
                         :id="`checkcheck-${index}`"
-                        class="checkbox _clickable"
+                        class="checkbox"
                         type="checkbox"
                         :value="option"
                         @change="check">
 
-                    <label class="_clickable" :for="`checkcheck-${index}`">{{ option }}</label>
+                    <label class="" :for="`checkcheck-${index}`">{{ option }}</label>
 
                 </div>
 

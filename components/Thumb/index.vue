@@ -1,6 +1,6 @@
 <template>
 
-    <article class="thumb" @mousedown="block">
+    <article class="thumb" @mousedown="block" :class="`thumb--${blok.size}`">
 
 
 
@@ -9,6 +9,7 @@
         ////////////////////////////////////////////////////////////// -->
         <div class="name">
             <h3>{{ blok.name }}</h3>
+            <h3><span>Branding</span><span>Products</span></h3>
         </div>
 
 
@@ -18,7 +19,7 @@
         ////////////////////////////////////////////////////////////// -->
         <nuxt-link :to="blok.link.cached_url" class="thumb--spacer" draggable="false" @mousedown="block" @dragstart="block">
             <image-block
-                class="_thumbnail _clickable thumbnail--projects"
+                class="_thumbnail thumbnail--projects"
                 :image="blok.thumbnail">
             </image-block>
         </nuxt-link>
@@ -67,7 +68,7 @@ export default {
 
 .thumb
     position relative
-    margin 0 4.6em
+    margin 0 6em
     // margin 0 5em
     -webkit-user-drag: none !important
     -khtml-user-drag: none !important
@@ -75,21 +76,74 @@ export default {
     -o-user-drag: none !important
     user-drag: none !important
 
+    &--small
+        ._thumbnail
+            width 40vh !important
+            height @width
+
+    &--medium
+        ._thumbnail
+            width 60vh !important
+            height @width
+
+    &--large
+        ._thumbnail
+            width 74vh !important
+            height @width
+
+    &--extra
+        ._thumbnail
+            width 92vh !important
+            height @width
+
+    &--tall
+        ._thumbnail
+            width 50vh !important
+            height 70vh
+
+    &--long
+        ._thumbnail
+            width 80vh !important
+            height 50vh
+
     .name
-        transform rotate(90deg)
+        // transform rotate(90deg)
+        opacity 0
         position absolute
-        top 0
-        left -2em
+        bottom 0
+        left 50%
+        transform translate(-50%, 50%)
+        transition transform 250ms ease-out, opacity 250ms ease-out
+        // left -2em1
+        text-align center
         z-index 1
-        width 1em
+        // width 1em
         white-space nowrap
 
     h3
-        font-weight 400
+        font-weight 500
         pointer-events none
+        margin-bottom .2em
+        &:last-of-type
+            margin-bottom 0
+        span
+            text-decoration underline
+
+            &::before
+                content "&"
+                display inline-block
+                margin 0 .4em
+            &:first-of-type::before
+                content ""
+
 
     ._thumbnail
-        transition all 250ms ease-in-out
+        transition all 400ms ease-out
+        img
+            width 100%
+            height 100%
+            object-fit cover
+
 
         &::before
             content ""
@@ -100,9 +154,21 @@ export default {
             height 100%
 
     &:hover
-        ._thumbnail
-            // transform scale(.96)
-            transform translateY(3%)
+        .name
+            display block
+            transform translate(-50%, 30%)
+            opacity 1
+    //     ._thumbnail
+    //         // width $thumb-size - 10
+    //         height 50vh
+    //         // transform scale(.96)
+    //         // transform translateY(2vh)
+    //         img
+    //             width 120%
+
+
+
+
 
 
 </style>

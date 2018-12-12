@@ -1,5 +1,6 @@
 <template>
     <div id="Burger" :class="menu" class="_clickable"></div>
+    <!-- <span id="Menu" :class="menu" class="_link--vert _clickable">Menu</span> -->
 </template>
 
 
@@ -26,6 +27,11 @@ export default {
 
 @import '../../../assets/stylus/variables'
 
+
+// #Menu
+//     transform rotate(90deg)
+//     font-family $secondary-font
+
 #Burger
     position relative
     width 22px
@@ -45,8 +51,8 @@ export default {
         height 2px
         width 100%
         left 0
-        background-color $black
-        // background-color $white
+        // background-color $black
+        background-color $white
 
     &::before
         top 0

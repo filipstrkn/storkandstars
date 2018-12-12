@@ -3,6 +3,7 @@
 
 
         <image-loader
+            class="image"
             :image="'https:' + blok.image"/>
 
 
@@ -24,3 +25,9 @@ export default {
     }
 }
 </script>
+
+
+
+<style lang="stylus">
+
+</style>

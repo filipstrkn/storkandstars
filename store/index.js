@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 import { Store } from 'vuex'
 import { GLOBALS } from '~/config/globals'
+import Scrollbar from 'smooth-scrollbar'
 
 /*
 |==============================================================================
@@ -31,7 +32,7 @@ export default function createStore() {
             // States
             // ----------------------------------------------------------------
             state: {
-                dark: false,
+                mode: true,
                 // cache: {},
                 forms: {},
                 // contactForm: {
@@ -52,6 +53,7 @@ export default function createStore() {
                 //         FAIL: 'fail'
                 //     }
                 // },
+                scroll: {},
                 scrolls: {
                     progress: 0,
                     walking: false,
@@ -69,7 +71,8 @@ export default function createStore() {
                         left: 0
                     },
                     clickable: false
-                }
+                },
+                process: 0
             },
 
 
@@ -127,8 +130,9 @@ export default function createStore() {
 
 
 
-                setDarkMode(state, payload) {
-                    state.dark = payload
+                setMode(state, mode) {
+                    // console.log('Setting mode')
+                    state.mode = mode
                 },
 
                 nextStep(state, form) {
@@ -140,9 +144,23 @@ export default function createStore() {
                 },
                 saveStep(state, { form, name, value }) {
                     state.forms[form].values[name] = value
+                },
+
+
+
+                // ------------------------------------------------------------
+                //  Scrollbar
+                // ------------------------------------------------------------
+                setScrollbar(state, el) {
+                    state.scroll = Scrollbar.init(el)
                 }
 
+
+
             },
+
+
+
 
 
 

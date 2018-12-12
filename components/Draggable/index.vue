@@ -26,14 +26,14 @@
         <!-- //////////////////////////////////////////////////////////////////
             Direction Pointer
         /////////////////////////////////////////////////////////////////// -->
-        <director :type="'drag'"></director>
+        <director v-if="direction" :type="'drag'"></director>
 
 
 
         <!-- //////////////////////////////////////////////////////////////////
             Scroll Progress Bar
         /////////////////////////////////////////////////////////////////// -->
-        <scroll-display v-if="$store.state.scrolls.walking"></scroll-display>
+        <scroll-display v-if="scrollbar && $store.state.scrolls.walking"></scroll-display>
 
 
 
@@ -58,6 +58,7 @@ export default {
     // Name
     // ========================================================================
     name: 'Draggable',
+    props: ['scrollbar', 'direction', 'scale'],
 
 
 
@@ -116,7 +117,7 @@ export default {
         //
         walkStart(e) {
             this.$store.commit('setWalk', {
-                walking: false,
+                walking: true,
                 current: {
                     isDown: true,
                     startX: e.pageX,
@@ -235,11 +236,9 @@ export default {
 
 #Draggable
     display flex
-    overflow hidden
-    // background-color $grey--light - 10
-    background-color $grey--light
-    // cursor grab
-    // background-color $black
+    // overflow hidden
+    // overflow-x hidden
+    // overflow-y auto
 
     & > *
         display flex
@@ -252,9 +251,11 @@ export default {
     box-sizing border-box
     min-height 100%
     overflow hidden
+    padding 10% 0
     white-space nowrap
     background-color #fff
     transition transform 200ms ease-out, background-color 600ms ease-in-out
+    cursor grab
     &::-webkit-scrollbar
         display: none
 
@@ -264,12 +265,13 @@ export default {
 
 
     &.IamWalkinHere
-        transform scale(.96)
-        transition transform 600ms ease-out, background-color 600ms ease-in-out !important
-        // cursor grabbing
+        cursor grabbing !important
 
         *
             pointer-events none
+
+
+
 
 </style>
 

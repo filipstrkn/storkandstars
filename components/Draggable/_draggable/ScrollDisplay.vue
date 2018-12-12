@@ -75,20 +75,21 @@ export default {
         left 0
         width 100%
         height 2px
-        background-color $grey--light
+        // background-color $grey--light
 
     span
         position absolute
         top 0
         left 0
         height 2px
-        width 12%
-        max-width 10rem
+        width 20%
+        // max-width 10rem
         min-width 2rem
         transform translateX(-50%)
-        // background $black
-        background linear-gradient(to left, #00000000 0%,#000000 50%,#00000000 100%)
-        transition left 450ms ease-out
+        background $black
+        background $grey--light - 20
+        // background linear-gradient(to left, #00000000 0%,#0000003a 50%,#00000000 100%)
+        // transition left 350ms ease-out
 
 
 

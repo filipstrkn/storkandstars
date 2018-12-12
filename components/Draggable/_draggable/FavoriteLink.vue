@@ -1,8 +1,7 @@
 <template>
     <nuxt-link
         :to="favorite.link"
-        id="FavoriteLink"
-        class="_link--underlined _clickable">
+        id="FavoriteLink">
         {{ favorite.title }}
     </nuxt-link>
 </template>

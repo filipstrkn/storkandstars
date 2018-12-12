@@ -1,20 +1,16 @@
 import Vue from 'vue'
 
 // Content Types
-import HorizontalPage from '~/components/HorizontalPage'
 import Page from '~/components/Page'
 import Form from '~/components/Form'
+import ContentBlock from '~/components/ContentBlock'
 // import Home from '~/components/Page'
 
 // Blocks
-import Intro from '~/components/Intro'
-import Special from '~/components/Special'
-import TopProjects from '~/components/TopProjects'
-import TopArticles from '~/components/TopArticles'
 import Post from '~/components/Post'
+import FooterBlock from '~/components/Home/Footer'
 
 // Form
-// import NewProjectForm from '~/components/Form/NewProjectForm'
 import FormStep from '~/components/Form/_form/Step'
 
 // Project
@@ -28,6 +24,13 @@ import ProjectNewspaperColumn from '~/components/Project/ProjectNewspaperColumn'
 import ProjectParagraph from '~/components/Project/ProjectParagraph'
 
 
+import Intro from '~/components/Home/Intro'
+import TextBlock from '~/components/Home/TextBlock'
+import Horizont from '~/components/Home/Horizont'
+import ProjectUnit from '~/components/Projects/ProjectUnit'
+import WorkshopCalendar from '~/components/Home/WorkshopCalendar'
+
+
 
 // import FavoriteLink from '~/components/Draggable/_draggable/FavoriteLink'
 
@@ -39,9 +42,9 @@ import ProjectParagraph from '~/components/Project/ProjectParagraph'
 |==========================================================================
 |
 |*/
-Vue.component('home_page', HorizontalPage)
-Vue.component('project_page', Page)
+Vue.component('page', Page)
 Vue.component('form_page', Form)
+Vue.component('content_block', ContentBlock)
 
 
 
@@ -51,16 +54,9 @@ Vue.component('form_page', Form)
 |==========================================================================
 |
 |*/
-Vue.component('intro', Intro)
-Vue.component('special', Special)
-Vue.component('top_projects', TopProjects)
-Vue.component('top_articles', TopArticles)
-Vue.component('article_unit', Post)
-// Vue.component('contact_form', ContactForm)
 Vue.component('form_step', FormStep)
-// Vue.component('form_new_project', NewProjectForm)
 Vue.component('project_thumb', Thumb)
-// Vue.component('favorite_link', FavoriteLink)
+Vue.component('footer_block', FooterBlock)
 
 
 
@@ -78,4 +74,18 @@ Vue.component('p_newspaper_column', ProjectNewspaperColumn)
 Vue.component('p_paragraph', ProjectParagraph)
 
 
+
+
+/*
+|==========================================================================
+| Home Components
+|==========================================================================
+|
+|*/
+Vue.component('intro', Intro)
+Vue.component('text_block', TextBlock)
+
+Vue.component('calendar', WorkshopCalendar)
+Vue.component('horizont', Horizont)
+Vue.component('project_unit', ProjectUnit)
 

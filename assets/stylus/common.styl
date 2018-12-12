@@ -40,59 +40,104 @@
 
 ._thumbnail
     position relative
-    width $thumb-size - 20
-    height $thumb-size
+    // width $thumb-size - 20
+    // height $thumb-size
+    width: 70vh
+    // height 50vh
+    height 40vh
+    max-width: 80vw
     overflow hidden
 
     img
         absolute-centering()
-        min-height 100%
-        min-width 100%
+        // min-height 100%
+        width 100%
 
 
 
 
-._link--underlined
+// ////////////////////////////////////////////////////////////////////////////
+//                                   LINK                                    //
+// ////////////////////////////////////////////////////////////////////////////
+._link
     position relative
-    font-size 2em
-    font-weight: 300
-    z-index 2
-    transition: color 400ms ease-in-out
+    font-family: $secondary-font
+    cursor pointer
 
-    &::before,
-    &::after
-        content ""
-        display block
-        position absolute
-        bottom -.1em
-        height 1px
-        width .7em
-        left: 0
-        background-color #000
-        transition: left 400ms ease-in-out, width 400ms ease-in-out, opacity 200ms ease-in-out
+    &--vert
+        @extend ._link
+        transform: rotate(90deg)
 
-    &::before
-        left: -4em
-        width .7em
-        opacity 0
 
-    &:hover
-        &::before
-            left: 0
-            opacity 1
-            width 100%
-            transition: left 250ms ease-in-out, width 250ms ease-in-out, opacity 400ms ease-in-out
-            transition-delay: 200ms
+
+// ////////////////////////////////////////////////////////////////////////////
+//                                   TEXT                                    //
+// ////////////////////////////////////////////////////////////////////////////
+._text
+    a
+        position: relative
         &::after
-            left 10em
-            opacity 0
-            transition: left 400ms ease-in-out, width 400ms ease-in-out, opacity 400ms ease-in-out
-            // width: 100%
+            content: ""
+            position: absolute
+            left 0
+            bottom: .1em
+            height .4em
+            width: calc(100% - .5em)
+            background-color: alpha($purple, .85)
+            transition: width 250ms ease-in-out
+            z-index -1
+
+        &:hover::after
+            width: 100%
+
+
+    em
+        background-color alpha($black, .05)
 
 
 
-// ._clickable
-//     cursor pointer
+._text--large
+    font-size calc(16px + 12 * ((100vw - 320px) / 680))
+
+._text--medium
+    font-size calc(16px + 8 * ((100vw - 320px) / 680))
+
+
+
+// ////////////////////////////////////////////////////////////////////////////
+//                                 CONTAINER                                 //
+// ////////////////////////////////////////////////////////////////////////////
+.__container
+    width: 100%
+    padding: 5% 2rem
+    margin-left: 10%
+    line-height 2em
+
+    h3
+        font-size: 1rem
+        font-weight: 400
+        opacity .6
+
+._container--large
+    @extend .__container
+    width: 80vw
+    max-width 27em
+
+
+
+._container--center
+    @extend .__container
+    max-width 30em
+    margin 0 auto
+
+
+
+
+
+
+
+
+
 
 
 ._container--thumb
@@ -114,6 +159,35 @@
             font-size: 5vw
 
 
+._content
+    position relative
+    max-width 26em
+    // padding: 3em
+    margin-left: 8%
+    // font-size 3em
+    // margin 10% auto
+    margin 10rem 5% 10rem 12%
+    line-height 1.5
+    padding: 4em 0 0 8%
 
-._container
-    padding: 0 16%
+._section__intro
+    position absolute
+    // top -4em
+    top 0
+    left 0
+    width 1rem
+    white-space nowrap
+    font-size: 1rem
+    font-size: 3rem
+    font-weight: 600
+    text-transform: uppercase
+    font-family $secondary-font
+    // transform rotate(-90deg)
+    // &::after
+    //     content: ""
+    //     width: 3em
+    //     height 1px
+    //     background-color: black
+    //     display: inline-block
+    //     vertical-align: middle
+    //     margin-left: 1em

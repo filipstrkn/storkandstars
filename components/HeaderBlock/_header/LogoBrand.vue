@@ -24,6 +24,7 @@ export default {
     width 4.4em
     height 3.35em
     fill: $black
+    fill: $white
     pointer-events none
 
     // .logo_light
