@@ -32,24 +32,11 @@ export default {
 
 <style lang="stylus">
 
-@import '~assets/stylus/variables';
-@import '~assets/stylus/mixins';
+@import '~assets/stylus/variables'
 
 $duration = 200ms
 $arrow = 5px
 
-
-#Follower.isDown
-    &::before,
-    &::after
-        opacity 1
-    &::before
-        left -1em
-    &::after
-        right -1em
-
-#Follower.isMoving
-    cursor grabbing !important
 
 #Follower.isClickable
     width 30px
