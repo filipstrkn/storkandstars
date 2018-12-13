@@ -1,11 +1,10 @@
 <template>
     <header id="Header">
         <div class="header__left">
-            <nuxt-link :to="'/'">
-                <!-- <logo-brand></logo-brand> -->
-                <logo-square></logo-square>
-            </nuxt-link>
-            <!-- <logo-square></logo-square> -->
+            <logo-square></logo-square>
+            <!-- <nuxt-link :to="'/'">
+                <logo-brand></logo-brand>
+            </nuxt-link> -->
             <!-- <logo></logo> -->
         </div>
         <div class="header__right">

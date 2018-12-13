@@ -35,7 +35,7 @@ export default {
 
     computed: {
         mode() {
-            return this.$store.state.mode ? 'light' : 'dark'
+            return this.$store.state.theme.dark_mode ? 'dark' : 'light'
         },
         process() {
             return this.$store.state.process
@@ -43,7 +43,7 @@ export default {
     },
 
     created() {
-        this.$store.commit('setMode', this.blok.mode)
+        this.$store.commit('setMode', this.blok.dark)
     },
 
     mounted() {

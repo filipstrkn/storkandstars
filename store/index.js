@@ -32,7 +32,9 @@ export default function createStore() {
             // States
             // ----------------------------------------------------------------
             state: {
-                mode: true,
+                theme: {
+                  dark_mode: false
+                },
                 // cache: {},
                 forms: {},
                 // contactForm: {
@@ -133,7 +135,7 @@ export default function createStore() {
 
                 setMode(state, mode) {
                     // console.log('Setting mode')
-                    state.mode = mode
+                    state.theme.dark_mode = mode
                 },
 
                 nextStep(state, form) {

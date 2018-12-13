@@ -3,11 +3,8 @@ import Vue from 'vue'
 // Content Types
 import Page from '~/components/Page'
 import Form from '~/components/Form'
-import ContentBlock from '~/components/ContentBlock'
-// import Home from '~/components/Page'
 
 // Blocks
-import Post from '~/components/Post'
 import FooterBlock from '~/components/Home/Footer'
 
 // Form
@@ -44,7 +41,6 @@ import WorkshopCalendar from '~/components/Home/WorkshopCalendar'
 |*/
 Vue.component('page', Page)
 Vue.component('form_page', Form)
-Vue.component('content_block', ContentBlock)
 
 
 
