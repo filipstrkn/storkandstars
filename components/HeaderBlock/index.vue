@@ -9,6 +9,10 @@
             <!-- <logo></logo> -->
         </div>
         <div class="header__right">
+            <nuxt-link
+                v-if="$store.state.sidelink"
+                :to="$store.state.sidelink.to"
+                class="sidelink _clickable">{{ $store.state.sidelink.name }}</nuxt-link>
             <burger></burger>
         </div>
     </header>
@@ -35,6 +39,13 @@ export default {
 
 
 <style lang="stylus" scoped>
+
+.sidelink
+    padding .4em 1.2em
+    background-color alpha(#000, .06)
+    border-radius 30em
+    font-size .9em
+    margin-right 2rem
 
 #Header
     position fixed

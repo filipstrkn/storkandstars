@@ -14,7 +14,16 @@
 <script>
 export default {
     name: 'Intro',
-    props: ['blok']
+    props: ['blok'],
+    beforeMount() {
+        this.$store.state.sidelink = {
+            name: this.blok.sidelink_name,
+            to: this.blok.sidelink_to.cached_url
+        }
+    },
+    destroyed() {
+        this.$store.state.sidelink = null
+    }
 }
 </script>
 
@@ -23,11 +32,15 @@ export default {
 <style lang="stylus">
 
 #Intro
+    position relative
     height 100vh
     display flex
     align-items center
 
     & > *
         margin-top 10%
+
+
+
 
 </style>

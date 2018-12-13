@@ -117,7 +117,6 @@ export default {
         //
         walkStart(e) {
             this.$store.commit('setWalk', {
-                walking: true,
                 current: {
                     isDown: true,
                     startX: e.pageX,

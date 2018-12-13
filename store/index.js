@@ -72,7 +72,8 @@ export default function createStore() {
                     },
                     clickable: false
                 },
-                process: 0
+                process: 0,
+                sidelink: null
             },
 
 
