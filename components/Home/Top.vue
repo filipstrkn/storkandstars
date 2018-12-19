@@ -18,7 +18,7 @@
                 List of content
             /////////////////////////////////////////////////////////////// -->
             <div class="list" data-visible="false">
-                <thumb v-for="(top, index) in $store.state.projects.top" :key="index" :content="top.content" />
+                <thumb v-for="(top, index) in $store.state.projects.top" :key="index" :content="top.content" :link="top.full_slug"/>
             </div>
 
 

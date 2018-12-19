@@ -7,7 +7,7 @@
         <!-- //////////////////////////////////////////////////////////////
             Image
         ////////////////////////////////////////////////////////////// -->
-        <nuxt-link :to="'/'" class="thumb--spacer" draggable="false" @mousedown="block" @dragstart="block">
+        <nuxt-link :to="link" class="thumb--spacer" draggable="false" @mousedown="block" @dragstart="block">
             <image-block
                 class="_clickable _thumbnail thumbnail--projects"
                 :image="content.thumbnail">
@@ -39,7 +39,7 @@ import ImageBlock from '~/components/Loaders/ImageLoader'
 
 export default {
     name: 'Thumb',
-    props: ['content'],
+    props: ['content', 'link'],
     components: {
         'image-block': ImageBlock
     },
