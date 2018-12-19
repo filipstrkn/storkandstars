@@ -2,7 +2,7 @@ const isVisible = {
 
     data() {
         return {
-            visibleAt: 75
+            visibleAt: 70
         }
     },
 
