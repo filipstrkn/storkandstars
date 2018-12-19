@@ -1,5 +1,5 @@
 <template>
-    <main id="Page" :class="`page--${mode}`">
+    <main id="ProjectPage" :class="`page--${mode}`">
 
         <component
             :key="blok._uid"
@@ -7,6 +7,7 @@
             :blok="blok"
             :is="blok.component">
         </component>
+
 
     </main>
 </template>
@@ -38,28 +39,15 @@ export default {
 
     created() {
         this.$store.commit('setMode', this.blok.dark)
-    },
-
-    beforeMount() {
-        this.$store.state.sidelink = {
-            name: this.blok.sidelink_name,
-            to: this.blok.sidelink_to.cached_url
-        }
-    },
-
-    destroyed() {
-        this.$store.state.sidelink = null
-    },
+    }
 }
 </script>
 
 
 
-<style lang="stylus" scoped>
-
+<style lang="stylus">
 
 @import '~assets/stylus/variables'
-
 
 .page--dark
     background-color $dark

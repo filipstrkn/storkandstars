@@ -16,40 +16,12 @@
 
 
 
-        <!-- //////////////////////////////////////////////////////////////////
-            Favorite Link
-        /////////////////////////////////////////////////////////////////// -->
-        <!-- <favorite-link :favorite="favorite" v-if="!$store.state.scrolls.walking"></favorite-link> -->
-
-
-
-        <!-- //////////////////////////////////////////////////////////////////
-            Direction Pointer
-        /////////////////////////////////////////////////////////////////// -->
-        <director v-if="direction" :type="'drag'"></director>
-
-
-
-        <!-- //////////////////////////////////////////////////////////////////
-            Scroll Progress Bar
-        /////////////////////////////////////////////////////////////////// -->
-        <scroll-display v-if="scrollbar && $store.state.scrolls.walking"></scroll-display>
-
-
-
     </div>
 </template>
 
 
 
 <script>
-
-
-import FavoriteLink from '~/components/Draggable/_draggable/FavoriteLink'
-import Director from '~/components/Draggable/_draggable/Director'
-import ScrollDisplay from '~/components/Draggable/_draggable/ScrollDisplay'
-
-
 export default {
 
 
@@ -58,32 +30,6 @@ export default {
     // Name
     // ========================================================================
     name: 'Draggable',
-    props: ['scrollbar', 'direction', 'scale'],
-
-
-
-    // ========================================================================
-    // Data properties
-    // ========================================================================
-    data() {
-        return {
-            finnish: 0,
-            favorite: {
-                title: 'Design Sprints',
-                link: '/'
-            }
-        }
-    },
-
-
-    // ========================================================================
-    // Components
-    // ========================================================================
-    components: {
-        'director': Director,
-        'scroll-display': ScrollDisplay,
-        'favorite-link': FavoriteLink
-    },
 
 
 
@@ -227,7 +173,7 @@ export default {
 
 
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 
 @import '~assets/stylus/variables'
@@ -235,20 +181,14 @@ export default {
 
 #Draggable
     display flex
-    // overflow hidden
-    // overflow-x hidden
-    // overflow-y auto
-
-    & > *
-        display flex
-        align-items center
-
+    align-items center
 
 
 .draggable__body
     display flex
     box-sizing border-box
     min-height 100%
+    width 100%
     overflow hidden
     padding 10% 0
     white-space nowrap
@@ -268,8 +208,6 @@ export default {
 
         *
             pointer-events none
-
-
 
 
 </style>

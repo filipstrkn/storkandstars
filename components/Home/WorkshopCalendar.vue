@@ -1,14 +1,24 @@
 <template>
     <section id="Calendar">
+        <draggable>
 
-        <ul class="events">
-            <li v-for="(event, index) in 5" :key="index" class="event">
-                <div class="content">
-                    <h4 class="date"><span>26.</span><span>28.</span>11.</h4>
-                    <p class="topic">Praha, Mondays, How to interview</p>
+            <div class="project__intro _text--medium" v-if="blok.title">
+                <div>
+                    <p>{{ blok.title }}</p>
+                    <span class="director"></span>
                 </div>
-            </li>
-        </ul>
+            </div>
+
+            <div class="events" data-visible="false">
+                <component
+                    :key="blok._uid"
+                    v-for="blok in blok.events"
+                    :blok="blok"
+                    :is="blok.component">
+                </component>
+            </div>
+
+        </draggable>
 
 
     </section>
@@ -19,10 +29,16 @@
 <script>
 
 import marked from 'marked'
+import Draggable from '~/components/Draggable'
+import isVisible from '~/mixins/isVisible'
 
 export default {
     name: 'WorkshopCalendar',
     props: ['blok'],
+    mixins: [isVisible],
+    components: {
+        'draggable': Draggable
+    },
     computed: {
         text() {
             return marked(this.blok.description)
@@ -37,82 +53,51 @@ export default {
 
 @import '~assets/stylus/variables'
 
-// .calendar
-//     max-width 50em
-
-
-// .event
-//     margin-bottom 2em
-//     margin 2em auto
-//     white-space nowrap
-.date
-    // font-size 6em
-    position absolute
-    top 0
-    left 0
-    padding 1.6rem
-    font-size 1.2em
-    font-weight 400
-    color #ff5757
-    span:last-of-type::before
-        content ""
-        display inline-block
-        vertical-align middle
-        height 1px
-        width 1em
-        margin 0 .2em
-        background-color black
-        background-color #ff5757
-        transition width 250ms ease-in-out
-//     .topic
-//         font-size 1rem
-
-//     &:last-of-type
-//         margin-bottom 0
-
-
 #Calendar
-    max-width 100em
-    padding 10% 5%
-    margin 0 auto
-    // font-size 2rem
+    width 100%
 
-ul
-    list-style none
-    padding 0
+    .project__intro
+        display flex
+        align-items center
+        margin-left 10%
+        padding 0 2rem
+        max-width 12em
+        width 100%
+        white-space pre-wrap
+        margin-right 10%
+
 
 .events
-    // width 80%
-    display grid
-    grid-template-columns repeat(auto-fill, minmax(200px, 3fr))
-    grid-gap 2em
-    align-items stretch
-    margin 0 auto
+    display flex
+    align-items center
+    & > *
+        margin-right 6em
+        &:last-of-type
+            margin-right 0
+
+    &[data-visible="false"]
+        transition all $appear ease-in
+        opacity 0
+        transform translateX(6rem)
+        .event-unit
+            transition margin-right $appear ease-in
+            margin-right 12em
+
+    &[data-visible="true"]
+        transition all $appear ease-out
+        opacity 1
+        transform translateX(0)
+        .event-unit
+            transition margin-right $appear ease-out
+            margin-right 6em
 
 .event
-    // padding-bottom 40%
-    // background-color alpha($black, .04)
-    height 0
-    padding-bottom 80%
-    border solid 1px alpha($black, .1)
-    transition border 250ms ease-in-out, background 250ms ease-in-out
-    position relative
-    .topic
-        position absolute
-        bottom 0
-        padding 1.6rem
+    min-width 25em
+    min-height 25em
+    width 46vh
+    height 46vh
 
-    &:first-of-type
-        grid-column 1/3
-        grid-row 1/3
-        font-size 1.6em
-        .topic, .date
-            padding 1.6em
 
-    &:hover
-        cursor pointer
-        border-color $purple
-        background none
 
 </style>
 

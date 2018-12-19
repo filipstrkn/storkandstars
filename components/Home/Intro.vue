@@ -1,46 +1,39 @@
 <template>
     <section id="Intro">
 
+
+
         <div class="_container--large _text--large">
             <h3 v-if="blok.pre_title">{{ blok.pre_title }}</h3>
             <p class="text--large">{{ blok.text }}</p>
             <h3 v-if="blok.post_title">{{ blok.post_title }}</h3>
         </div>
 
+
+
     </section>
 </template>
+
 
 
 <script>
 export default {
     name: 'Intro',
-    props: ['blok'],
-    beforeMount() {
-        this.$store.state.sidelink = {
-            name: this.blok.sidelink_name,
-            to: this.blok.sidelink_to.cached_url
-        }
-    },
-    destroyed() {
-        this.$store.state.sidelink = null
-    }
+    props: ['blok']
 }
 </script>
 
 
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 #Intro
-    position relative
     height 100vh
     display flex
     align-items center
 
-    & > *
+    & > div
         margin-top 10%
-
-
 
 
 </style>

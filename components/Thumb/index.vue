@@ -1,28 +1,28 @@
 <template>
 
-    <article class="thumb" @mousedown="block" :class="`thumb--${blok.size}`">
-
-
-
-        <!-- //////////////////////////////////////////////////////////////
-            Title
-        ////////////////////////////////////////////////////////////// -->
-        <div class="name">
-            <h3>{{ blok.name }}</h3>
-            <h3><span>Branding</span><span>Products</span></h3>
-        </div>
+    <article class="thumb" @mousedown="block">
 
 
 
         <!-- //////////////////////////////////////////////////////////////
             Image
         ////////////////////////////////////////////////////////////// -->
-        <nuxt-link :to="blok.link.cached_url" class="thumb--spacer" draggable="false" @mousedown="block" @dragstart="block">
+        <nuxt-link :to="'/'" class="thumb--spacer" draggable="false" @mousedown="block" @dragstart="block">
             <image-block
-                class="_thumbnail thumbnail--projects"
-                :image="blok.thumbnail">
+                class="_clickable _thumbnail thumbnail--projects"
+                :image="content.thumbnail">
             </image-block>
         </nuxt-link>
+
+        <!-- //////////////////////////////////////////////////////////////
+            Title
+        ////////////////////////////////////////////////////////////// -->
+        <div class="name">
+            <h3>{{ content.client }}</h3>
+            <p>
+                <span v-for="(service, index) in content.services" :key="index">{{ service }}</span>
+            </p>
+        </div>
 
 
 
@@ -39,7 +39,7 @@ import ImageBlock from '~/components/Loaders/ImageLoader'
 
 export default {
     name: 'Thumb',
-    props: ['blok'],
+    props: ['content'],
     components: {
         'image-block': ImageBlock
     },
@@ -68,81 +68,44 @@ export default {
 
 .thumb
     position relative
-    margin 0 6em
-    // margin 0 5em
     -webkit-user-drag: none !important
     -khtml-user-drag: none !important
     -moz-user-drag: none !important
     -o-user-drag: none !important
     user-drag: none !important
 
-    &--small
-        ._thumbnail
-            width 40vh !important
-            height @width
-
-    &--medium
-        ._thumbnail
-            width 60vh !important
-            height @width
-
-    &--large
-        ._thumbnail
-            width 74vh !important
-            height @width
-
-    &--extra
-        ._thumbnail
-            width 92vh !important
-            height @width
-
-    &--tall
-        ._thumbnail
-            width 50vh !important
-            height 70vh
-
-    &--long
-        ._thumbnail
-            width 80vh !important
-            height 50vh
-
-    .name
-        // transform rotate(90deg)
-        opacity 0
-        position absolute
-        bottom 0
-        left 50%
-        transform translate(-50%, 50%)
-        transition transform 250ms ease-out, opacity 250ms ease-out
-        // left -2em1
-        text-align center
-        z-index 1
-        // width 1em
-        white-space nowrap
-
     h3
-        font-weight 500
+        font-weight 400
         pointer-events none
         margin-bottom .2em
-        &:last-of-type
-            margin-bottom 0
+        margin-top 1em
+        font-family $secondary-font
+        margin-bottom .2em
+
+    p
+        font-family $secondary-font
+
         span
-            text-decoration underline
+            font-weight 400
+            color alpha(#000, .6)
 
             &::before
                 content "&"
                 display inline-block
                 margin 0 .4em
             &:first-of-type::before
-                content ""
+                display none
 
 
     ._thumbnail
-        transition all 400ms ease-out
+        width 50vh
+        height 70vh
         img
             width 100%
             height 100%
             object-fit cover
+            object-position center
+            transition transform 400ms ease-in-out
 
 
         &::before
@@ -153,20 +116,9 @@ export default {
             width 100%
             height 100%
 
-    &:hover
-        .name
-            display block
-            transform translate(-50%, 30%)
-            opacity 1
-    //     ._thumbnail
-    //         // width $thumb-size - 10
-    //         height 50vh
-    //         // transform scale(.96)
-    //         // transform translateY(2vh)
-    //         img
-    //             width 120%
-
-
+        &:hover
+            img
+                transform translate(-50%, -50%) scale(1.1)
 
 
 

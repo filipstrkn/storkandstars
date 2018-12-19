@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 // Content Types
 import Page from '~/components/Page'
+import ProjectPage from '~/components/ProjectPage'
 import Form from '~/components/Form'
 
 // Blocks
@@ -9,9 +10,6 @@ import FooterBlock from '~/components/Home/Footer'
 
 // Form
 import FormStep from '~/components/Form/_form/Step'
-
-// Project
-import Thumb from '~/components/Thumb'
 
 import ProjectGallery from '~/components/Project/ProjectGallery'
 import ProjectImage from '~/components/Project/ProjectImage'
@@ -26,6 +24,8 @@ import TextBlock from '~/components/Home/TextBlock'
 import Horizont from '~/components/Home/Horizont'
 import ProjectUnit from '~/components/Projects/ProjectUnit'
 import WorkshopCalendar from '~/components/Home/WorkshopCalendar'
+import Top from '~/components/Home/Top'
+import EventUnit from '~/components/Home/EventUnit'
 
 
 
@@ -40,6 +40,7 @@ import WorkshopCalendar from '~/components/Home/WorkshopCalendar'
 |
 |*/
 Vue.component('page', Page)
+Vue.component('project_page', ProjectPage)
 Vue.component('form_page', Form)
 
 
@@ -51,7 +52,6 @@ Vue.component('form_page', Form)
 |
 |*/
 Vue.component('form_step', FormStep)
-Vue.component('project_thumb', Thumb)
 Vue.component('footer_block', FooterBlock)
 
 
@@ -80,8 +80,10 @@ Vue.component('p_paragraph', ProjectParagraph)
 |*/
 Vue.component('intro', Intro)
 Vue.component('text_block', TextBlock)
+Vue.component('projects', Top)
 
 Vue.component('calendar', WorkshopCalendar)
 Vue.component('horizont', Horizont)
 Vue.component('project_unit', ProjectUnit)
+Vue.component('event', EventUnit)
 

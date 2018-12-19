@@ -2,10 +2,6 @@
     <header id="Header">
         <div class="header__left">
             <logo-square></logo-square>
-            <!-- <nuxt-link :to="'/'">
-                <logo-brand></logo-brand>
-            </nuxt-link> -->
-            <!-- <logo></logo> -->
         </div>
         <div class="header__right">
             <nuxt-link
