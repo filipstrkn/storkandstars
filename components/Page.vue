@@ -21,7 +21,7 @@ import SideLink from '~/components/Home/_home/SideLink'
 export default {
     name: 'Page',
     props: ['blok'],
-
+    scrollToTop: true,
     components: {
         'header-block': HeaderBlock,
         'side-link': SideLink

@@ -34,8 +34,6 @@ export default {
     },
 
 
-    transition: 'page-slide-up',
-
 
     mixins: [storyblokLivePreview],
 

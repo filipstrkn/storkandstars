@@ -37,13 +37,8 @@ export default {
 
 
 
-    transition(to, from) {
-
-        const projects = /^\/projects/
-        const form = /^\/form/
-        if (from && projects.test(from.path)) return 'page-slide-down'
-        // else if (from && form.test(from.path)) return 'page-slide-left'
-        else return 'fade'
+    transition: {
+        name: 'page'
     },
 
 

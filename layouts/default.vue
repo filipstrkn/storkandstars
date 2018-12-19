@@ -13,6 +13,7 @@ import Follower from '~/components/Draggable/_draggable/Follower'
 import HeaderBlock from '~/components/HeaderBlock'
 
 export default {
+  scrollToTop: true,
   components: {
     'follower': Follower,
     'header-block': HeaderBlock

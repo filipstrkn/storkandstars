@@ -28,11 +28,6 @@ export default {
 ,
 
 
-    transition: 'page-slide-right',
-
-
-
-
     // --------------------------------------------------------------------
     //  Switching Dark Mode when mounted and umounted
     // --------------------------------------------------------------------
