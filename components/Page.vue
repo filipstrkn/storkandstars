@@ -37,7 +37,7 @@ export default {
     },
 
     created() {
-        this.$store.commit('setMode', this.blok.dark)
+        // this.$store.commit('setMode', this.blok.dark)
     },
 
     beforeMount() {

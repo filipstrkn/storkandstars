@@ -1,5 +1,5 @@
 <template>
-    <main id="ProjectPage" :class="`page--${mode}`">
+    <main id="ProjectPage" :class="`page--${mode}`" :style="theme">
 
         <component
             :key="blok._uid"
@@ -34,11 +34,28 @@ export default {
         },
         process() {
             return this.$store.state.process
+        },
+        theme() {
+
+            if ( this.$store.state.theme.dark_mode ) return
+
+            return {
+                backgroundColor: this.$store.state.theme.background
+            }
         }
     },
 
     created() {
-        this.$store.commit('setMode', this.blok.dark)
+        this.$store.commit('setTheme', {
+            dark_mode: this.blok.dark,
+            text: this.blok.theme_color.color,
+            background: this.blok.background.color,
+        })
+    },
+    destroyed() {
+        this.$store.commit('setTheme', {
+            dark_mode: false
+        })
     }
 }
 </script>
@@ -48,6 +65,9 @@ export default {
 <style lang="stylus">
 
 @import '~assets/stylus/variables'
+
+#ProjectPage
+    min-height 100vh
 
 .page--dark
     background-color $dark

@@ -70,6 +70,7 @@ export default {
 .events
     display flex
     align-items center
+    padding 10% 0
     & > *
         margin-right 6em
         &:last-of-type

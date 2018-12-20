@@ -1,16 +1,19 @@
 <template>
-    <section id="ProjectGallery">
-
+    <section id="ProjectGallery" :style="{backgroundColor: $store.state.theme.background}">
         <draggable>
-            <img
-                v-for="(image, index) in blok.images"
-                :key="index"
-                :src="image.filename">
+
+
+            <div class="project-gallery__images">
+                <image-loader
+                    v-for="(image, index) in blok.images"
+                    :key="index"
+                    :image="image.filename"
+                    class="project-gallery__image" />
+            </div>
+
+
+
         </draggable>
-
-
-
-
     </section>
 </template>
 
@@ -19,12 +22,43 @@
 <script>
 
 import Draggable from '~/components/Draggable'
+import ImageLoader from '~/components/Loaders/ImageLoader'
 
 export default {
     name: 'ProjectGallery',
     props: ['blok'],
     components: {
-        'draggable': Draggable
+        'draggable': Draggable,
+        'image-loader': ImageLoader
     }
 }
 </script>
+
+
+
+<style lang="stylus">
+
+@import '~assets/stylus/mixins'
+
+.project-gallery__images
+    display flex
+    align-items center
+    padding-left 5em
+    & > *
+        margin-right 5em
+
+.project-gallery__image
+    position relative
+    width 64vh
+    height 64vh
+    overflow hidden
+
+
+    img
+        absolute-centering()
+        width 100%
+        height 100%
+        object-fit cover
+
+
+</style>

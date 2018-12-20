@@ -125,8 +125,8 @@ export default {
 
 
 #Top
-
     .list
+        padding 10% 0
         display flex
         align-items center
 

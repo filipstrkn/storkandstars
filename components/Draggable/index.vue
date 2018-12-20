@@ -190,9 +190,7 @@ export default {
     min-height 100%
     width 100%
     overflow hidden
-    padding 10% 0
     white-space nowrap
-    background-color #fff
     transition transform 200ms ease-out, background-color 600ms ease-in-out
     cursor grab
     &::-webkit-scrollbar

@@ -32,7 +32,9 @@ export default function createStore() {
             // ----------------------------------------------------------------
             state: {
                 theme: {
-                  dark_mode: false
+                    dark_mode: false,
+                    text: null,
+                    background: null
                 },
                 projects: {
                     top: []
@@ -131,9 +133,11 @@ export default function createStore() {
 
 
 
-                setMode(state, mode) {
-                    // console.log('Setting mode')
-                    state.theme.dark_mode = mode
+                setTheme(state, theme) {
+                    state.theme = {
+                        ...state.theme,
+                        ...theme
+                    }
                 },
 
                 nextStep(state, form) {
