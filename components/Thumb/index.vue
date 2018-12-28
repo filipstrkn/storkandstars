@@ -7,7 +7,7 @@
         <!-- //////////////////////////////////////////////////////////////
             Image
         ////////////////////////////////////////////////////////////// -->
-        <nuxt-link :to="link" class="thumb--spacer" draggable="false" @mousedown="block" @dragstart="block">
+        <nuxt-link :to="'/' + link" class="thumb--spacer" draggable="false" @mousedown="block" @dragstart="block">
             <image-block
                 class="_clickable _thumbnail thumbnail--projects"
                 :image="content.thumbnail">

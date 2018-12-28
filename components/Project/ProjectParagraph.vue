@@ -45,7 +45,7 @@ export default {
 
 .text
     max-width 40em
-    padding: 5% 2rem
+    padding: 10% 2rem
     margin-left: 10%
 
 
@@ -56,7 +56,7 @@ h3
 p
     font-size 1.2rem
     line-height 1.8em
-    margin-top 1em
+    margin-top 2em
 
 
 </style>

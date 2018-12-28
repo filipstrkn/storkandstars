@@ -40,6 +40,10 @@ export default {
 
 @import '~assets/stylus/mixins'
 
+
+#ProjectGallery
+    padding 4em 0
+
 .project-gallery__images
     display flex
     align-items center

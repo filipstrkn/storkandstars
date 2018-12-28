@@ -23,6 +23,11 @@ export default {
     name: 'ProjectImage',
     props: ['blok'],
     mixins: [isVisible],
+    data() {
+        return {
+            visibleAt: 80
+        }
+    },
     components: {
         'image-loader': ImageLoader
     }
@@ -56,6 +61,11 @@ export default {
     padding-bottom 40%
     margin 0 auto
     overflow hidden
+
+    ._image--loading
+        position absolute
+        top 0
+        left 0
 
     img
         absolute-centering()

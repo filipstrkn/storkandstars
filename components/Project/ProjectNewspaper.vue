@@ -28,7 +28,7 @@ export default {
 
 
 #ProjectNewsletter
-    padding 5% 0
+    padding 10% 0
 
 
 .columns

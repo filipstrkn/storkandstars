@@ -11,7 +11,7 @@
         </component>
 
 
-
+        <footer-block />
 
 
     </div>
@@ -23,6 +23,7 @@
 <script>
 
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
+import FooterBlock from '~/components/Home/Footer'
 
 export default {
 
@@ -35,7 +36,9 @@ export default {
         }
     },
 
-
+    components: {
+        'footer-block': FooterBlock
+    },
 
     transition: {
         name: 'page'

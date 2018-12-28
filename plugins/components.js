@@ -5,9 +5,6 @@ import Page from '~/components/Page'
 import ProjectPage from '~/components/ProjectPage'
 import Form from '~/components/Form'
 
-// Blocks
-import FooterBlock from '~/components/Home/Footer'
-
 // Form
 import FormStep from '~/components/Form/_form/Step'
 
@@ -17,6 +14,7 @@ import ProjectIntro from '~/components/Project/ProjectIntro'
 import ProjectNewspaper from '~/components/Project/ProjectNewspaper'
 import ProjectNewspaperColumn from '~/components/Project/ProjectNewspaperColumn'
 import ProjectParagraph from '~/components/Project/ProjectParagraph'
+import NextProject from '~/components/Project/NextProject'
 
 
 import Intro from '~/components/Home/Intro'
@@ -52,7 +50,6 @@ Vue.component('form_page', Form)
 |
 |*/
 Vue.component('form_step', FormStep)
-Vue.component('footer_block', FooterBlock)
 
 
 
@@ -68,6 +65,7 @@ Vue.component('p_intro', ProjectIntro)
 Vue.component('p_newspaper', ProjectNewspaper)
 Vue.component('p_newspaper_column', ProjectNewspaperColumn)
 Vue.component('p_paragraph', ProjectParagraph)
+Vue.component('next_project', NextProject)
 
 
 

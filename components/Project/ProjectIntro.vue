@@ -52,7 +52,7 @@ export default {
 @import '~assets/stylus/variables'
 
 #ProjectIntro
-    padding-top 6em
+    padding-top calc(10% + 4em)
 
 .columns
     font-size 1.2rem
