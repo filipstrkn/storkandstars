@@ -8,6 +8,7 @@
             :is="blok.component">
         </component>
 
+        <footer-block />
 
     </main>
 </template>
@@ -18,6 +19,7 @@
 
 import HeaderBlock from '~/components/HeaderBlock'
 import SideLink from '~/components/Home/_home/SideLink'
+import FooterBlock from '~/components/Home/Footer'
 
 export default {
     name: 'Page',
@@ -25,7 +27,8 @@ export default {
 
     components: {
         'header-block': HeaderBlock,
-        'side-link': SideLink
+        'side-link': SideLink,
+        'footer-block': FooterBlock
     },
 
     computed: {

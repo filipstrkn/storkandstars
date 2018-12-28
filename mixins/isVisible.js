@@ -2,7 +2,9 @@ const isVisible = {
 
     data() {
         return {
-            visibleAt: 70
+            visibleAt: 70,
+            visibleOnce: false,
+            visibleShown: false
         }
     },
 
@@ -13,8 +15,12 @@ const isVisible = {
             const els = this.$el.querySelectorAll('[data-visible]')
             els.forEach(el => {
                 const position = Math.floor(el.getBoundingClientRect().top)
-                if (position < trigger) el.dataset.visible = true
-                else el.dataset.visible = false
+                if (!this.visibleOnce && position < trigger) el.dataset.visible = true
+                else if (this.visibleOnce && !this.visibleShown && position < trigger) {
+                    el.dataset.visible = true
+                    this.visibleShown = true
+                }
+                else if (!this.visibleOnce && position >= trigger) el.dataset.visible = false
             })
         }
     },
