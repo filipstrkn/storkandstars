@@ -38,6 +38,11 @@ import isVisible from '~/mixins/isVisible'
 
 export default {
     name: 'Top',
+    data() {
+        return {
+            visibleOnce: true
+        }
+    },
     props: ['blok'],
     mixins: [isVisible],
     components: {

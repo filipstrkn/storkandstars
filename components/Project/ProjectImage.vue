@@ -45,11 +45,9 @@ export default {
     padding 4em 0
 
     [data-visible="false"]
-        transition opacity $appear ease-in
         opacity 0
 
     [data-visible="true"]
-        transition opacity $appear ease-out
         opacity 1
 
 
@@ -61,6 +59,7 @@ export default {
     padding-bottom 40%
     margin 0 auto
     overflow hidden
+    transition opacity $appear ease-out
 
     ._image--loading
         position absolute

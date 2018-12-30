@@ -34,6 +34,11 @@ import isVisible from '~/mixins/isVisible'
 
 export default {
     name: 'WorkshopCalendar',
+    data() {
+        return {
+            visibleOnce: true
+        }
+    },
     props: ['blok'],
     mixins: [isVisible],
     components: {
