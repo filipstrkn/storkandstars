@@ -1,12 +1,12 @@
 <template>
-    <section>
+    <section id="TextBlock">
 
 
 
         <div class="_container--center _text--medium" data-visible="false">
-            <h3 v-if="blok.pre_title">{{ blok.pre_title }}</h3>
+            <h3 v-if="blok.pre_title" class="_subtitle">{{ blok.pre_title }}</h3>
             <div class="_text" v-html="message"></div>
-            <h3 v-if="blok.post_title">{{ blok.post_title }}</h3>
+            <h3 v-if="blok.post_title" class="_subtitle">{{ blok.post_title }}</h3>
         </div>
 
 
@@ -43,9 +43,14 @@ export default {
 
 @import '~assets/stylus/variables'
 
+#TextBlock
+    padding 12% 0
 
 ._text
     transition line-height $appear ease-out
+    font-family $serif
+    font-weight 300
+    // font-weight 700
 
 [data-visible="false"]
     opacity 0

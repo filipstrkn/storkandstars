@@ -3,6 +3,7 @@ import Vue from 'vue'
 // Content Types
 import Page from '~/components/Page'
 import ProjectPage from '~/components/ProjectPage'
+import EventPage from '~/components/EventPage'
 import Form from '~/components/Form'
 
 // Form
@@ -21,9 +22,8 @@ import Intro from '~/components/Home/Intro'
 import TextBlock from '~/components/Home/TextBlock'
 import Horizont from '~/components/Home/Horizont'
 import ProjectUnit from '~/components/Projects/ProjectUnit'
-import WorkshopCalendar from '~/components/Home/WorkshopCalendar'
+import EventList from '~/components/Lists/EventList'
 import Top from '~/components/Home/Top'
-import EventUnit from '~/components/Home/EventUnit'
 
 
 
@@ -39,6 +39,7 @@ import EventUnit from '~/components/Home/EventUnit'
 |*/
 Vue.component('page', Page)
 Vue.component('project_page', ProjectPage)
+Vue.component('event_page', EventPage)
 Vue.component('form_page', Form)
 
 
@@ -80,8 +81,16 @@ Vue.component('intro', Intro)
 Vue.component('text_block', TextBlock)
 Vue.component('projects', Top)
 
-Vue.component('calendar', WorkshopCalendar)
 Vue.component('horizont', Horizont)
 Vue.component('project_unit', ProjectUnit)
-Vue.component('event', EventUnit)
+
+
+
+/*
+|==========================================================================
+| Lists
+|==========================================================================
+|
+|*/
+Vue.component('event_list', EventList)
 

@@ -31,6 +31,7 @@ export default function createStore() {
             // States
             // ----------------------------------------------------------------
             state: {
+                menu: false,
                 theme: {
                     dark_mode: false,
                     text: null,
@@ -39,7 +40,7 @@ export default function createStore() {
                 projects: {
                     top: []
                 },
-                // cache: {},
+                events: [],
                 forms: {},
                 // contactForm: {
                 //     // total: 0,
@@ -77,8 +78,7 @@ export default function createStore() {
                     },
                     clickable: false
                 },
-                process: 0,
-                sidelink: null
+                process: 0
             },
 
 
@@ -149,6 +149,45 @@ export default function createStore() {
                 },
                 saveStep(state, { form, name, value }) {
                     state.forms[form].values[name] = value
+                },
+
+
+
+                // ------------------------------------------------------------
+                //  Toggleling Navigation Menu
+                // ------------------------------------------------------------
+                toggleMenu(state, payload) {
+                    if (payload !== undefined) state.menu = payload
+                    else state.menu = !state.menu
+                },
+
+
+
+                // ------------------------------------------------------------
+                //  Setting Events in Events Calendar
+                // ------------------------------------------------------------
+                setEvents(state, events) {
+                    let final = []
+                    const today = new Date()
+
+                    // Sorting and organizing events in array
+                    const sorted = events.stories
+                        .sort((a, b) => {
+                            const aa = new Date(a.content.from.split(" ")[0])
+                            const bb = new Date(b.content.from.split(" ")[0])
+                            return bb - aa
+                        })
+                        .filter(event => {
+                            const eventDate = new Date(event.content.from.split(" ")[0])
+                            return eventDate > today
+                        })
+                        .reverse()
+
+                    // getting only the content of events
+                    sorted.map( event => final.push(event.content))
+
+                    // setting to the store's state
+                    state.events = final
                 }
 
 
@@ -166,6 +205,27 @@ export default function createStore() {
             // ================================================================
             actions: {
 
+
+
+                // ------------------------------------------------------------
+                //  Fetching Events
+                // ------------------------------------------------------------
+                getEvents({ commit }) {
+
+                    // if event are not yet fetched -> fetch them from API
+                    if (Array.isArray(this.state.events) && this.state.events.length === 0) {
+                        this.$storyapi
+                            .get(`cdn/stories`,
+                            {
+                                version: 'draft', // here it needs to be set to publish
+                                starts_with: 'events/workshops'
+                            })
+                            .then(res => {
+                                commit('setEvents', res.data)
+                            })
+                    }
+
+                },
 
                 // ------------------------------------------------------------
                 //  Fetching Top Projects
@@ -251,6 +311,9 @@ export default function createStore() {
             //  Getters
             // ================================================================
             getters: {
+                recentEvents(state) {
+                    return state.events.slice(0, 3)
+                }
                 // isMessageSent(state) {
                 //     return state.contactForm.status === 'success'
                 // },

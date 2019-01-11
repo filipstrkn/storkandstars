@@ -17,8 +17,6 @@
 
 <script>
 
-import HeaderBlock from '~/components/HeaderBlock'
-import SideLink from '~/components/Home/_home/SideLink'
 import FooterBlock from '~/components/Home/Footer'
 
 export default {
@@ -26,8 +24,6 @@ export default {
     props: ['blok'],
 
     components: {
-        'header-block': HeaderBlock,
-        'side-link': SideLink,
         'footer-block': FooterBlock
     },
 
@@ -35,13 +31,8 @@ export default {
         mode() {
             return this.$store.state.theme.dark_mode ? 'dark' : 'light'
         },
-        process() {
-            return this.$store.state.process
-        },
         theme() {
-
             if ( this.$store.state.theme.dark_mode ) return
-
             return {
                 backgroundColor: this.$store.state.theme.background
             }
@@ -54,6 +45,9 @@ export default {
             text: this.blok.theme_color.color,
             background: this.blok.background.color,
         })
+    },
+    beforeMount() {
+        this.$store.commit('toggleMenu', false)
     },
     destroyed() {
         this.$store.commit('setTheme', {

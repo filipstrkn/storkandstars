@@ -10,7 +10,7 @@
             <div class="column__right">
                 <p>{{ blok.column_right }}</p>
 
-                <link-unit :to="blok.link_to.cached_url" class="_clickable" :style="{color: $store.state.theme.text}">
+                <link-unit :to="blok.link_to.cached_url" class="_clickable">
                     {{ blok.link_name }}
                 </link-unit>
             </div>

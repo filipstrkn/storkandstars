@@ -1,6 +1,7 @@
 <template>
-    <div id="Burger" :class="menu" class="_clickable"></div>
-    <!-- <span id="Menu" :class="menu" class="_link--vert _clickable">Menu</span> -->
+    <div id="Burger" class="_clickable" @click="toggleMenu">
+        <div class="burger__body" :class="menu"></div>
+    </div>
 </template>
 
 
@@ -8,14 +9,14 @@
 <script>
 export default {
     name: 'burger',
-    data() {
-        return {
-            is_menu: false
-        }
-    },
     computed: {
         menu() {
-            return this.is_menu ? 'opened' : 'closed'
+            return this.$store.state.menu ? 'opened' : 'closed'
+        }
+    },
+    methods: {
+        toggleMenu() {
+            this.$store.commit('toggleMenu')
         }
     }
 }
@@ -25,24 +26,25 @@ export default {
 
 <style lang="stylus" scoped>
 
-@import '../../../assets/stylus/variables'
-
-
-// #Menu
-//     transform rotate(90deg)
-//     font-family $secondary-font
+@import '~assets/stylus/variables'
 
 #Burger
+    width 26px
+    height @width
+    display flex
+    justify-content center
+    align-items center
+
+
+.burger__body
     position relative
     width 22px
     height 8px
     cursor pointer
-    &.opened::before,
-    &.closed::after
-        transform-origin 50% 50%
-        transition top 250ms ease-in-out, bottom 250ms ease-in-out, transform 250ms ease-in-out 250ms
+    pointer-events none
 
-#Burger.closed
+
+.burger__body.closed
     &::before,
     &::after
         content ""
@@ -50,9 +52,10 @@ export default {
         position absolute
         height 2px
         width 100%
-        left 0
+        left 50%
+        transform translateX(-50%)
         background-color $black
-        // background-color $white
+        transition transform 100ms ease-out, top 250ms ease-out 250ms
 
     &::before
         top 0
@@ -60,7 +63,8 @@ export default {
     &::after
         bottom 0
 
-#Burger.opened
+
+.burger__body.opened
     &::before,
     &::after
         content ""
@@ -71,6 +75,7 @@ export default {
         left 50%
         top 50%
         background-color $black
+        transition top 100ms ease-out, transform 250ms ease-out 250ms
 
     &::before
         transform translate(-50%, -50%) rotate(45deg)

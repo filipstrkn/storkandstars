@@ -1,6 +1,6 @@
 <template>
   <div @mousemove="launchFollower">
-    <header-block />
+    <navigation-block />
     <nuxt/>
     <follower></follower>
   </div>
@@ -10,13 +10,12 @@
 <script>
 
 import Follower from '~/components/Draggable/_draggable/Follower'
-import HeaderBlock from '~/components/HeaderBlock'
+import NavigationBlock from '~/components/NavigationBlock'
 
 export default {
-  scrollToTop: true,
   components: {
     'follower': Follower,
-    'header-block': HeaderBlock
+    'navigation-block': NavigationBlock,
   },
   methods: {
      launchFollower(e) {
@@ -42,10 +41,11 @@ export default {
 html
   font-style: normal
   font-style: normal
-  font-size: 14px
+  font-size: 15px
   user-select none
   font-family $main-font
-  cursor url("~assets/prpl.png") 5 5, auto
+  color $black
+  cursor url("~assets/cursor.png") 5 5, auto
 
   img
     pointer-events none !important

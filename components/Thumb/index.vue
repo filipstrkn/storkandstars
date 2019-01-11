@@ -1,32 +1,29 @@
 <template>
+    <div>
+        <nuxt-link :to="'/' + link" class="thumb-link" data-visible="false">
+            <article class="thumb" :style="theme">
 
-    <article class="thumb" @mousedown="block">
+
+                <image-block
+                    class="_clickable _thumbnail thumbnail--projects"
+                    :image="content.thumbnail">
+                </image-block>
+
+                <!-- //////////////////////////////////////////////////////////////
+                    Title
+                ////////////////////////////////////////////////////////////// -->
+                <div class="name">
+                    <h3 :style="{color: content.theme_color.color}">{{ content.client }}</h3>
+                    <p :style="{color: $store.state.theme.dark_mode && '#fff'}">
+                        <span v-for="(service, index) in content.services" :key="index">{{ service }}</span>
+                    </p>
+                </div>
 
 
 
-        <!-- //////////////////////////////////////////////////////////////
-            Image
-        ////////////////////////////////////////////////////////////// -->
-        <nuxt-link :to="'/' + link" class="thumb--spacer" draggable="false" @mousedown="block" @dragstart="block">
-            <image-block
-                class="_clickable _thumbnail thumbnail--projects"
-                :image="content.thumbnail">
-            </image-block>
+            </article>
         </nuxt-link>
-
-        <!-- //////////////////////////////////////////////////////////////
-            Title
-        ////////////////////////////////////////////////////////////// -->
-        <div class="name">
-            <h3>{{ content.client }}</h3>
-            <p>
-                <span v-for="(service, index) in content.services" :key="index">{{ service }}</span>
-            </p>
-        </div>
-
-
-
-    </article>
+    </div>
 
 </template>
 
@@ -34,19 +31,21 @@
 <script>
 
 
+import isVisible from '~/mixins/isVisible'
 import ImageBlock from '~/components/Loaders/ImageLoader'
-
 
 export default {
     name: 'Thumb',
     props: ['content', 'link'],
+    mixins: [isVisible],
     components: {
         'image-block': ImageBlock
     },
-    methods: {
-        block(e) {
-            e.preventDefault()
-            return false
+    computed: {
+        theme() {
+            return {
+                backgroundColor: this.content.background.color
+            }
         }
     }
 }
@@ -59,31 +58,65 @@ export default {
 @import '~assets/stylus/variables'
 @import '~assets/stylus/mixins'
 
-.thumb__spacer
-    -webkit-user-drag: none
-    -khtml-user-drag: none
-    -moz-user-drag: none
-    -o-user-drag: none
-    user-drag: none
+
+.thumb-link
+    display inline-block
+    position relative
+    width 100%
+    height 0
+    padding-bottom 100%
+
+
+    &[data-visible="false"] .thumb
+        transition all $appear ease-in
+        transform scaleY(1.4) translateY(30%)
+        opacity 0
+
+
+    &[data-visible="true"] .thumb
+        transition all 600ms ease-out
+        transform scaleY(1) translateY(0)
+        opacity 1
 
 .thumb
     position relative
-    -webkit-user-drag: none !important
-    -khtml-user-drag: none !important
-    -moz-user-drag: none !important
-    -o-user-drag: none !important
-    user-drag: none !important
+    position absolute
+    width 100%
+    height 100%
+    transform-origin 50% 0
+
+
+
+
+    &:hover
+        img
+           top 40%
+
+        .name
+            bottom 10%
+            opacity 1
+            p
+                transform translateY(0)
+
 
     h3
         font-weight 400
         pointer-events none
         margin-bottom .2em
+
         margin-top 1em
         font-family $secondary-font
         margin-bottom .2em
 
     p
+        position relative
         font-family $secondary-font
+        margin-top .2em
+        font-size 1rem
+        text-align center
+        transform translateY(2em)
+        transition all 400ms ease-out
+        white-space nowrap
 
         span
             font-weight 400
@@ -96,30 +129,31 @@ export default {
             &:first-of-type::before
                 display none
 
+    .name
+        position absolute
+        bottom -1em
+        text-align center
+        margin 0
+        left 50%
+        transform translateX(-50%)
+        transition all 400ms ease-in-out
+        font-size calc(.00848 * 100vw + 18.81818px)
+        opacity 0
+        pointer-events none
+
+        h3
+            font-weight 900
+            margin 0
+            color #fff
 
     ._thumbnail
-        width 50vh
-        height 70vh
+        width 100%
+        height 100%
+
         img
-            width 100%
-            height 100%
-            object-fit cover
-            object-position center
-            transition transform 400ms ease-in-out
-
-
-        &::before
-            content ""
-            position absolute
-            top 0
-            left 0
-            width 100%
-            height 100%
-
-        &:hover
-            img
-                transform translate(-50%, -50%) scale(1.1)
-
+            width 50%
+            transition top 400ms ease-out
+            pointer-events none
 
 
 

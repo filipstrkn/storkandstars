@@ -59,3 +59,49 @@
         transition all 1s ease-in
         background-color #f6f6f6
         animation transOut .6s ease-in-out forwards
+
+
+
+
+
+.menu-enter,
+.menu-leave-to
+    &::after
+        opacity 0 !important
+    #MenuBody
+        position: absolute
+        top -100% !important
+
+.menu-enter .links li
+    opacity 0 !important
+    margin: 10em 0 !important
+
+.menu-leave,
+.menu-enter-to
+    &::after
+        opacity 1 !important
+
+    #MenuBody
+        position: absolute
+        top 0 !important
+
+    .links li
+        opacity 1 !important
+        margin: 2% 0 !important
+
+.menu-leave-active
+    transition-duration 350ms
+    &::after,
+    & > #MenuBody
+        transition all 350ms ease-out
+
+.menu-enter-active
+    transition-duration 1.2s
+    &::after
+        transition opacity 1.2s ease
+    & > #MenuBody
+        transition top .8s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+    .links li
+        transition all 1.2s ease
+
+

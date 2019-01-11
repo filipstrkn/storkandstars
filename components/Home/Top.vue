@@ -1,30 +1,22 @@
 <template>
     <section id="Top">
-        <draggable>
+
+
+        <!-- //////////////////////////////////////////////////////////////
+            Intro
+        /////////////////////////////////////////////////////////////// -->
+        <div class="top__intro" v-if="blok.title">
+            <p class="_text--medium" v-editable="blok">{{ blok.title }}</p>
+            <h3 class="_subtitle" v-editable="blok">{{ blok.subtitle }}</h3>
+        </div>
+
+        <!-- //////////////////////////////////////////////////////////////
+            List of content
+        /////////////////////////////////////////////////////////////// -->
+        <project-list :projects="$store.state.projects.top" />
 
 
 
-            <!-- //////////////////////////////////////////////////////////////
-                Intro
-            /////////////////////////////////////////////////////////////// -->
-            <div class="project__intro _text--medium" v-if="blok.title">
-                <div>
-                    <p>{{ blok.title }}</p>
-                    <span class="director"></span>
-                </div>
-            </div>
-
-            <!-- //////////////////////////////////////////////////////////////
-                List of content
-            /////////////////////////////////////////////////////////////// -->
-            <div class="list" data-visible="false">
-                <thumb v-for="(top, index) in $store.state.projects.top" :key="index" :content="top.content" :link="top.full_slug"/>
-            </div>
-
-
-
-
-        </draggable>
     </section>
 </template>
 
@@ -32,44 +24,25 @@
 
 <script>
 
-import Draggable from '~/components/Draggable'
-import Thumb from '~/components/Thumb'
-import isVisible from '~/mixins/isVisible'
+import ProjectList from '~/components/Lists/ProjectList'
 
 export default {
     name: 'Top',
-    data() {
-        return {
-            visibleOnce: true
-        }
-    },
     props: ['blok'],
-    mixins: [isVisible],
     components: {
-        'draggable': Draggable,
-        'thumb': Thumb
-    },
-    computed: {
-        tops() {
-            return [
-                {
-                    name: 'Biologico',
-                    thumbnail: 'image/image.png'
-                }
-            ]
-        }
+        'project-list': ProjectList
     },
 
     created() {
+
 
         const options = () => {
             const version = 'draft' || 'published'
             const path = 'projects/'
             return this.blok.tag !== 'all'
-            ? { version, starts_with: path, with_tags: this.blok.tag }
+            ? { version, starts_with: path, with_tag: this.blok.tag }
             : { version, starts_with: path }
         }
-
 
         if ( Array.isArray(this.$store.state.projects.top) && this.$store.state.projects.top.length === 0 ) {
             return this.$storyapi.get( 'cdn/stories', options() ).then((res) => {
@@ -87,18 +60,38 @@ export default {
 
 
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 
 @import '~assets/stylus/variables'
 
+
+.top__intro
+    display inline-block
+    position relative
+    left 50%
+    width 40%
+    padding-top 26%
+    padding-left 1em
+    // margin 0 auto
+    &::before
+        content ""
+        position absolute
+        left 0
+        bottom 0
+        top 0
+        background-color #e5e5e5
+        width 1px
+
+    p
+        white-space pre-wrap
+        max-width 15em
+
+
 .project__intro
-    display flex
-    align-items center
     margin-left 10%
     padding 0 2rem
     max-width 12em
     width 100%
-    white-space pre-wrap
     margin-right 10%
 
 
@@ -131,27 +124,16 @@ export default {
 
 #Top
     .list
-        padding 10% 0
-        display flex
-        align-items center
+        max-width 86em
+        margin 0 auto
+        padding 20% 6em 0 6em
 
-    [data-visible="false"]
-        transition all $appear ease-in
-        opacity 0
-        transform translateX(6rem)
-
-        .thumb
-            transition margin-right $appear ease-in
-            margin-right 12em
-
-    [data-visible="true"]
-        transition all $appear ease-out
-        opacity 1
-        transform translateX(0)
-
-        .thumb
-            transition margin-right $appear ease-out
-            margin-right 6em
+        .list__item
+            margin-top 50%
+        .list__column:nth-child(odd)
+            // background blue
+            .list__item:first-of-type
+                margin-top -20%
 
 </style>
 

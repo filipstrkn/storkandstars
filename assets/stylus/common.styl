@@ -11,6 +11,12 @@
     font-size: 1.6rem
     margin-bottom 1.6rem
 
+._subtitle
+    font-family: $main-font
+    font-size: 1.2rem
+    font-weight: 600
+    color: $blue
+    // opacity .6
 
 // .link
 //     font-weight 400
@@ -40,15 +46,10 @@
 
 ._thumbnail
     position relative
-    // width: 70vh
-    // height 40vh
-    // max-width: 80vw
     overflow hidden
 
     img
         absolute-centering()
-        // min-height 100%
-        width 100%
 
 
 ._clickable
@@ -62,10 +63,6 @@
     position relative
     font-family: $secondary-font
     cursor pointer
-
-    &--vert
-        @extend ._link
-        transform: rotate(90deg)
 
 
 
@@ -96,10 +93,20 @@
 
 
 ._text--large
-    font-size calc(16px + 12 * ((100vw - 320px) / 680))
+    font-family $serif
+    font-weight 300
+    // font-family: $secondary-font
+    // font-weight: 700
+    font-size calc(16px + 10 * ((100vw - 320px) / 680))
+    line-height 2em
 
 ._text--medium
-    font-size calc(16px + 8 * ((100vw - 320px) / 680))
+    font-family $serif
+    font-weight 300
+    // font-weight: 700
+    // font-family: $secondary-font
+    font-size calc(.00848 * 100vw + 15.81818px)
+    line-height 2em
 
 
 
@@ -110,12 +117,6 @@
     width: 100%
     padding: 5% 2rem
     margin-left: 10%
-    line-height 2em
-
-    h3
-        font-size: 1rem
-        font-weight: 400
-        opacity .6
 
 ._container--large
     @extend .__container
@@ -126,7 +127,7 @@
 
 ._container--center
     @extend .__container
-    max-width 30em
+    max-width 32em
     margin 0 auto
 
 
@@ -190,3 +191,41 @@
     //     display: inline-block
     //     vertical-align: middle
     //     margin-left: 1em
+
+
+._button
+
+    display block
+    padding 1em .6em
+    position relative
+    text-align center
+    font-size 1rem
+    font-weight 700
+    font-family $secondary-font
+    color $white
+    line-height normal
+    width 14em
+    transition background-color 250ms ease-out
+    border-radius 30em
+    background-color $blue
+
+    &:hover
+        background-color $blue - 20
+    &:active
+        background-color $blue - 40
+
+    &--large
+        @extend ._button
+        width: 16em
+
+
+
+
+._page
+    display flex
+    flex-direction column
+    min-height 100vh
+
+._page__content
+    flex-shrink: 0
+    flex-grow: 1

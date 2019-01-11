@@ -1,15 +1,11 @@
 <template>
     <section id="Intro">
 
-
-
-        <div class="_container--large _text--large">
-            <h3 v-if="blok.pre_title">{{ blok.pre_title }}</h3>
-            <p>{{ blok.text }}</p>
-            <h3 v-if="blok.post_title">{{ blok.post_title }}</h3>
+        <div class="_container--center _text--large _text">
+            <h3 v-if="blok.pre_title" class="_subtitle">{{ blok.pre_title }}</h3>
+            <p v-html="message"></p>
+            <h3 v-if="blok.post_title" class="_subtitle">{{ blok.post_title }}</h3>
         </div>
-
-
 
     </section>
 </template>
@@ -17,9 +13,17 @@
 
 
 <script>
+
+import marked from 'marked'
+
 export default {
     name: 'Intro',
-    props: ['blok']
+    props: ['blok'],
+    computed: {
+        message() {
+            return marked(this.blok.text)
+        }
+    }
 }
 </script>
 
@@ -27,13 +31,15 @@ export default {
 
 <style lang="stylus" scoped>
 
-#Intro
-    height 100vh
-    display flex
-    align-items center
+@import '~assets/stylus/variables'
+@import '~assets/stylus/mixins'
+@import '~assets/stylus/animations'
 
-    & > div
-        margin-top 10%
+#Intro
+    padding-top 28vh
+
+    p
+        animation intro-in 600ms ease-in-out forwards
 
 
 </style>

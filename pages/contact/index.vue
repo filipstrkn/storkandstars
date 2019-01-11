@@ -44,7 +44,10 @@ export default {
     components: {
         'footer-block': FooterBlock,
         'link-unit': LinkUnit
-    }
+    },
+    beforeMount() {
+        this.$store.commit('toggleMenu', false)
+    },
 }
 </script>
 
