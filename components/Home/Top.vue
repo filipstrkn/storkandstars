@@ -79,7 +79,7 @@ export default {
         left 0
         bottom 0
         top 0
-        background-color #e5e5e5
+        background-color $line
         width 1px
 
     p

@@ -2,7 +2,7 @@
 
     <p class="date">
         <span>{{ date.from.day }}.</span>
-        <span v-if="date.from.month">{{ date.from.month + '.' }}</span>
+        <span class="" v-if="date.from.month">{{ date.from.month + '.' }}</span>
         <span v-if="date.from.year">{{ date.from.year }}</span>
         <span v-if="date.to.day" class="to">{{ date.to.day }}.</span>
         <span v-if="date.to.month">{{ date.to.month }}.</span>
@@ -20,7 +20,11 @@ export default {
     methods: {
 
         formatDate(date) {
-            return date.split(" ")[0].split("-")
+            return date.split(" ")[0].split("-").map(part => {
+                return part[0] === '0'
+                ? part.substr(1)
+                : part
+            })
 
         }
     },

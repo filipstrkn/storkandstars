@@ -38,8 +38,8 @@ export default {
 #Intro
     padding-top 28vh
 
-    p
-        animation intro-in 600ms ease-in-out forwards
+    // p
+    //     animation intro-in 600ms ease-in-out forwards
 
 
 </style>

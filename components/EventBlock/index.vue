@@ -22,7 +22,7 @@
         </div>
 
         <link-unit :to="event.link.cached_url" class="link">
-            Přihlásit se
+            Zúčastnit se
         </link-unit>
 
 

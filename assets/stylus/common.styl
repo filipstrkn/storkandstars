@@ -7,32 +7,17 @@
 .title--h2
     font-size: 1.8rem
 
+
 .title--h3
     font-size: 1.6rem
     margin-bottom 1.6rem
+
 
 ._subtitle
     font-family: $main-font
     font-size: 1.2rem
     font-weight: 600
     color: $blue
-    // opacity .6
-
-// .link
-//     font-weight 400
-//     font-size 1rem
-//     font-style normal
-//     position relative
-//     z-index 2
-//     color alpha($black, .65)
-//     &:hover
-//         color: $black
-//     &::before
-//         content "+"
-//         display inline-block
-//         font-weight bold
-//         margin-right .5em
-
 
 
 ._image--loading
@@ -61,8 +46,18 @@
 // ////////////////////////////////////////////////////////////////////////////
 ._link
     position relative
-    font-family: $secondary-font
-    cursor pointer
+    &::after
+        content ""
+        position absolute
+        width 0
+        height 3px
+        background-color $blue
+        bottom - @height
+        left 0
+        transition width 400ms ease-out
+     &:hover
+        &::after
+            width 100%
 
 
 
@@ -90,23 +85,22 @@
     em
         background-color alpha($black, .05)
 
+.__text
+    font-family $serif
+    font-weight 300
+    line-height 2em
+    h1, p
+        font-weight: inherit
+        font-size: inherit
 
 
 ._text--large
-    font-family $serif
-    font-weight 300
-    // font-family: $secondary-font
-    // font-weight: 700
+    @extend .__text
     font-size calc(16px + 10 * ((100vw - 320px) / 680))
-    line-height 2em
 
 ._text--medium
-    font-family $serif
-    font-weight 300
-    // font-weight: 700
-    // font-family: $secondary-font
+    @extend .__text
     font-size calc(.00848 * 100vw + 15.81818px)
-    line-height 2em
 
 
 
@@ -194,9 +188,11 @@
 
 
 ._button
-
-    display block
-    padding 1em .6em
+    display flex
+    justify-content: center
+    align-items: center
+    // padding 1em .6em
+    padding 0 .6em
     position relative
     text-align center
     font-size 1rem
@@ -205,6 +201,7 @@
     color $white
     line-height normal
     width 14em
+    height 3.6em
     transition background-color 250ms ease-out
     border-radius 30em
     background-color $blue

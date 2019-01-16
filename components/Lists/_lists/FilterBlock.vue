@@ -2,18 +2,21 @@
     <div id="FilterBlock">
 
 
+        <h3 class="selected _subtitle _clickable" @click="toggleFilters">{{ selectedFilter }}&nbsp;<svg id="Arrow" :class="{'opened': areFilters}" viewBox="0 0 11 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1.5;"><path d="M8.707,1.414l-3.633,3.66l-3.66,-3.66"/></svg></h3>
 
-        <ul class="filters" v-show="areFilters">
-            <li @click="resetFilter" class="_clickable _text--medium">Vše</li>
-            <li v-for="(filter, index) in givenFitlers"
-                :key="index"
-                @click="setFilter"
-                class="_clickable _text--medium">{{ filter }}</li>
-        </ul>
 
-        <div :class="{'hidden': areFilters}" class="selected _button _clickable" @click="showFilters" >
-            <span class="selected__filter">{{ selectedFilter }}</span>
-        </div>
+        <transition name="filters">
+            <div class="filters" v-show="areFilters">
+                <ul>
+                    <li @click="resetFilter" class="_clickable _link">Vše</li>
+                    <li v-for="(filter, index) in givenFitlers"
+                        :key="index"
+                        @click="setFilter"
+                        class="_clickable _link">{{ filter }}</li>
+                </ul>
+            </div>
+        </transition>
+
 
 
 
@@ -28,7 +31,7 @@ export default {
     data() {
         return {
             filter: '',
-            defaultFilter: 'Filtrovat',
+            defaultFilter: 'Zobrazit vše',
             areFilters: false
         }
     },
@@ -44,25 +47,25 @@ export default {
         },
 
         selectedFilter() {
-            if ( this.areFilters ) return 'Zavřít'
+            // if ( this.areFilters ) return 'Zavřít'
             if ( this.filter === '' ) return this.defaultFilter
             else return this.filter
-        }
+        },
     },
 
 
     methods: {
         setFilter(e) {
             this.filter = e.target.innerText
-            this.areFilters = false
+            this.toggleFilters()
             this.runFiltering()
         },
         resetFilter() {
             this.filter = ''
-            this.areFilters = false
+            this.toggleFilters()
             this.runFiltering()
         },
-        showFilters() {
+        toggleFilters() {
             this.areFilters = !this.areFilters
         },
         runFiltering() {
@@ -72,16 +75,7 @@ export default {
                 this.$emit('filtering', this.filters.filter( filter => filter.content.services.includes(this.filter) ))
             }
         },
-        isVisible(index) {
-            const duration = 100 * index
-            console.log('visibility')
-            if (this.areFilters) {
-                setTimeout( () => {
-                    return 'visible'
-                }, duration)
-            } return ''
 
-        }
     },
     mounted() {
         this.runFiltering()
@@ -95,91 +89,68 @@ export default {
 
 @import '~assets/stylus/variables'
 
-#FilterBlock
-    // position fixed
-    // bottom 0
-    // padding-bottom 2%
-    // box-sizing border-box
-    // left 50%
-    // transform translateX(-50%)
-    // z-index 2
-    // min-height 100%
-    // width 100%
-    // overflow-y auto
-    // display flex
-    // transition all 250ms ease
-
-    // flex-direction column
-    // justify-content center
-    // background-color yellow
-    // pointer-events none
-    // & > *
-    //     pointer-events all
-    .filters.opened
-        // border-radius 4px
-        background-color alpha($white, .6)
-
-        .selected
-            background-color $black
-
-
 .selected
-    position fixed
-    bottom 5%
-    left 50%
-    z-index 2
-    transform translateX(-50%)
-    transition all 400ms ease
-    .selected__filter
-        pointer-events none
-        // display inline-block
-        // margin 0 auto
-    &.hidden
-        bottom -10em
+    display inline-block
+
+#Arrow
+    position relative
+    width .6em
+    height @width
+    fill none
+    stroke-width 1px
+    stroke $blue
+    transition transform 250ms ease-in-out
+    pointer-events none
+
+    &.opened
+        transform rotate(180deg)
 
 
+
+// ////////////////////////////////////////////////////////////////////////////
+//                                  FILTER                                   //
+// ////////////////////////////////////////////////////////////////////////////
 .filters
-    position fixed
-    width 100%
-    bottom 0
-    padding 20% 5% 3% 5%
-    background linear-gradient(to top, $white, alpha($white, 0))
-    z-index 2
+    position relative
+    max-height 40em
+    overflow hidden
+
+    &::after
+        content ""
+        position absolute
+        width 100%
+        height 1px
+        background-color $line
+        left 0
+        bottom 0
+    ul
+        padding 3.6em 0
+
     li
-        // display block
         display inline-block
-        margin 0 1em
-        text-align center
-        // transition: all .4s ease-out
-        transition-property all
-        transition-duration .4s
-        transition-timing-function ease-in-out
-        // font-size 1rem
-        // font-weight 700
-        // font-family $secondary-font
-        // background-color $blue
-        // font-family $serif
-        // color $white
-        // width 14em
-        // padding 1em .6em
-        // border-radius 30em
-        // transition all 400ms ease
-
-// .show-enter-active, .show-leave-active
-//     transition: all 2s ease-out
-
-.show-enter, .show-leave-to
-    background blue
-    opacity: 0
-    transform translateY(20%)
+        margin .6em 3em .6em 0
+        font-family $secondary-font
 
 
-// .show-enter-active, .show-leave-active
-//     transition: all 2s ease-out
 
-.show-enter, .show-leave-to
-    opacity: 1
-    transform translateY(0)
+// ////////////////////////////////////////////////////////////////////////////
+//                                TRANSITION                                 //
+// ////////////////////////////////////////////////////////////////////////////
+.filters-enter-active
+    transition all 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+
+
+.filters-enter, .filters-leave-to
+    max-height 0 !important
+    opacity 0 !important
+
+
+.filters-leave-active
+    transition all 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940)
+
+
+.filters-enter-to, .filters-leave
+    max-height 40em !important
 
 
 

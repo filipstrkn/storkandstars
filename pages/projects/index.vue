@@ -1,10 +1,19 @@
 <template>
     <main id="Projects" class="_page">
 
-        <filter-block :filters="stories" @filtering="setFilters" />
-
         <div class="_page__content">
-            <project-list :projects="filtered" :visibleDeactivated="false" />
+
+            <div class="intro">
+                <div class="_text--medium title">
+                    <p>Vítejte v šuplíku našich projektů.</p>
+                </div>
+
+                <filter-block :filters="stories" @filtering="setFilters" />
+            </div>
+
+
+            <project-list :projects="filtered" :visibleDeactivated="true" />
+
         </div>
 
         <footer-block />
@@ -69,3 +78,19 @@ export default {
 
 }
 </script>
+
+
+
+<style lang="stylus" scoped>
+
+._page__content
+    margin-bottom 10%
+    padding-top 10em
+
+.intro
+    padding 10% 10% 0 10%
+
+    .title
+        max-width 20em
+
+</style>

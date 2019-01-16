@@ -9,16 +9,16 @@
                         <!-- <ul class="links"> -->
                         <ul class="links _text--medium">
                             <li>
-                                <nuxt-link :to="'/contact'" class="_clickable">Design Sprint</nuxt-link>
+                                <nuxt-link :to="'/contact'" class="_link _clickable">Design Sprint</nuxt-link>
                             </li>
                             <li>
-                                <nuxt-link :to="'/projects'" class="_clickable">Projekty</nuxt-link>
+                                <nuxt-link :to="'/projects'" class="_link _clickable">Projekty</nuxt-link>
                             </li>
                             <li>
-                                <nuxt-link :to="'/'" class="_clickable">Vzdělávání</nuxt-link>
+                                <nuxt-link :to="'/'" class="_link _clickable">Vzdělávání</nuxt-link>
                             </li>
                             <li>
-                                <nuxt-link :to="'/'" class="_clickable">Kontakt</nuxt-link>
+                                <nuxt-link :to="'/'" class="_link _clickable">Kontakt</nuxt-link>
                             </li>
                         </ul>
                         <ul class="socials">
@@ -30,7 +30,10 @@
                         </ul>
                     </div>
 
-                    <link-unit :to="'/'" class="menu__specials">Odstartuj projekt</link-unit>
+                    <link-unit :to="'/'" class="menu__specials">
+                        <rocket-icon slot="icon" />
+                        Odstartuj projekt
+                    </link-unit>
 
                 </div>
 
@@ -46,11 +49,13 @@
 <script>
 
 import LinkUnit from '~/components/Home/_home/LinkUnit'
+import RocketIcon from './RocketIcon'
 
 export default {
     name: 'MenuBlock',
     components: {
-        'link-unit': LinkUnit
+        'link-unit': LinkUnit,
+        'rocket-icon': RocketIcon
     },
     methods: {
         closeOnBlur(e) {
@@ -115,20 +120,6 @@ export default {
     margin-bottom 20%
     li
         margin 2% 0
-        a
-            position relative
-            &::after
-                content ""
-                position absolute
-                width 0
-                height 3px
-                background-color $blue
-                bottom 0
-                left 0
-                transition width 400ms ease-out
-        &:hover
-            a::after
-                width 100%
 
 .socials li
     margin .6em 0
