@@ -40,10 +40,6 @@ export default {
         'footer-block': FooterBlock
     },
 
-    transition: {
-        name: 'page'
-    },
-
 
     mixins: [storyblokLivePreview],
 

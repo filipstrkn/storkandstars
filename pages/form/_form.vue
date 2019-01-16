@@ -66,6 +66,10 @@ export default {
         }).catch((res) => {
             context.error({ statusCode: res.response.status, message: res.response.data })
         })
+    },
+
+    beforeMount() {
+        this.$store.commit('toggleMenu', false)
     }
 
 

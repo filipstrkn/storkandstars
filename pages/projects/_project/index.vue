@@ -39,8 +39,6 @@ export default {
 
 
     asyncData (context) {
-        // console.log('Project from async')
-        // Check if we are in the editor mode
         let version = context.query._storyblok || context.isDev ? 'draft' : 'published'
 
         // Load the JSON from the API
@@ -52,19 +50,8 @@ export default {
         }).catch((res) => {
             context.error({ statusCode: res.response.status, message: res.response.data })
         })
-    },
+    }
 
-
-    // mounted () {
-    //     this.$nextTick(() => {
-    //         this.$nuxt.$loading.start()
-
-    //         this.$nextTick( () => {
-    //             this.$nuxt.$loading.finish()
-    //             this.loading = false
-    //         })
-    //     })
-    // }
 }
 </script>
 

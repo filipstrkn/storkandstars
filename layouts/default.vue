@@ -34,6 +34,8 @@ export default {
 
 <style lang="stylus">
 
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:100,300,300i,400,500,600,700')
+
 @import '~assets/stylus/reset'
 @import '~assets/stylus/common'
 @import '~assets/stylus/variables'

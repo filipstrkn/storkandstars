@@ -51,8 +51,6 @@ export default {
             }).catch((res) => {
                 context.error({ statusCode: res.response.status, message: res.response.data })
             })
-        } else {
-            console.log('Already set')
         }
     }
 }
@@ -72,7 +70,7 @@ export default {
     width 40%
     padding-top 26%
     padding-left 1em
-    // margin 0 auto
+
     &::before
         content ""
         position absolute

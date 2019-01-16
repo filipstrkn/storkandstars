@@ -30,7 +30,7 @@
                         </ul>
                     </div>
 
-                    <link-unit :to="'/'" class="menu__specials">
+                    <link-unit :to="'/form/new-project'" class="menu__specials">
                         <rocket-icon slot="icon" />
                         Odstartuj projekt
                     </link-unit>

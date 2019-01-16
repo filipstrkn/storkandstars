@@ -47,10 +47,6 @@ export default {
 
     mixins: [storyblokLivePreview],
 
-     computed: {
-
-    },
-
     methods: {
         setFilters(filtered) {
             this.filtered = filtered
