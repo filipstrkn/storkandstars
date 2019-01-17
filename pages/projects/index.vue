@@ -4,7 +4,7 @@
         <div class="_page__content">
 
             <div class="intro">
-                <div class="_text--medium title">
+                <div class="_text--large title">
                     <p>Vítejte v šuplíku našich projektů.</p>
                 </div>
 
