@@ -14,25 +14,40 @@
 
 
 
-
-
+// ////////////////////////////////////////////////////////////////////////////
+//                                    PAGE                                   //
+// ////////////////////////////////////////////////////////////////////////////
 @keyframes transOut
     0%
-        top 100%
-    100%
         top 0
+    100%
+        top 100%
 
 @keyframes transIn
     0%
-        top 0
-    100%
         top -100%
+    100%
+        top 0
 
 
-
-.page-enter,
 .page-enter-active
-    transition all .3s ease-out
+    transition: all .4s
+.page-leave-active
+    transition: all .6s
+
+.page-enter-active
+    &::after
+        content ""
+        position fixed
+        top -100%
+        left 0
+        width 100%
+        height 100%
+        z-index 98
+        background-color #fafafa
+        animation transOut .4s ease-out forwards
+
+.page-leave-active
     &::after
         content ""
         position fixed
@@ -40,30 +55,15 @@
         left 0
         width 100%
         height 100%
-        z-index 999
-        transition all 1s ease-in-out
-        background-color #f6f6f6
-        animation transIn .3s ease-in-out forwards
-
-.page-leave-active,
-.page-leave
-    transition all .6s ease-in-out
-    &::after
-        content ""
-        position fixed
-        top 100%
-        left 0
-        width 100%
-        height 100%
-        z-index 1000
-        transition all 1s ease-in
-        background-color #f6f6f6
-        animation transOut .6s ease-in-out forwards
+        z-index 98
+        background-color #fafafa
+        animation transIn .6s ease-in forwards
 
 
 
-
-
+// ////////////////////////////////////////////////////////////////////////////
+//                                    MENU                                   //
+// ////////////////////////////////////////////////////////////////////////////
 .menu-enter,
 .menu-leave-to
     &::after
@@ -90,18 +90,18 @@
         margin: 2% 0 !important
 
 .menu-leave-active
-    transition-duration 350ms
+    transition-duration 250ms
     &::after,
     & > #MenuBody
-        transition all 350ms ease-out
+        transition all 250ms ease-out
 
 .menu-enter-active
-    transition-duration 1.2s
+    transition-duration 1s
     &::after
-        transition opacity 1.2s ease
+        transition opacity 1s ease
     & > #MenuBody
         transition top .4s cubic-bezier(0.445, 0.05, 0.55, 0.95)
     .links li
-        transition all 1.2s ease
+        transition all 1s ease
 
 

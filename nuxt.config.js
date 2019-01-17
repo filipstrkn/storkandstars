@@ -37,7 +37,7 @@ module.exports = {
     name: 'pulse',
     color: '#2a3dea',
     background: '#2a3dea',
-  },
+  }
   /*
   ** Build configuration
   */

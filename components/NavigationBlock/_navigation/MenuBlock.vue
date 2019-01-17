@@ -8,16 +8,16 @@
                     <div class="menu__content">
                         <!-- <ul class="links"> -->
                         <ul class="links _text--medium">
-                            <li>
+                            <li @click="closeMenu">
                                 <nuxt-link :to="'/contact'" class="_link _clickable">Design Sprint</nuxt-link>
                             </li>
-                            <li>
+                            <li @click="closeMenu">
                                 <nuxt-link :to="'/projects'" class="_link _clickable">Projekty</nuxt-link>
                             </li>
-                            <li>
+                            <li @click="closeMenu">
                                 <nuxt-link :to="'/'" class="_link _clickable">Vzdělávání</nuxt-link>
                             </li>
-                            <li>
+                            <li @click="closeMenu">
                                 <nuxt-link :to="'/'" class="_link _clickable">Kontakt</nuxt-link>
                             </li>
                         </ul>
@@ -60,6 +60,9 @@ export default {
     methods: {
         closeOnBlur(e) {
             if (e.target.getAttribute('id') === 'Menu' ) this.$store.commit('toggleMenu')
+        },
+        closeMenu() {
+            this.$store.commit('toggleMenu', false)
         }
     }
 }
