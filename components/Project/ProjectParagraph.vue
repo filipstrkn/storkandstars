@@ -1,15 +1,10 @@
 <template>
     <section id="ProjectParagraph">
 
-        <!-- <div class="_container--center">
-            <h1>{{ blok.title }}</h1>
-            <h1>{{ blok.subtitle }}</h1>
 
-            <p>{{ blok.text }}</p>
-        </div> -->
 
         <div class="text">
-            <h3 v-if="blok.title" :style="theme">{{ blok.title }}</h3>
+            <h3 v-if="blok.title" :style="theme" class="title--h3">{{ blok.title }}</h3>
             <p>{{ blok.text }}</p>
         </div>
 
@@ -47,11 +42,6 @@ export default {
     max-width 40em
     padding: 10% 2rem
     margin-left: 10%
-
-
-h3
-    font-size 2em
-    font-weight 400
 
 p
     font-size 1.2rem

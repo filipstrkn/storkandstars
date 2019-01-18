@@ -2,9 +2,9 @@
     <section id="Intro">
 
         <div class="_container--center _text--large _text">
-            <h3 v-if="blok.pre_title" class="_subtitle">{{ blok.pre_title }}</h3>
-            <p v-html="message"></p>
-            <h3 v-if="blok.post_title" class="_subtitle">{{ blok.post_title }}</h3>
+            <h3 v-if="blok.pre_title" v-editable="blok" class="_subtitle">{{ blok.pre_title }}</h3>
+            <p v-html="message" v-editable="blok"></p>
+            <h3 v-if="blok.post_title" v-editable="blok" class="_subtitle">{{ blok.post_title }}</h3>
         </div>
 
     </section>

@@ -37,7 +37,8 @@ module.exports = {
     name: 'pulse',
     color: '#2a3dea',
     background: '#2a3dea',
-  }
+  },
+  scrollToTop: false
   /*
   ** Build configuration
   */

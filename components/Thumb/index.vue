@@ -13,9 +13,12 @@
                     Title
                 ////////////////////////////////////////////////////////////// -->
                 <div class="name">
-                    <h3 :style="{color: content.theme_color.color}">{{ content.client }}</h3>
-                    <p :style="{color: $store.state.theme.dark_mode && '#fff'}">
-                        <span v-for="(service, index) in content.services" :key="index">{{ service }}</span>
+                    <h3 :style="{color: content.text.color}">{{ content.client }}</h3>
+                    <p>
+                        <span
+                            v-for="(service, index) in content.services"
+                            :key="index"
+                            :style="{color: content.text.color}">{{ service }}</span>
                     </p>
                 </div>
 
@@ -44,7 +47,7 @@ export default {
     computed: {
         theme() {
             return {
-                backgroundColor: this.content.background.color
+                backgroundColor: this.content.thumb_theme.color
             }
         }
     }
@@ -144,7 +147,6 @@ export default {
         h3
             font-weight 900
             margin 0
-            color #fff
 
     ._thumbnail
         width 100%

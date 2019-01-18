@@ -1,8 +1,10 @@
 <template>
   <div @mousemove="launchFollower">
-    <navigation-block />
-    <nuxt/>
-    <follower></follower>
+    <no-ssr>
+      <navigation-block />
+        <nuxt/>
+      <follower />
+    </no-ssr>
   </div>
 </template>
 
@@ -13,6 +15,7 @@ import Follower from '~/components/Draggable/_draggable/Follower'
 import NavigationBlock from '~/components/NavigationBlock'
 
 export default {
+  scrollToTop: false,
   components: {
     'follower': Follower,
     'navigation-block': NavigationBlock,

@@ -51,7 +51,7 @@ export default {
 
 
 #Footer
-    border-top solid 1px $grey--light
+    border-top solid 1px $line
     margin 0 10%
     padding 4em 0
     display flex

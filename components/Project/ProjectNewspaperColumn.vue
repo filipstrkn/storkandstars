@@ -2,7 +2,7 @@
     <section id="ProjectNewsletterColumn" class="newletter__column">
 
 
-        <h3 :style="{color: $store.state.theme.text}">{{ blok.title }}</h3>
+        <h3 :style="{color: $store.state.theme.text}" class="title--h3">{{ blok.title }}</h3>
         <p>{{ blok.text }}</p>
 
 
@@ -30,10 +30,6 @@ export default {
     vertical-align text-top
     padding 5%
 
-
-    h3
-        font-size 2em
-        font-weight 400
     p
         font-size 1.2rem
         line-height 1.8em

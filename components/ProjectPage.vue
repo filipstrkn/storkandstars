@@ -1,5 +1,5 @@
 <template>
-    <main id="ProjectPage" :class="`page--${mode}`" :style="theme">
+    <main id="ProjectPage" :style="theme">
 
         <component
             :key="blok._uid"
@@ -22,17 +22,14 @@ import FooterBlock from '~/components/Home/Footer'
 export default {
     name: 'Page',
     props: ['blok'],
-
+    scrollToTop: false,
     components: {
         'footer-block': FooterBlock
     },
 
     computed: {
-        mode() {
-            return this.$store.state.theme.dark_mode ? 'dark' : 'light'
-        },
         theme() {
-            if ( this.$store.state.theme.dark_mode ) return
+            if ( !this.blok.apply_theme ) return
             return {
                 backgroundColor: this.$store.state.theme.background
             }
@@ -41,18 +38,12 @@ export default {
 
     created() {
         this.$store.commit('setTheme', {
-            dark_mode: this.blok.dark,
-            text: this.blok.theme_color.color,
+            text: this.blok.text.color,
             background: this.blok.background.color,
         })
     },
     beforeMount() {
         this.$store.commit('toggleMenu', false)
-    },
-    destroyed() {
-        this.$store.commit('setTheme', {
-            dark_mode: false
-        })
     }
 }
 </script>

@@ -5,7 +5,8 @@
 
 <script>
 export default {
-    name: 'EventPage'
+    name: 'EventPage',
+    scrollToTop: false,
 }
 </script>
 

@@ -33,7 +33,6 @@ export default function createStore() {
             state: {
                 menu: false,
                 theme: {
-                    dark_mode: false,
                     text: null,
                     background: null
                 },

@@ -1,5 +1,5 @@
 <template>
-    <main id="Page" :class="`page--${mode}`">
+    <main id="Page">
 
         <component
             :key="blok._uid"
@@ -18,29 +18,9 @@
 export default {
     name: 'Page',
     props: ['blok'],
-    computed: {
-        mode() {
-            return this.$store.state.theme.dark_mode ? 'dark' : 'light'
-        }
-    },
+    scrollToTop: false,
     beforeMount() {
         this.$store.commit('toggleMenu', false)
     }
 }
 </script>
-
-
-
-<style lang="stylus" scoped>
-
-
-@import '~assets/stylus/variables'
-
-
-.page--dark
-    background-color $dark
-    color $white
-
-
-</style>
-
