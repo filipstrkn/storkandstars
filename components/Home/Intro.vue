@@ -40,7 +40,7 @@ export default {
 
 #Box
     width 100%
-    padding-top 35vh
+    padding-top 30vh
 
 .text
     font-size calc(1rem + 46 * ((100vw - 320px) / 680))

@@ -1,13 +1,15 @@
 <template>
     <section id="TextBlock">
 
-
-
-        <div class="_container--center _text--medium" data-visible="false">
-            <!-- <h3 v-if="blok.pre_title" class="_subtitle">{{ blok.pre_title }}</h3> -->
-            <div class="_text" v-html="message"></div>
-            <!-- <h3 v-if="blok.post_title" class="_subtitle">{{ blok.post_title }}</h3> -->
+        <div class="text-block__content">
+            <div class="text-block__text">
+                <p>{{ blok.text }}</p>
+                <link-unit :to="blok.link_to.cached_url">
+                    {{ blok.link_name }}
+                </link-unit>
+            </div>
         </div>
+
 
 
 
@@ -19,18 +21,14 @@
 <script>
 
 import isVisible from '~/mixins/isVisible'
-import ServiceUnit from '~/components/Home/_home/ServiceUnit'
-import marked from 'marked'
-
+import LinkUnit from '~/components/Home/_home/LinkUnit'
 
 export default {
     name: 'TextBlock',
     props: ['blok'],
     mixins: [isVisible],
-    computed: {
-        message() {
-            return marked(this.blok.text)
-        }
+    components: {
+        'link-unit': LinkUnit
     }
 }
 
@@ -44,28 +42,37 @@ export default {
 @import '~assets/stylus/variables'
 
 #TextBlock
-    padding 12% 0
+    padding $spacing-flex 2em
 
-// ._text
-    // transition line-height $appear ease-out
-    // font-family $serif
-    // font-weight 300
-    // font-weight 700
+.text-block__content
+    position relative
+    max-width 76em
+    margin 0 auto
+    padding 1em
+    background-color #bff9f2
+    // &::after
+    //     content ""
+    //     position absolute
+    //     width 100%
+    //     height calc(100% - (1rem + 46 * ((100vw - 320px) / 680)))
+    //     left 0
+    //     bottom 0
+    //     z-index 0
 
-[data-visible="false"]
-    opacity 0
-    transform translateY(6rem)
-    transition opacity $appear ease-in, transform $appear ease-in
+    .text-block__text
+        position relative
+        z-index 1
+        padding 7em
 
-    ._text
-        line-height 3
-
-[data-visible="true"]
-    opacity 1
-    transform translateY(0)
-    transition opacity $appear ease-out, transform $appear ease-out
+    // h3
+    //     font-size calc(1rem + 46 * ((100vw - 320px) / 680))
 
 
-
+    p
+        font-size 2.6em
+        max-width 13em
+        margin-bottom 1em
+        font-weight 900
+        font-family $secondary-font
 
 </style>

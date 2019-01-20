@@ -25,6 +25,7 @@ import Horizont from '~/components/Home/Horizont'
 import ProjectUnit from '~/components/Projects/ProjectUnit'
 import EventList from '~/components/Lists/EventList'
 import Top from '~/components/Home/Top'
+import Separator from '~/components/Home/_home/Separator'
 
 
 
@@ -82,6 +83,8 @@ Vue.component('next_project', NextProject)
 Vue.component('intro', Intro)
 Vue.component('text_block', TextBlock)
 Vue.component('projects', Top)
+Vue.component('separator', Separator)
+
 
 Vue.component('horizont', Horizont)
 Vue.component('project_unit', ProjectUnit)

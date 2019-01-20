@@ -97,12 +97,24 @@ export default {
 
     &:hover
         ._thumbnail
-            transform scale(1.05)
+            transform scale(.95)
 
         .name
             opacity 1
             p
                 opacity 1
+
+    &[data-visible="false"] .thumb
+        transition all $appear ease-in
+        transform translateY(2em)
+        opacity 0
+
+
+    &[data-visible="true"] .thumb
+        transition all 600ms ease-out
+        transform translateY(0)
+        opacity 1
+
 
 .thumb--square
     padding-bottom 100%
@@ -111,16 +123,6 @@ export default {
 .thumb--taller
     padding-bottom 150%
 
-    // &[data-visible="false"] .thumb
-    //     transition all $appear ease-in
-    //     transform scaleY(1.4) translateY(30%)
-    //     opacity 0
-
-
-    // &[data-visible="true"] .thumb
-    //     transition all 600ms ease-out
-    //     transform scaleY(1) translateY(0)
-    //     opacity 1
 
 .thumb
     position relative

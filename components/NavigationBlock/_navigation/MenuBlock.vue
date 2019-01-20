@@ -3,43 +3,28 @@
         <section v-show="$store.state.menu" id="Menu" @click="closeOnBlur">
 
             <div id="MenuBody">
-                <div class="menu__container">
 
-                    <div class="menu__content">
-                        <!-- <ul class="links"> -->
-                        <span>Menu</span>
-                        <ul class="links _text--large">
-                            <li @click="closeMenu">
-                                <nuxt-link :to="'/contact'" class="_link _clickable">Design Sprint</nuxt-link>
-                            </li>
-                            <li @click="closeMenu">
-                                <nuxt-link :to="'/projects'" class="_link _clickable">Projekty</nuxt-link>
-                            </li>
-                            <li @click="closeMenu">
-                                <nuxt-link :to="'/'" class="_link _clickable">Vzdělávání</nuxt-link>
-                            </li>
-                            <li @click="closeMenu">
-                                <nuxt-link :to="'/'" class="_link _clickable">Kontakt</nuxt-link>
-                            </li>
-                        </ul>
+                <ul class="links">
+                    <li @click="closeMenu">
+                        <nuxt-link :to="'/contact'" class="_link _clickable">Design Sprint</nuxt-link>
+                    </li>
+                    <li @click="closeMenu">
+                        <nuxt-link :to="'/projects'" class="_link _clickable">Projekty</nuxt-link>
+                    </li>
+                    <li @click="closeMenu">
+                        <nuxt-link :to="'/'" class="_link _clickable">Vzdělávání</nuxt-link>
+                    </li>
+                    <li @click="closeMenu">
+                        <nuxt-link :to="'/'" class="_link _clickable">Kontakt</nuxt-link>
+                    </li>
+                </ul>
+
+                <nuxt-link :to="'/form/new-project'" class="menu__special-link _clickable">
+                    <div id="Icon">
+                        <rocket-icon slot="icon" />
                     </div>
 
-
-                    <div class="left">
-                        <!-- <ul class="socials">
-                            <li class="_clickable">slack</li>
-                            <li class="_clickable">instagram</li>
-                            <li class="_clickable">twitter</li>
-                            <li class="_clickable">facebook</li>
-                            <li class="_clickable">linkedin</li>
-                        </ul> -->
-                        <link-unit :to="'/form/new-project'" class="menu__specials">
-                            <rocket-icon slot="icon" />
-                            Odstartuj projekt
-                        </link-unit>
-                    </div>
-
-                </div>
+                </nuxt-link>
 
             </div>
 
@@ -85,6 +70,7 @@ export default {
     width 100%
     height 100%
     z-index 99
+    display flex
     &::after
         content ""
         position absolute
@@ -92,59 +78,37 @@ export default {
         left 0
         min-height 100%
         width 100%
-        background-color alpha(#000, .45)
-        background-color #000
+        background-color alpha(#000, .2)
+        // background-color #000
         // background-color alpha(#000, .8)
         z-index 98
 
 
 #MenuBody
     position absolute
-    display inline-block
     right 0
-    // display flex
-    // align-items center
-    // justify-content center
+    display flex
+    flex-direction column
     z-index 99
-
-    // width 100%
-    min-height 40em
     min-height 100%
-    // height 96%
-    // max-height 56em
 
     background-color $white
-    // background-color #000
-    // background-color $blue
-    // color $white
-    box-shadow 0 3px 30px 0 alpha($black, .02), 0 1px 0 0 alpha($black, 0)
+    box-shadow -3px 0 30px 0 alpha($black, .02), -1px 0 0 0 alpha($black, 0)
 
-
-.menu__container
-    // flex-grow 1
-    // flex-shrink 0
-    position relative
-    // max-width 86em
-    margin 0 auto
-    // display flex
-    // justify-content space-around
-    // align-items flex-end
-    padding $spacing-flex 2em
-    // height 100%
-
-
-// .menu__content
-//     position absolute
-//     bottom 10%
-//     left 16%
 
 
 .links
-    // display flex
-    // flex-direction column
-    // margin-bottom 20%
+    font-size 2.2em
+    flex-grow 1
+    flex-shrink 0
+    padding $spacing-flex 2em 2em 2em
     li
         margin 2% 0
+        span
+            display inline-block
+            font-size .4em
+            margin-right 1em
+            vertical-align text-top
 
 .socials
     max-width 15em
@@ -167,10 +131,23 @@ export default {
         &:hover
             opacity 1
 
-// .menu__specials
-//     position absolute
-//     bottom 10%
-//     right 16%
+.menu__special-link
+    display flex
+    align-items center
+    justify-content center
+    // padding 1.6em 1em
+    font-weight 500
+    background-color #ffc5c8
+    width 4em
+    height @width
+    border-radius 100%
+    margin 0 auto 4em auto
+    *
+        pointer-events none
+
+    #Icon
+        width 18px
+        // margin-right 10%
 
 </style>
 

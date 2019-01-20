@@ -25,6 +25,8 @@ export default {
           const left = e.clientX || e.pageX
           const top = e.clientY || e.pageY
           const clickable = e.target.classList.contains('_clickable') ? true : false
+
+          // this.$store.commit('setFollower', { clickable, position: {top: top, left} })
           setTimeout(() => {
             this.$store.commit('setFollower', { clickable, position: {top: top, left} })
           }, 20)
@@ -38,8 +40,7 @@ export default {
 <style lang="stylus">
 
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:100,300,300i,400,500,600,700')
-@import url('https://fonts.googleapis.com/css?family=Sarabun:300,300i,400,400i,500,500i,600,600i,700,700i,800&amp;subset=latin-ext')
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,500,500i,600,600i,700&amp;subset=latin-ext')
+@import url('https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700,800|Muli:400,400i,600,600i,700,700i,800,900&amp;subset=latin-ext')
 
 
 @import '~assets/stylus/reset'
@@ -53,7 +54,9 @@ html
   user-select none
   font-family $main-font
   color $black
-  cursor url("~assets/cursor.png") 5 5, auto
+  // cursor url("~assets/cursor.png") 5 5, auto
+  // *
+  //   cursor none
 
   img
     pointer-events none !important

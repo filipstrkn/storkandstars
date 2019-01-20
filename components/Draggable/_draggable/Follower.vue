@@ -39,23 +39,26 @@ $arrow = 5px
 
 
 #Follower.isClickable
-    width 50px
+    width 46px
     height @width
+    background-color alpha($black, .1)
+
     // background none
     // border solid 2px $purple
-    // border solid 2px $blue
-    background-color alpha($blue, .3)
+    // background-color alpha($blue, .3)
+
 
 #Follower
     position fixed
     z-index 1000
-    width 1.6rem
-    width 2rem
-    width 6px
+    width 8px
+    // width 2rem
+    // width 6px
     height @width
     border-radius 100%
     // background #935BF9
     background $blue
+    background $black
     transition width $duration ease-out, height $duration ease-out, border $duration ease-out, background $duration ease-out
     transform translate(-50%, -50%)
     pointer-events none

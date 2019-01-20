@@ -32,7 +32,7 @@ export default {
     transform rotate(36deg)
     svg
         width 18px
-        fill $white
+        fill $black
 
 
 #Fire
@@ -50,7 +50,7 @@ export default {
     position relative
     width 1px
     height 100%
-    background-color $white
+    background-color $black
 
 #Fire1
     height 3px

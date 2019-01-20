@@ -47,10 +47,12 @@ export default {
 
 <style lang="stylus" scoped>
 
+@import '~assets/stylus/variables'
+
 #ProjectList
     max-width 82em
     margin 0 auto
-    padding 20% 6em 0 6em
+    padding 20% 6em $spacing-flex 6em
 
     .list__item
         margin-top 50%
