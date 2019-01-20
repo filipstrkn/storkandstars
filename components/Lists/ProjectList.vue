@@ -48,7 +48,7 @@ export default {
 <style lang="stylus" scoped>
 
 #ProjectList
-    max-width 86em
+    max-width 82em
     margin 0 auto
     padding 20% 6em 0 6em
 

@@ -2,12 +2,25 @@
     <section id="ProjectNewsletter" class="_container">
 
         <div class="columns">
-            <component
-                :key="blok._uid"
-                v-for="blok in blok.columns"
-                :blok="blok"
-                :is="blok.component">
-            </component>
+
+            <masonry
+                :columnClass="['column']"
+                :cols="2"
+                :gutter="{
+                    default: '7em',
+                    800: 40
+                }">
+
+                <component
+                    class="column__unit"
+                    :key="blok._uid"
+                    v-for="blok in blok.columns"
+                    :blok="blok"
+                    :is="blok.component">
+                </component>
+
+            </masonry>
+
         </div>
 
     </section>
@@ -26,16 +39,31 @@ export default {
 
 <style lang="stylus" scoped>
 
+@import '~assets/stylus/variables'
 
 #ProjectNewsletter
-    padding 10% 0
+    padding $spacing-flex 0 0 0
 
 
 .columns
-    margin 0 auto
-    max-width 80em
-    & > *
-        display inline-block
-        width 50%
+    max-width 60em
+    margin 0 auto -4em auto
+    // background-color grey
+    text-align center
+    // margin 0 auto
+    // text-align center
+    // // padding 0 10%
+    // max-width 80em
+    // & > *
+    //     background-color blue
+    //     display inline-block
+    //     width 46%
+    //     text-align left
+
+.column__unit
+    max-width 26em
+    margin-bottom $spacing-flex
+    // background-color blue
+    text-align left
 
 </style>

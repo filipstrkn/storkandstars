@@ -4,9 +4,9 @@
         <div class="_page__content">
 
             <div class="intro">
-                <div class="_text--large title">
+                <!-- <div class="_text--large title">
                     <p>Vítejte v šuplíku našich projektů.</p>
-                </div>
+                </div> -->
 
                 <filter-block :filters="stories" @filtering="setFilters" />
             </div>
@@ -84,7 +84,7 @@ export default {
     padding-top 10em
 
 .intro
-    padding 10% 10% 0 10%
+    padding calc(5em + 2%) 10% 0 10%
 
     .title
         max-width 20em

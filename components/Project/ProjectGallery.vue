@@ -38,11 +38,13 @@ export default {
 
 <style lang="stylus">
 
+@import '~assets/stylus/variables'
 @import '~assets/stylus/mixins'
 
 
 #ProjectGallery
-    padding 4em 0
+    // padding 4em 0
+    padding $spacing-flex 0
 
 .project-gallery__images
     display flex

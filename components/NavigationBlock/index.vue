@@ -41,15 +41,26 @@ export default {
     display flex
     justify-content space-between
     align-items center
-    padding 4% 5%
+    // padding 4% 5%
+    // padding 5% 6%
     pointer-events none
     & > *
         pointer-events all
 
 
+    // z-index 98
+
 .logo,
 .burger
+    position fixed
+    top 0
     z-index 100
+.logo
+    left 0
+
+.burger
+    right 3em
+    top 2em
 
 
 </style>

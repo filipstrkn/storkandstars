@@ -38,6 +38,9 @@ export default {
 <style lang="stylus">
 
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:100,300,300i,400,500,600,700')
+@import url('https://fonts.googleapis.com/css?family=Sarabun:300,300i,400,400i,500,500i,600,600i,700,700i,800&amp;subset=latin-ext')
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,500,500i,600,600i,700&amp;subset=latin-ext')
+
 
 @import '~assets/stylus/reset'
 @import '~assets/stylus/common'
@@ -46,7 +49,7 @@ export default {
 html
   font-style: normal
   font-style: normal
-  font-size: 15px
+  font-size: 16px
   user-select none
   font-family $main-font
   color $black

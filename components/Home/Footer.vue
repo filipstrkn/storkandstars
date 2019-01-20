@@ -1,6 +1,6 @@
 <template>
     <footer id="Footer">
-        <logo />
+        <logo class="footer__logo" />
 
         <div class="footer__socials">
 
@@ -58,6 +58,8 @@ export default {
     justify-content space-between
     align-items center
 
+.footer__logo
+    opacity .2
 
 .footer__socials
     display flex

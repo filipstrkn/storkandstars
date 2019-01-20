@@ -15,6 +15,7 @@ import ProjectIntro from '~/components/Project/ProjectIntro'
 import ProjectNewspaper from '~/components/Project/ProjectNewspaper'
 import ProjectNewspaperColumn from '~/components/Project/ProjectNewspaperColumn'
 import ProjectParagraph from '~/components/Project/ProjectParagraph'
+import ProjectPhotoBooth from '~/components/Project/ProjectPhotoBooth'
 import NextProject from '~/components/Project/NextProject'
 
 
@@ -61,6 +62,7 @@ Vue.component('form_step', FormStep)
 |
 |*/
 Vue.component('p_gallery', ProjectGallery)
+Vue.component('p_photobooth', ProjectPhotoBooth)
 Vue.component('p_image', ProjectImage)
 Vue.component('p_intro', ProjectIntro)
 Vue.component('p_newspaper', ProjectNewspaper)

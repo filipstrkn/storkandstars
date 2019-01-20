@@ -1,7 +1,7 @@
 <template>
     <div>
-        <nuxt-link :to="'/' + link" class="thumb-link" data-visible="false">
-            <article class="thumb" :style="theme">
+        <nuxt-link :to="'/' + link" class="thumb-link" :class="size" data-visible="false">
+            <article class="thumb">
 
 
                 <image-block
@@ -12,19 +12,20 @@
                 <!-- //////////////////////////////////////////////////////////////
                     Title
                 ////////////////////////////////////////////////////////////// -->
-                <div class="name">
-                    <h3 :style="{color: content.text.color}">{{ content.client }}</h3>
-                    <p>
-                        <span
-                            v-for="(service, index) in content.services"
-                            :key="index"
-                            :style="{color: content.text.color}">{{ service }}</span>
-                    </p>
-                </div>
 
 
 
             </article>
+
+            <div class="name">
+                <h3 :style="{color: content.text.color}">{{ content.client }}</h3>
+                <p>
+                    <span
+                        v-for="(service, index) in content.services"
+                        :key="index"
+                        :style="{color: content.text.color}">{{ service }}</span>
+                </p>
+            </div>
         </nuxt-link>
     </div>
 
@@ -45,9 +46,17 @@ export default {
         'image-block': ImageBlock
     },
     computed: {
-        theme() {
-            return {
-                backgroundColor: this.content.thumb_theme.color
+        size() {
+            const name = "thumb--"
+            switch(this.content.thumb_size) {
+                case 'square':
+                    return name + this.content.thumb_size
+                case 'tall':
+                    return name + this.content.thumb_size
+                case 'taller':
+                    return name + this.content.thumb_size
+                default:
+                    return name + '--square'
             }
         }
     }
@@ -67,57 +76,11 @@ export default {
     position relative
     width 100%
     height 0
-    padding-bottom 100%
-
-
-    &[data-visible="false"] .thumb
-        transition all $appear ease-in
-        transform scaleY(1.4) translateY(30%)
-        opacity 0
-
-
-    &[data-visible="true"] .thumb
-        transition all 600ms ease-out
-        transform scaleY(1) translateY(0)
-        opacity 1
-
-.thumb
-    position relative
-    position absolute
-    width 100%
-    height 100%
-    transform-origin 50% 0
-
-
-
-
-    &:hover
-        img
-           top 40%
-
-        .name
-            bottom 10%
-            opacity 1
-            p
-                transform translateY(0)
-
-
-    h3
-        font-weight 400
-        pointer-events none
-        margin-bottom .2em
-
-        margin-top 1em
-        font-family $secondary-font
-        margin-bottom .2em
-
     p
         position relative
         font-family $secondary-font
-        margin-top .2em
+        margin-top .4em
         font-size 1rem
-        text-align center
-        transform translateY(2em)
         transition all 400ms ease-out
         white-space nowrap
 
@@ -132,30 +95,85 @@ export default {
             &:first-of-type::before
                 display none
 
-    .name
-        position absolute
-        bottom -1em
-        text-align center
-        margin 0
-        left 50%
-        transform translateX(-50%)
-        transition all 400ms ease-in-out
-        font-size calc(.00848 * 100vw + 18.81818px)
-        opacity 0
+    &:hover
+        ._thumbnail
+            transform scale(1.05)
+
+        .name
+            opacity 1
+            p
+                opacity 1
+
+.thumb--square
+    padding-bottom 100%
+.thumb--tall
+    padding-bottom 120%
+.thumb--taller
+    padding-bottom 150%
+
+    // &[data-visible="false"] .thumb
+    //     transition all $appear ease-in
+    //     transform scaleY(1.4) translateY(30%)
+    //     opacity 0
+
+
+    // &[data-visible="true"] .thumb
+    //     transition all 600ms ease-out
+    //     transform scaleY(1) translateY(0)
+    //     opacity 1
+
+.thumb
+    position relative
+    position absolute
+    width 100%
+    height 100%
+    transform-origin 50% 0
+
+
+
+
+
+
+
+    h3
+        font-weight 400
         pointer-events none
+        margin-bottom .2em
 
-        h3
-            font-weight 900
-            margin 0
+        margin-top 1em
+        font-family $secondary-font
+        margin-bottom .2em
 
-    ._thumbnail
+
+
+.name
+    position absolute
+    bottom -5em
+    left 0
+    pointer-events none
+
+    h3
+        font-weight 900
+        margin 0
+        font-size 1.6em
+        font-family $secondary-font
+
+    p
+        opacity 0
+
+
+._thumbnail
+    width 100%
+    height 100%
+    transition all 150ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+
+    img
+
         width 100%
-        height 100%
-
-        img
-            width 50%
-            transition top 400ms ease-out
-            pointer-events none
+        min-height 100%
+        object-fit cover
+        transition top 400ms ease-out
+        pointer-events none
 
 
 

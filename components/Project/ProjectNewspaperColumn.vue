@@ -2,8 +2,12 @@
     <section id="ProjectNewsletterColumn" class="newletter__column">
 
 
-        <h3 :style="{color: $store.state.theme.text}" class="title--h3">{{ blok.title }}</h3>
-        <p>{{ blok.text }}</p>
+        <h3
+            v-if="blok.title"
+            v-editable="blok"
+            :style="{color: $store.state.theme.text}"
+            class="title--h3">{{ blok.title }}</h3>
+        <p v-editable="blok" class="_paragraph">{{ blok.text }}</p>
 
 
 
@@ -28,12 +32,7 @@ export default {
 .newletter__column
     display inline-block
     vertical-align text-top
-    padding 5%
-
-    p
-        font-size 1.2rem
-        line-height 1.8em
-        margin-top 1em
+    padding 0 6% 5% 6%
 
 </style>
 

@@ -5,10 +5,10 @@
         <!-- //////////////////////////////////////////////////////////////
             Intro
         /////////////////////////////////////////////////////////////// -->
-        <div class="top__intro" v-if="blok.title">
+        <!-- <div class="top__intro" v-if="blok.title">
             <p class="_text--medium" v-editable="blok">{{ blok.title }}</p>
             <h3 class="_subtitle" v-editable="blok">{{ blok.subtitle }}</h3>
-        </div>
+        </div> -->
 
         <!-- //////////////////////////////////////////////////////////////
             List of content

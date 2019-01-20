@@ -4,14 +4,6 @@
 
 
         <!-- //////////////////////////////////////////////////////////////////
-            Title
-        /////////////////////////////////////////////////////////////////// -->
-        <div class="event-list__intro" v-if="blok.title">
-            <p v-editable="blok" class="event-list__title _subtitle">{{ blok.title }}</p>
-        </div>
-
-
-        <!-- //////////////////////////////////////////////////////////////////
             Event list
         /////////////////////////////////////////////////////////////////// -->
         <div class="events" data-visible="false">
@@ -92,22 +84,6 @@ export default {
     .events__column:nth-child(odd)
         .event-unit:first-of-type
             margin-top -15%
-
-
-.event-list__intro
-    flex-shrink 1
-    flex-grow 0
-    position relative
-    width 100%
-    max-width 28em
-    min-width 24em
-
-
-    .event-list__title
-        position absolute
-        left 50%
-        top 0
-        transform translateX(-50%)
 
 
 </style>

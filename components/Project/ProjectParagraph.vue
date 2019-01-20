@@ -3,10 +3,7 @@
 
 
 
-        <div class="text">
-            <h3 v-if="blok.title" :style="theme" class="title--h3">{{ blok.title }}</h3>
-            <p>{{ blok.text }}</p>
-        </div>
+        <component :is="dynamicParagraph" :content="blok" v-editable="blok" />
 
 
 
@@ -17,15 +14,33 @@
 
 <script>
 
-import marked from 'marked'
+import ParagraphRight from './ParagraphComponents/ParagraphRight'
+import ParagraphLeft from './ParagraphComponents/ParagraphLeft'
+import ParagraphQuote from './ParagraphComponents/ParagraphQuote'
+
 
 export default {
     name: 'ProjectParagraph',
     props: ['blok'],
+    components: {
+        'paragraph-right': ParagraphRight,
+        'paragraph-left': ParagraphLeft,
+        'paragraph-quote': ParagraphQuote
+    },
     computed: {
-        theme() {
-            return {
-                color: this.$store.state.theme.text
+        dynamicParagraph() {
+            switch(this.blok.type) {
+                case 'left':
+                    return 'paragraph-left';
+                case 'right':
+                    return 'paragraph-right';
+                case 'quote':
+                    return 'paragraph-quote';
+                case 'duplo':
+                    return 'paragraph-right';
+
+                default:
+                    return 'paragraph-left';
             }
         }
     }
@@ -38,16 +53,10 @@ export default {
 
 @import '~assets/stylus/variables'
 
-.text
-    max-width 40em
-    padding: 10% 2rem
-    margin-left: 10%
-
-p
-    font-size 1.2rem
-    line-height 1.8em
-    margin-top 2em
-
+#ProjectParagraph
+    max-width 100em
+    margin 0 auto
+    padding: $spacing-flex 2rem
 
 </style>
 

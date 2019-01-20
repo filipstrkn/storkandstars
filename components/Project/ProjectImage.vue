@@ -3,8 +3,9 @@
 
 
         <image-loader
+            v-editable="blok"
             class="project-image__image"
-            data-visible="false"
+            :class="`project-image__image--${blok.type}`"
             :image="'https:' + blok.image"/>
 
 
@@ -42,7 +43,7 @@ export default {
 @import '~assets/stylus/mixins'
 
 #ProjectImage
-    padding 4em 0
+    padding $spacing-flex 0
 
     [data-visible="false"]
         opacity 0
@@ -57,9 +58,12 @@ export default {
     max-width 120em
     height 0
     padding-bottom 40%
-    margin 0 auto
+    padding-bottom 46%
     overflow hidden
     transition opacity $appear ease-out
+    width 100%
+    padding-bottom 50%
+    max-width 54em
 
     ._image--loading
         position absolute
@@ -72,7 +76,24 @@ export default {
         height 100%
         object-fit cover
 
+.project-image__image--center
+    margin 0 auto
 
+
+.project-image__image--left
+    margin 0 auto 0 $spacing-flex
+
+.project-image__image--right
+    margin 0 $spacing-flex 0 auto
+    // max-width 50em
+    // padding-bottom 60%
+
+.project-image__image--full
+    // width 100%
+    // padding-bottom 46%
+    // max-width 54em
+    // padding-bottom 50%
+    margin 0 auto
 
 
 

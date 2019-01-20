@@ -10,8 +10,12 @@
 
 .title--h3
     font-size 2em
-    font-weight 300
+    font-size calc(.00848 * 100vw + 1.1rem)
+    line-height: 1.8
+    // font-weight 300
+    font-weight 700
     font-family $serif
+    margin-bottom: 1em
 
 
 ._subtitle
@@ -89,7 +93,8 @@
 .__text
     font-family $serif
     font-weight 300
-    line-height 2em
+    font-weight 700
+    line-height 2
     h1, p
         font-weight: inherit
         font-size: inherit
@@ -97,12 +102,21 @@
 
 ._text--large
     @extend .__text
-    font-size calc(16px + 10 * ((100vw - 320px) / 680))
+    font-size calc(1rem + 11 * ((100vw - 320px) / 680))
 
 ._text--medium
     @extend .__text
-    font-size calc(.00848 * 100vw + 15.81818px)
+    font-size calc(.00848 * 100vw + 1rem)
 
+
+
+._paragraph
+    font-size: 1.1rem !important
+    line-height: 1.8
+    font-weight: 500 !important
+    font-family: $secondary-font
+    font-family: $serif-font
+    color: $black
 
 
 // ////////////////////////////////////////////////////////////////////////////
@@ -201,7 +215,7 @@
     font-family $secondary-font
     color $white
     line-height normal
-    width 14em
+    width 15em
     height 3.4em
     transition background-color 250ms ease-out
     border-radius 30em

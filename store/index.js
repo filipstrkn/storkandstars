@@ -34,7 +34,8 @@ export default function createStore() {
                 menu: false,
                 theme: {
                     text: null,
-                    background: null
+                    background: null,
+                    pallete: ['#cbe7fd', '#ffc5c8', '#bff9f2', '#19d8e9']
                 },
                 projects: {
                     top: []
