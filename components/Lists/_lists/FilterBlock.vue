@@ -115,16 +115,16 @@ export default {
     max-height 40em
     overflow hidden
 
-    &::after
-        content ""
-        position absolute
-        width 100%
-        height 1px
-        background-color $line
-        left 0
-        bottom 0
+    // &::after
+    //     content ""
+    //     position absolute
+    //     width 100%
+    //     height 1px
+    //     background-color $line
+    //     left 0
+    //     bottom 0
     ul
-        padding 3.6em 0
+        padding 3.6em 0 0 0
 
     li
         display inline-block

@@ -4,27 +4,25 @@
 
             <div id="MenuBody">
 
-                <ul class="links">
-                    <li @click="closeMenu">
-                        <nuxt-link :to="'/contact'" class="_link _clickable">Design Sprint</nuxt-link>
-                    </li>
-                    <li @click="closeMenu">
-                        <nuxt-link :to="'/projects'" class="_link _clickable">Projekty</nuxt-link>
-                    </li>
-                    <li @click="closeMenu">
-                        <nuxt-link :to="'/'" class="_link _clickable">Vzdělávání</nuxt-link>
-                    </li>
-                    <li @click="closeMenu">
-                        <nuxt-link :to="'/'" class="_link _clickable">Kontakt</nuxt-link>
-                    </li>
-                </ul>
+                <div class="menu__content">
 
-                <nuxt-link :to="'/form/new-project'" class="menu__special-link _clickable">
-                    <div id="Icon">
-                        <rocket-icon slot="icon" />
-                    </div>
+                    <ul class="links">
+                        <menu-link
+                            v-for="(link, index) in links"
+                            :key="index"
+                            :to="link.to"
+                            :title="link.title"
+                            :subtitle="link.subtitle" />
+                    </ul>
 
-                </nuxt-link>
+                </div>
+
+                <div class="menu__footer">
+                    <nuxt-link id="Icon" :to="'/form/new-project'" class="_clickable">
+                        <rocket-icon />
+                    </nuxt-link>
+                    <span>Odstartuj projekt</span>
+                </div>
 
             </div>
 
@@ -39,20 +37,67 @@
 
 import LinkUnit from '~/components/Home/_home/LinkUnit'
 import RocketIcon from './RocketIcon'
+import MenuLink from './MenuLink'
 
 export default {
     name: 'MenuBlock',
     components: {
         'link-unit': LinkUnit,
-        'rocket-icon': RocketIcon
+        'rocket-icon': RocketIcon,
+        'menu-link': MenuLink
+    },
+    data() {
+        return {
+            links: [
+                {
+                    to: '/contact',
+                    title: 'Design Sprint',
+                    subtitle: 'Nevíte, co sprinty jsou?'
+                },
+                {
+                    to: '/projects',
+                    title: 'Projekty',
+                    subtitle: 'Dělali jsme'
+                },
+                {
+                    to: '/contact',
+                    title: 'Vzdělání',
+                    subtitle: 'Vše vás naučíme'
+                },
+                {
+                    to: '/contact',
+                    title: 'O nás',
+                    subtitle: 'Kontaktujte nás'
+                }
+            ]
+        }
     },
     methods: {
         closeOnBlur(e) {
             if (e.target.getAttribute('id') === 'Menu' ) this.$store.commit('toggleMenu')
-        },
-        closeMenu() {
-            this.$store.commit('toggleMenu', false)
         }
+    },
+    mounted() {
+        let s;
+        this.$store.watch( state => {
+                s = state.menu
+                return state.menu
+            }, () => {
+
+                if (s) {
+                    this.$el.querySelectorAll('.links li').forEach((link, index) => {
+                        setTimeout(() => {
+                            link.classList.add('show')
+                        }, (index + 1) * 100)
+                    })
+                } else {
+                    this.$el.querySelectorAll('.links li').forEach(link => {
+                        link.classList.remove('show')
+                    })
+                }
+
+        })
+
     }
 }
 </script>
@@ -71,6 +116,7 @@ export default {
     height 100%
     z-index 99
     display flex
+    justify-content flex-end
     &::after
         content ""
         position absolute
@@ -79,75 +125,99 @@ export default {
         min-height 100%
         width 100%
         background-color alpha(#000, .2)
-        // background-color #000
-        // background-color alpha(#000, .8)
+        background-color alpha(#fafafa, .94)
         z-index 98
 
 
 #MenuBody
-    position absolute
-    right 0
+    position relative
     display flex
     flex-direction column
     z-index 99
-    min-height 100%
+    max-width 36em
+    width 100%
+    overflow-y scroll
+    background-color #fff
+    box-shadow -3px 0 30px 0 alpha($black, .04), -1px 0 0 0 alpha(#000, 0)
 
-    background-color $white
-    box-shadow -3px 0 30px 0 alpha($black, .02), -1px 0 0 0 alpha($black, 0)
 
 
 
 .links
-    font-size 2.2em
-    flex-grow 1
-    flex-shrink 0
-    padding $spacing-flex 2em 2em 2em
-    li
-        margin 2% 0
-        span
-            display inline-block
-            font-size .4em
-            margin-right 1em
-            vertical-align text-top
-
-.socials
-    max-width 15em
-    // flex-grow 1
-    li
-        display inline-block
-        margin 0 .6em
-        font-family $secondary-font
-
-
-
-.left
-    // flex-grow 1
-    // display flex
-    // flex-direction column
-    // justify-content space-between
+    font-size 1.6em
+    padding 30% 4em 2em 4em
 
     li
-        opacity .45
-        &:hover
+        opacity 0
+        transform translateX(2em)
+        transition all 400ms ease-out
+        &.show
             opacity 1
+            transform translateX(0)
 
-.menu__special-link
+#Icon
     display flex
     align-items center
     justify-content center
-    // padding 1.6em 1em
     font-weight 500
     background-color #ffc5c8
     width 4em
     height @width
     border-radius 100%
-    margin 0 auto 4em auto
+    margin 0 auto
     *
         pointer-events none
 
+    &:hover
+        animation-name: shaking
+        animation-duration: 0.8s
+        transform-origin:50% 50%
+        animation-iteration-count: infinite
+        animation-timing-function: linear
+        & ~ span
+            opacity 1
     #Icon
         width 18px
-        // margin-right 10%
+
+.menu__content
+    flex-grow 1
+    flex-shrink 0
+    overflow-y scroll
+.menu__footer
+    flex-grow 0
+    flex-shrink 1
+    text-align center
+    span
+        display block
+        margin 1em 0
+        opacity 0
+        color alpha(#000, .45)
+
+
+@keyframes shaking
+	0%
+        transform: translate(2px, 1px) rotate(0deg)
+	10%
+        transform: translate(-1px, -2px) rotate(-1deg)
+	20%
+        transform: translate(-3px, 0px) rotate(1deg)
+	30%
+        transform: translate(0px, 2px) rotate(0deg)
+	40%
+        transform: translate(1px, -1px) rotate(1deg)
+	50%
+        transform: translate(-1px, 2px) rotate(-1deg)
+	60%
+        transform: translate(-3px, 1px) rotate(0deg)
+	70%
+        transform: translate(2px, 1px) rotate(-1deg)
+	80%
+        transform: translate(-1px, -1px) rotate(1deg)
+	90%
+        transform: translate(2px, 2px) rotate(0deg)
+	100%
+        transform: translate(1px, -2px) rotate(-1deg)
+
 
 </style>
 

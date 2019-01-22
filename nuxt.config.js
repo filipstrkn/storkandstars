@@ -35,8 +35,8 @@ module.exports = {
   // loading: false,
   loading: {
     name: 'pulse',
-    color: '#2a3dea',
-    background: '#2a3dea',
+    color: '#000000',
+    background: '#000000',
   },
   scrollToTop: false
   /*

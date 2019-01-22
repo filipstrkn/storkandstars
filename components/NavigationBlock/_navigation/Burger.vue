@@ -38,7 +38,7 @@ export default {
 
 .burger__body
     position relative
-    width 26px
+    width 24px
     height 10px
     cursor pointer
     pointer-events none

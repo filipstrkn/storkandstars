@@ -44,7 +44,8 @@
         width 100%
         height 100%
         z-index 98
-        background-color #fafafa
+        // background-color #fafafa
+        background-color #f9f9fa
         animation transOut .4s ease-out forwards
 
 .page-leave-active
@@ -65,7 +66,8 @@
         width 100%
         height 100%
         z-index 98
-        background-color #fafafa
+        // background-color #fafafa
+        background-color #f9f9fa
         animation transIn .6s ease-in forwards
 
 
@@ -78,41 +80,29 @@
     &::after
         opacity 0 !important
     #MenuBody
-        position: absolute
-        // top -100% !important
-        right -100% !important
-
-// .menu-enter .links li
-//     opacity 0 !important
-//     margin: 10em 0 !important
+        transform: translateX(100%)
 
 .menu-leave,
 .menu-enter-to
     &::after
         opacity 1 !important
-
     #MenuBody
-        position: absolute
-        // top 0 !important
-        right 0 !important
+        transform: translateX(0%)
 
-    // .links li
-    //     opacity 1 !important
-    //     margin: 2% 0 !important
 
 .menu-leave-active
     transition-duration 250ms
-    &::after,
-    & > #MenuBody
-        transition all 250ms ease-out
+    &::after
+        transition opacity 250ms ease
+    #MenuBody
+        transition transform 250ms cubic-bezier(0.445, 0.05, 0.55, 0.95)
+
 
 .menu-enter-active
     transition-duration 1s
     &::after
         transition opacity .4s ease
-    & > #MenuBody
-        transition right .4s cubic-bezier(0.445, 0.05, 0.55, 0.95)
-    // .links li
-    //     transition all 1s ease
+    #MenuBody
+        transition transform .4s cubic-bezier(0.445, 0.05, 0.55, 0.95)
 
 

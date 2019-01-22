@@ -1,6 +1,6 @@
 <template>
     <footer id="Footer">
-        <!-- <logo class="footer__logo" /> -->
+        <logo class="footer__logo" />
         <span></span>
 
         <div class="footer__socials">

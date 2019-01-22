@@ -18,12 +18,11 @@
             </article>
 
             <div class="name">
-                <h3 :style="{color: content.text.color}">{{ content.client }}</h3>
+                <h3>{{ content.client }}</h3>
                 <p>
                     <span
                         v-for="(service, index) in content.services"
-                        :key="index"
-                        :style="{color: content.text.color}">{{ service }}</span>
+                        :key="index">{{ service }}</span>
                 </p>
             </div>
         </nuxt-link>
@@ -87,6 +86,7 @@ export default {
         span
             font-weight 400
             color alpha(#000, .6)
+            color alpha(#000, .45)
 
             &::before
                 content "&"
@@ -101,19 +101,21 @@ export default {
 
         .name
             opacity 1
-            p
-                opacity 1
+            // p
+            //     opacity 1
 
     &[data-visible="false"] .thumb
         transition all $appear ease-in
-        transform translateY(2em)
-        opacity 0
+        // transform translateY(2em)
+        transform scale(.8)
+        // opacity 0
 
 
     &[data-visible="true"] .thumb
         transition all 600ms ease-out
-        transform translateY(0)
-        opacity 1
+        transform scale(1)
+        // transform translateY(0)
+        // opacity 1
 
 
 .thumb--square
@@ -129,7 +131,8 @@ export default {
     position absolute
     width 100%
     height 100%
-    transform-origin 50% 0
+    // transform-origin 50% 0
+    transform-origin center
 
 
 
@@ -144,24 +147,24 @@ export default {
 
         margin-top 1em
         font-family $secondary-font
-        margin-bottom .2em
+        // margin-bottom .2em
 
 
 
 .name
     position absolute
-    bottom -5em
+    bottom -4em
     left 0
     pointer-events none
 
     h3
-        font-weight 900
+        font-weight 600
         margin 0
-        font-size 1.6em
+        font-size 1.2em
         font-family $secondary-font
 
-    p
-        opacity 0
+    // p
+    //     opacity 0
 
 
 ._thumbnail

@@ -41,6 +41,7 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:100,300,300i,400,500,600,700')
 @import url('https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700,800|Muli:400,400i,600,600i,700,700i,800,900&amp;subset=latin-ext')
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700,800,900&amp;subset=latin-ext')
 
 
 @import '~assets/stylus/reset'

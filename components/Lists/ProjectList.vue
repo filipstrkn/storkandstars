@@ -1,5 +1,5 @@
 <template>
-    <section id="ProjectList">
+    <section id="ProjectList" class="_content">
         <masonry :cols="2" :gutter="gutter" :columnClass="['project-list__column']">
 
 
@@ -47,15 +47,14 @@ export default {
 
 <style lang="stylus" scoped>
 
-@import '~assets/stylus/variables'
-
 #ProjectList
-    max-width 82em
-    margin 0 auto
-    padding 20% 6em $spacing-flex 6em
+    // max-width 82em
+    // margin 0 auto
+    // padding 20% 6em 0 6em
+    padding-top 20%
 
     .list__item
-        margin-top 50%
+        margin-top 60%
     .project-list__column:nth-child(odd)
         .list__item:first-of-type
             margin-top -20%

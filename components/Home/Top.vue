@@ -68,7 +68,8 @@ export default {
     position relative
     left 50%
     width 40%
-    padding-top 26%
+    padding-top $spacing-flex
+    // padding-top 26%
     padding-left 1em
 
     &::before
@@ -121,6 +122,7 @@ export default {
 
 
 #Top
+    padding-bottom $spacing-flex
     .list
         max-width 86em
         margin 0 auto

@@ -12,7 +12,7 @@
             </div>
 
 
-            <project-list :projects="filtered" :visibleDeactivated="true" />
+            <project-list :projects="filtered" />
 
         </div>
 
