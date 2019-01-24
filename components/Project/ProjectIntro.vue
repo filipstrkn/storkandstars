@@ -1,10 +1,14 @@
 <template>
-    <section id="ProjectIntro" class="_container--center _text--medium">
+    <section id="ProjectIntro">
 
 
 
         <!-- Intro Text -->
-        <p :style="{color: $store.state.theme.text}" v-html="intro" v-editable="blok"></p>
+        <p
+            v-editable="blok"
+            :style="{color: $store.state.theme.text}"
+            v-html="intro"
+            class="_text--medium"></p>
 
 
         <!-- Columns -->
@@ -61,6 +65,8 @@ export default {
 
 #ProjectIntro
     padding-top calc(10% + 4em)
+    max-width 54em
+    margin 0 auto
 
     &::after
         content ""
@@ -72,8 +78,8 @@ export default {
 
 
 .columns
-    font-size 1.2rem
-    line-height 1.8em
+    // font-size 1.2rem
+    // line-height 1.8em
     display flex
     justify-content space-between
     margin-top 4em

@@ -38,7 +38,8 @@ export default function createStore() {
                     pallete: ['#cbe7fd', '#ffc5c8', '#bff9f2', '#19d8e9']
                 },
                 projects: {
-                    top: []
+                    top: [],
+                    all: []
                 },
                 events: [],
                 forms: {},
@@ -92,10 +93,14 @@ export default function createStore() {
 
 
                 // ------------------------------------------------------------
-                //  Top Project
+                //  Project
                 // ------------------------------------------------------------
                 setTopProjects(state, payload) {
-                    state.top = payload
+                    state.projects.top = payload
+                },
+                setAllProjects(state, paylaod) {
+                    console.log('Setting all projects')
+                    state.projects.all = paylaod
                 },
 
 
@@ -230,18 +235,19 @@ export default function createStore() {
                 // ------------------------------------------------------------
                 //  Fetching Top Projects
                 // ------------------------------------------------------------
-                // async loadTop({ commit, ctx }) {
-                //     await this.$storyapi.get(`cdn/stories`,
-                //     {
-                //         version: 'draft',
-                //         starts_with: 'projects/',
-                //         with_tag: 'top'
-                //     })
-                //     .then(res => {
-                //         const topThree = res.data.stories.splice(0, 3)
-                //         commit('setTopProjects', topThree)
-                //     })
-                // }
+                async getAllProjects({ commit, ctx }) {
+                    if (this.state.projects.all === undefined || this.state.projects.all.length === 0) {
+                        console.log('There is nothing')
+                        await this.$storyapi.get(`cdn/stories`,
+                        {
+                            version: 'draft',
+                            starts_with: 'projects/'
+                        })
+                        .then(res => {
+                            commit('setAllProjects', res.data.stories)
+                        })
+                    }
+                },
 
 
 

@@ -16,7 +16,6 @@ import ProjectNewspaper from '~/components/Project/ProjectNewspaper'
 import ProjectNewspaperColumn from '~/components/Project/ProjectNewspaperColumn'
 import ProjectParagraph from '~/components/Project/ProjectParagraph'
 import ProjectPhotoBooth from '~/components/Project/ProjectPhotoBooth'
-import NextProject from '~/components/Project/NextProject'
 
 
 import Intro from '~/components/Home/Intro'
@@ -69,7 +68,6 @@ Vue.component('p_intro', ProjectIntro)
 Vue.component('p_newspaper', ProjectNewspaper)
 Vue.component('p_newspaper_column', ProjectNewspaperColumn)
 Vue.component('p_paragraph', ProjectParagraph)
-Vue.component('next_project', NextProject)
 
 
 

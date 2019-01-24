@@ -8,7 +8,7 @@
                 Thumb
             ////////////////////////////////////////////////////////////// -->
             <thumb
-                v-for="(project, index) in projects"
+                v-for="(project, index) in filteredProjects"
                 :key="index"
                 :content="project.content"
                 :link="project.full_slug"
@@ -28,7 +28,7 @@ import Thumb from '~/components/Thumb'
 
 export default {
     name: 'ProjectList',
-    props: ['projects', 'visibleDeactivated'],
+    props: ['projects', 'visibleDeactivated', 'filter'],
     components: {
         'thumb': Thumb
     },
@@ -37,6 +37,17 @@ export default {
             return {
                 default: '8em',
                 800: 40
+            }
+        },
+        filteredProjects() {
+            if (!this.filter) return this.projects
+
+            switch(this.filter.action) {
+                case 'related':
+                    const comp = this.filter.compareWith
+                    return this.projects.filter(project => project.content.client !== comp.client).slice(0, 3)
+                default:
+                    return;
             }
         }
     }

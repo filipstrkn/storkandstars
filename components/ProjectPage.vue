@@ -1,5 +1,5 @@
 <template>
-    <main id="ProjectPage" :style="theme">
+    <main id="ProjectPage">
 
         <component
             :key="blok._uid"
@@ -7,6 +7,9 @@
             :blok="blok"
             :is="blok.component">
         </component>
+
+
+        <related-projects :current="blok" />
 
         <footer-block />
 
@@ -18,28 +21,21 @@
 <script>
 
 import FooterBlock from '~/components/Home/Footer'
+import RelatedProjects from '~/components/Project/RelatedProjects'
 
 export default {
     name: 'Page',
     props: ['blok'],
     scrollToTop: false,
     components: {
-        'footer-block': FooterBlock
-    },
-
-    computed: {
-        theme() {
-            if ( !this.blok.apply_theme ) return
-            return {
-                backgroundColor: this.$store.state.theme.background
-            }
-        }
+        'footer-block': FooterBlock,
+        'related-projects': RelatedProjects
     },
 
     created() {
         this.$store.commit('setTheme', {
-            text: this.blok.text.color,
-            background: this.blok.background.color,
+            text: this.blok.theme_color,
+            background: this.blok.theme_color,
         })
     },
     beforeMount() {
