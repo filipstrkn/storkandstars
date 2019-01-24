@@ -2,7 +2,7 @@
     <section id="Intro">
 
         <div class="_content">
-            <div class="intro__content">
+            <div class="intro__content _text--large">
                 <title-block id="IntroTitle" :title="blok.text" :duration="{min: 200, max: 1200}" />
                 <link-unit :to="blok.link_to.cached_url">{{ blok.link_name }}</link-unit>
             </div>
@@ -36,12 +36,8 @@ export default {
 #Intro
     padding calc(8em + 20vh) 0 0 0
 
-    #IntroTitle
-        margin-bottom 1em
-
-
 .intro__content
-    max-width 36em
+    max-width 14em
     margin 0 0 0 auto
 
 

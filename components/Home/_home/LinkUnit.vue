@@ -51,25 +51,28 @@ export default {
 #Button
     position relative
     display inline-block
+    font-size 1rem
 
     &:hover
         .line
-            height 1em
+            height 1rem
 
 #Text
+    display block
+    position relative
     font-size 1.3rem
     font-weight 400
-    position relative
+    line-height 1
     z-index 1
 
 .line
     position absolute
-    bottom 0
+    bottom -.3em
     left 0
     width 100%
     height 1px
     background-color rgba(0,0,0, 0.1)
-    transition all 450ms $ease-in
+    transition all 650ms $ease-in
     z-index 0
 
 </style>
