@@ -1,18 +1,14 @@
 <template>
     <p class="_text--large">
-        <span @mouseover="setRandomColor" @mouseleave="resetRandomColor" :style="{color: this.randomColor}" :class="{'start-the-show': launcher}">{{ word }} </span>
+        <span :class="{'start-the-show': launcher}">{{ word }} </span>
     </p>
 </template>
 
 
 <script>
-
-import randomColor from '~/mixins/randomColor'
-
 export default {
     name: 'WordBlock',
     props: ['word', 'duration'],
-    mixins: [randomColor],
     data() {
         return {
             launcher: false,
@@ -41,12 +37,12 @@ export default {
 
 @keyframes showUp
     0%
+        opacity 0
         height 0px
-        overflow-y hidden
 
     100%
+        opacity 1
         height 100%
-        overflow-y auto
 
 p
     display inline-block
@@ -55,7 +51,7 @@ p
 
 
 .start-the-show
-    animation showUp .8s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards
+    animation showUp 1.2s ease-out forwards
 
 span
     display inline-block

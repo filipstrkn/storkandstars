@@ -2,7 +2,11 @@ const randomColor = {
 
     data() {
         return {
-            randColMiddle: ''
+            randomColorData: {
+                tempCol: '',
+                initialRandomColor: '',
+                staticRandomColor: ''
+            }
         }
     },
 
@@ -11,14 +15,19 @@ const randomColor = {
         randomColor: {
             set(value) {
                 if (value === 'reset') {
-                    this.randColMiddle = 'inherit'
+                    this.randomColorData.tempCol = this.randomColorData.initialRandomColor || 'inherit'
                 } else {
                     const { pallete } = this.$store.state.theme
-                    this.randColMiddle = pallete[Math.floor(Math.random() * pallete.length)]
+                    const random = pallete[Math.floor(Math.random() * pallete.length)]
+
+                    this.randomColorData.tempCol =
+                        this.randomColorData.staticRandomColor
+                        ? this.randomColorData.staticRandomColor
+                        : random;
                 }
             },
             get() {
-                return this.randColMiddle
+                return this.randomColorData.tempCol
             }
         }
     },

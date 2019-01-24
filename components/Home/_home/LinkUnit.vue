@@ -1,9 +1,18 @@
 <template>
-    <nuxt-link :to="to" id="Button" class="_button _clickable">
-        <span id="Text">
-            <slot />
-        </span>
-        <span class="line"></span>
+    <nuxt-link
+            :to="to"
+            id="Button"
+            class="_button">
+
+        <div
+            @mouseover="setRandomColor"
+            @mouseleave="resetRandomColor">
+            <span id="Text" class="_clickable">
+                <slot />
+            </span>
+            <span :style="bgColor" class="line"></span>
+        </div>
+
     </nuxt-link>
 </template>
 
@@ -15,7 +24,22 @@ import randomColor from '~/mixins/randomColor'
 export default {
     name: 'LinkUnit',
     props: ['to', 'line'],
-    mixins: [randomColor]
+    mixins: [randomColor],
+    data() {
+        return {
+            randomColorData: {
+                initialRandomColor: 'rgba(0,0,0, 0.1)',
+                staticRandomColor: this.line
+            }
+        }
+    },
+    computed: {
+        bgColor() {
+            return {
+                backgroundColor: this.randomColor
+            }
+        }
+    }
 }
 </script>
 
@@ -28,15 +52,12 @@ export default {
     position relative
     display inline-block
 
-    *
-        pointer-events none
-
     &:hover
         .line
             height 1em
 
 #Text
-    font-size 1.4em
+    font-size 1.2em
     position relative
     z-index 1
 
@@ -46,8 +67,8 @@ export default {
     left 0
     width 100%
     height 1px
-    background-color $line
-    transition all 250ms ease-in-out
+    background-color rgba(0,0,0, 0.1)
+    transition all 450ms $ease-in
     z-index 0
 
 </style>

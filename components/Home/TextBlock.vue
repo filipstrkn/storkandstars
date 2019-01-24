@@ -4,7 +4,7 @@
         <div class="text-block__content">
             <div class="text-block__text">
                 <p>{{ blok.text }}</p>
-                <link-unit :to="blok.link_to.cached_url">
+                <link-unit :to="blok.link_to.cached_url" :line="'#fff'">
                     {{ blok.link_name }}
                 </link-unit>
             </div>

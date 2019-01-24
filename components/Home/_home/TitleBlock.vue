@@ -37,7 +37,6 @@ export default {
 <style lang="stylus" scoped>
 
 .title
-    overflow auto
     clear both
     float right
     display flex

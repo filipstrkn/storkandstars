@@ -18,7 +18,7 @@
             <!-- Right -->
             <div class="column__right">
                 <p v-if="blok.column_right" class="_paragraph" v-editable="blok">{{ blok.column_right }}</p>
-                <link-unit v-if="blok.link_name" :to="blok.link_to.cached_url" class="_clickable" :style="{backgroundColor: $store.state.theme.text}">
+                <link-unit v-if="blok.link_name" :to="blok.link_to.cached_url" class="_clickable">
                     {{ blok.link_name }}
                 </link-unit>
             </div>
