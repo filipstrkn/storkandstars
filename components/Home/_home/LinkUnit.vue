@@ -57,7 +57,8 @@ export default {
             height 1em
 
 #Text
-    font-size 1.2em
+    font-size 1.3rem
+    font-weight 400
     position relative
     z-index 1
 

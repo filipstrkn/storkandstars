@@ -4,9 +4,7 @@
         <div class="_content">
             <div class="intro__content">
                 <title-block id="IntroTitle" :title="blok.text" :duration="{min: 200, max: 1200}" />
-                <link-unit :to="'/contact'">
-                    Napiš nám
-                </link-unit>
+                <link-unit :to="blok.link_to.cached_url">{{ blok.link_name }}</link-unit>
             </div>
         </div>
 
@@ -36,7 +34,11 @@ export default {
 <style lang="stylus" scoped>
 
 #Intro
-    padding 20em 0 0 0
+    padding calc(8em + 20vh) 0 0 0
+
+    #IntroTitle
+        margin-bottom 1em
+
 
 .intro__content
     max-width 36em
