@@ -153,7 +153,7 @@ export default {
 
 .links
     font-size 1.6em
-    padding 30% 4em 2em 4em
+    padding calc(4em + 5vh) 4em 2em 4em
 
     li
         opacity 0
