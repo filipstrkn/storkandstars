@@ -1,36 +1,22 @@
 <template>
-    <p>
-        <span @mouseover="setColor" @mouseleave="resetColor" :style="color" :class="{'start-the-show': launcher}">{{ word }} </span>
+    <p class="_text--large">
+        <span @mouseover="setRandomColor" @mouseleave="resetRandomColor" :style="{color: this.randomColor}" :class="{'start-the-show': launcher}">{{ word }} </span>
     </p>
 </template>
 
 
 <script>
+
+import randomColor from '~/mixins/randomColor'
+
 export default {
     name: 'WordBlock',
     props: ['word', 'duration'],
+    mixins: [randomColor],
     data() {
         return {
             launcher: false,
             hovered: false,
-            trueColor: ''
-        }
-    },
-    computed: {
-        color: {
-            set(value) {
-                if (value === 'reset') {
-                    this.trueColor = 'inherit'
-                } else {
-                    const { pallete } = this.$store.state.theme
-                    this.trueColor = pallete[Math.floor(Math.random() * pallete.length)]
-                }
-            },
-            get() {
-                return {
-                    color: this.trueColor
-                }
-            }
         }
     },
     methods: {
@@ -40,13 +26,6 @@ export default {
         showWord() {
             this.launcher = true
             this.$el.getElementsByTagName('span')[0].style.animationDelay = this.getRandom(this.duration.min, this.duration.max) + 'ms'
-        },
-        setColor() {
-            const { pallete } = this.$store.state.theme
-            this.color = pallete[Math.floor(Math.random() * pallete.length)]
-        },
-        resetColor() {
-            this.color = 'reset'
         }
     },
     mounted() {

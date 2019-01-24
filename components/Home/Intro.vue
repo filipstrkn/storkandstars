@@ -1,10 +1,9 @@
 <template>
     <section id="Intro">
 
-        <div id="Box" class="_content">
-            <title-block class="title" :title="blok.text" :duration="{min: 400, max: 3000}" />
-            <!-- <title-block :title="blok.second" :duration="{min: 400, max: 3000}" /> -->
-            <!-- <div>link</div> -->
+        <div class="_content">
+            <title-block id="IntroTitle" :title="blok.text" :duration="{min: 400, max: 3000}" />
+            <div>link</div>
         </div>
 
 
@@ -35,10 +34,20 @@ export default {
 @import '~assets/stylus/animations'
 
 
-// #Intro
-//     // min-height 100vh
-//     display flex
-//     align-items flex-end
+
+// #IntroTitle
+//     font-size calc(.01212*100vw + 1rem)
+#Intro
+    padding 20em 0 0 0
+    margin 0 0 0 auto
+    display block
+
+#IntroTitle
+    max-width 36em
+
+    // min-height 100vh
+    // display flex
+    // align-items flex-end
 
 // #Box
 //     // width 100%
@@ -46,17 +55,17 @@ export default {
 //     padding-top 30vh
 
 // .text
-#Box
-    font-size calc(1rem + 46 * ((100vw - 320px) / 680))
-    font-size calc(1rem + 16 * ((100vw - 320px) / 680))
-    // font-weight 900
-    font-weight 600
-    // max-width 46%
-    // margin-left 15%
-    // line-height 1
-    font-family $secondary-font
-    // z-index 1
-    // position relative
+// #Box
+//     font-size calc(1rem + 46 * ((100vw - 320px) / 680))
+//     font-size calc(1rem + 16 * ((100vw - 320px) / 680))
+//     // font-weight 900
+//     font-weight 600
+//     // max-width 46%
+//     // margin-left 15%
+//     // line-height 1
+//     font-family $secondary-font
+//     // z-index 1
+//     // position relative
 
 
 

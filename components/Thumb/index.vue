@@ -9,13 +9,15 @@
                     :image="content.thumbnail">
                 </image-block>
 
-                <!-- //////////////////////////////////////////////////////////////
-                    Title
-                ////////////////////////////////////////////////////////////// -->
 
 
 
             </article>
+
+
+            <!-- //////////////////////////////////////////////////////////////
+                Title
+            ////////////////////////////////////////////////////////////// -->
 
             <div class="name">
                 <h3>{{ content.client }}</h3>
@@ -101,22 +103,16 @@ export default {
 
         .name
             opacity 1
-            // p
-            //     opacity 1
+
 
     &[data-visible="false"] .thumb
         transition all $appear ease-in
-        // transform translateY(2em)
         transform scale(.8)
-        // opacity 0
 
 
     &[data-visible="true"] .thumb
         transition all 600ms ease-out
         transform scale(1)
-        // transform translateY(0)
-        // opacity 1
-
 
 .thumb--square
     padding-bottom 100%
@@ -131,7 +127,6 @@ export default {
     position absolute
     width 100%
     height 100%
-    // transform-origin 50% 0
     transform-origin center
 
 

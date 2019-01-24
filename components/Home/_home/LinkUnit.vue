@@ -9,12 +9,13 @@
 
 
 <script>
+
+import randomColor from '~/mixins/randomColor'
+
 export default {
     name: 'LinkUnit',
     props: ['to', 'line'],
-    computed: {
-        // lineColor()
-    }
+    mixins: [randomColor]
 }
 </script>
 

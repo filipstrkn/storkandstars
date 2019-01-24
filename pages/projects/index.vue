@@ -3,10 +3,10 @@
 
         <div class="_page__content">
 
-            <div class="intro">
-                <!-- <div class="_text--large title">
+            <div class="projects__intro _content">
+                <div class="projects-intro__title">
                     <p>Vítejte v šuplíku našich projektů.</p>
-                </div> -->
+                </div>
 
                 <filter-block :filters="stories" @filtering="setFilters" />
             </div>
@@ -83,10 +83,11 @@ export default {
     margin-bottom 10%
     padding-top 10em
 
-.intro
-    padding calc(5em + 2%) 10% 0 10%
+// .projects__intro
+//     padding-top calc(5em + 2%)
+.projects-intro__title
+    font-size calc(.01212*100vw + 1rem)
+    font-weight 600
 
-    .title
-        max-width 20em
 
 </style>

@@ -2,17 +2,17 @@
     <div id="FilterBlock">
 
 
-        <h3 class="selected _subtitle _clickable" @click="toggleFilters">{{ selectedFilter }}&nbsp;<svg id="Arrow" :class="{'opened': areFilters}" viewBox="0 0 11 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1.5;"><path d="M8.707,1.414l-3.633,3.66l-3.66,-3.66"/></svg></h3>
+        <h3 class="selected _clickable" @click="toggleFilters">{{ selectedFilter }}&nbsp;<svg id="Arrow" :class="{'opened': areFilters}" viewBox="0 0 11 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1.5;"><path d="M8.707,1.414l-3.633,3.66l-3.66,-3.66"/></svg></h3>
 
 
         <transition name="filters">
             <div class="filters" v-show="areFilters">
                 <ul>
-                    <li @click="resetFilter" class="_clickable _link">Vše</li>
+                    <li @click="resetFilter" class="_clickable">Vše</li>
                     <li v-for="(filter, index) in givenFitlers"
                         :key="index"
                         @click="setFilter"
-                        class="_clickable _link">{{ filter }}</li>
+                        class="_clickable">{{ filter }}</li>
                 </ul>
             </div>
         </transition>
@@ -31,7 +31,7 @@ export default {
     data() {
         return {
             filter: '',
-            defaultFilter: 'Zobrazit vše',
+            defaultFilter: 'Vše',
             areFilters: false
         }
     },
@@ -98,7 +98,7 @@ export default {
     height @width
     fill none
     stroke-width 1px
-    stroke $blue
+    stroke $black
     transition transform 250ms ease-in-out
     pointer-events none
 
@@ -115,14 +115,6 @@ export default {
     max-height 40em
     overflow hidden
 
-    // &::after
-    //     content ""
-    //     position absolute
-    //     width 100%
-    //     height 1px
-    //     background-color $line
-    //     left 0
-    //     bottom 0
     ul
         padding 3.6em 0 0 0
 
@@ -130,6 +122,11 @@ export default {
         display inline-block
         margin .6em 3em .6em 0
         font-family $secondary-font
+        color alpha(#000, .45)
+        &:last-of-type
+            margin-right 0
+        &:hover
+            color $black
 
 
 

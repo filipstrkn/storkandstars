@@ -17,12 +17,14 @@
 
                 </div>
 
+
                 <div class="menu__footer">
-                    <nuxt-link id="Icon" :to="'/form/new-project'" class="_clickable">
-                        <rocket-icon />
-                    </nuxt-link>
-                    <span>Odstartuj projekt</span>
+
+                    <rocket-button :color="randomColor" class="menu-footer__rocket"  />
+                    <span>Odstartuj svůj projekt</span>
+
                 </div>
+
 
             </div>
 
@@ -35,16 +37,18 @@
 
 <script>
 
-import LinkUnit from '~/components/Home/_home/LinkUnit'
-import RocketIcon from './RocketIcon'
+// Components
 import MenuLink from './MenuLink'
+import RocketButton from './RocketButton'
+// Mixins
+import randomColor from '~/mixins/randomColor'
 
 export default {
     name: 'MenuBlock',
+    mixins: [randomColor],
     components: {
-        'link-unit': LinkUnit,
-        'rocket-icon': RocketIcon,
-        'menu-link': MenuLink
+        'menu-link': MenuLink,
+        'rocket-button': RocketButton
     },
     data() {
         return {
@@ -85,6 +89,10 @@ export default {
             }, () => {
 
                 if (s) {
+                    // Set new RandomColor
+                    this.setRandomColor()
+
+                    // Show cascadecaly link in the menu
                     this.$el.querySelectorAll('.links li').forEach((link, index) => {
                         setTimeout(() => {
                             link.classList.add('show')
@@ -155,30 +163,6 @@ export default {
             opacity 1
             transform translateX(0)
 
-#Icon
-    display flex
-    align-items center
-    justify-content center
-    font-weight 500
-    background-color #ffc5c8
-    width 4em
-    height @width
-    border-radius 100%
-    margin 0 auto
-    *
-        pointer-events none
-
-    &:hover
-        animation-name: shaking
-        animation-duration: 0.8s
-        transform-origin:50% 50%
-        animation-iteration-count: infinite
-        animation-timing-function: linear
-        & ~ span
-            opacity 1
-    #Icon
-        width 18px
-
 .menu__content
     flex-grow 1
     flex-shrink 0
@@ -193,30 +177,10 @@ export default {
         opacity 0
         color alpha(#000, .45)
 
-
-@keyframes shaking
-	0%
-        transform: translate(2px, 1px) rotate(0deg)
-	10%
-        transform: translate(-1px, -2px) rotate(-1deg)
-	20%
-        transform: translate(-3px, 0px) rotate(1deg)
-	30%
-        transform: translate(0px, 2px) rotate(0deg)
-	40%
-        transform: translate(1px, -1px) rotate(1deg)
-	50%
-        transform: translate(-1px, 2px) rotate(-1deg)
-	60%
-        transform: translate(-3px, 1px) rotate(0deg)
-	70%
-        transform: translate(2px, 1px) rotate(-1deg)
-	80%
-        transform: translate(-1px, -1px) rotate(1deg)
-	90%
-        transform: translate(2px, 2px) rotate(0deg)
-	100%
-        transform: translate(1px, -2px) rotate(-1deg)
+    .menu-footer__rocket
+        margin 0 auto
+        &:hover ~ span
+            opacity 1
 
 
 </style>

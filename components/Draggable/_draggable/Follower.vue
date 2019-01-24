@@ -43,22 +43,14 @@ $arrow = 5px
     height @width
     background-color alpha($black, .1)
 
-    // background none
-    // border solid 2px $purple
-    // background-color alpha($blue, .3)
-
 
 #Follower
     position fixed
     z-index 1000
     width 8px
-    // width 2rem
-    // width 6px
     height @width
     border-radius 100%
-    // background #935BF9
-    background $blue
-    background $black
+    background-color alpha($black, .2)
     transition width $duration ease-out, height $duration ease-out, border $duration ease-out, background $duration ease-out
     transform translate(-50%, -50%)
     pointer-events none

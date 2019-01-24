@@ -36,6 +36,7 @@ export default {
     margin 1.6em 0 0 0
 
     .menu-link__body
+        pointer-events none
         transition transform 250ms ease-out
 
     h3

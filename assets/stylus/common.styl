@@ -92,10 +92,8 @@
 
 .__text
     font-family $serif
-    font-weight 300
     font-weight 700
-    line-height 2
-    h1, p
+    h1, h2, h3, h4, p
         font-weight: inherit
         font-size: inherit
 
@@ -103,6 +101,7 @@
 ._text--large
     @extend .__text
     font-size calc(1rem + 11 * ((100vw - 320px) / 680))
+    font-size calc(.00848 * 100vw + 2rem)
 
 ._text--medium
     @extend .__text
@@ -174,6 +173,7 @@
     padding: 0 1em
     width 100%
     margin: 0 auto
+    clear both
 
 
 
