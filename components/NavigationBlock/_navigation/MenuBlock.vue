@@ -56,7 +56,7 @@ export default {
                 {
                     to: '/contact',
                     title: 'Design Sprint',
-                    subtitle: 'Nevíte, co sprinty jsou?'
+                    subtitle: 'Nevíš, co sprinty jsou?'
                 },
                 {
                     to: '/projects',
@@ -66,12 +66,17 @@ export default {
                 {
                     to: '/contact',
                     title: 'Vzdělání',
-                    subtitle: 'Vše vás naučíme'
+                    subtitle: 'Vše tě naučíme'
                 },
                 {
                     to: '/contact',
                     title: 'O nás',
-                    subtitle: 'Kontaktujte nás'
+                    subtitle: 'Poznej nás tým'
+                },
+                {
+                    to: '/contact',
+                    title: 'Kontakt',
+                    subtitle: 'Napiš nám'
                 }
             ]
         }
@@ -153,7 +158,7 @@ export default {
 
 .links
     font-size 1.6em
-    padding calc(4em + 5vh) 4em 2em 4em
+    padding calc(3em + 5vh) 4em 2em 4em
 
     li
         opacity 0

@@ -1,34 +1,21 @@
 <template>
+    <nuxt-link :to="event.link.cached_url">
+        <article class="event-unit _clickable">
 
-    <article class="event-unit">
-
-        <div class="event" data-visible="false">
-
-            <div class="content">
-
-                <div class="info">
-
-                    <date-block :from="event.from" :to="event.to" class="date" />
-
-                    <div v-if="event.city" class="city">
-                        <span>{{ event.city }}</span>
-                    </div>
-
-                </div>
+            <div class="event-unit__content">
                 <p class="topic">{{ event.topic }}</p>
-
+                <div class="info">
+                    <!-- Date -->
+                    <date-block :from="event.from" :to="event.to" class="date" />
+                    <!-- City -->
+                    <span v-if="event.city" class="city">{{ event.city }}</span>
+                </div>
             </div>
 
-        </div>
-
-        <link-unit :to="event.link.cached_url" class="link">
-            Zúčastnit se
-        </link-unit>
 
 
-
-    </article>
-
+        </article>
+    </nuxt-link>
 </template>
 
 
@@ -46,11 +33,7 @@ export default {
     name: 'EventBlock',
     props: ['event'],
     mixins: [isVisible],
-    data() {
-        return {
-            visibleAt: 80
-        }
-    },
+
     components: {
         'link-unit': LinkUnit,
         'date-block': DateBlock
@@ -67,87 +50,50 @@ export default {
 
 .event-unit
     position relative
-    background-color #f6dd86
-    max-width 26em
-    transform-origin 50% 0
+    border-bottom solid 1px rgba(0,0,0, 0.1)
+    // max-width 60%
+    margin 0 0 1em 0
+    padding 2em 0
+    transition border 250ms ease
+
     &:hover
-        .event
-            transform translateY(-10%)
-        .link
-            opacity 1
-            bottom 10%
-            pointer-events all
+        border-color $black
 
-.link
-    position absolute
-    display block
-    bottom -10%
-    opacity 0
-    left 50%
-    transform translateX(-50%)
-    transition all 400ms ease-out
-    pointer-events none
+    *
+        pointer-events none
 
-.event
-    display flex
-    flex-direction column
-    position relative
-    padding 6em 2em
-    font-family $secondary-font
-    white-space pre-wrap
-    color $black
-    text-align center
-    box-sizing border-box
-    color $white
-    transition all 400ms ease-out
-
-    .content
-        flex-grow 1
-
-    .footer
-        text-align right
-
-
+.event-unit__content
+    max-width 30em
+    margin 0 auto 0 0
 
 .info
     display flex
     flex-wrap wrap
-    justify-content center
-    font-weight 600
-    font-style italic
-    color $black
+    margin-top  .4em
+    color alpha(#000, .45)
+    font-family $secondary-font
+
 
 .city
     display inline-block
-
-.date
-    flex-shrink 0
-    display flex
-    align-items center
-    margin-right .2em
-
-    & .to::before
+    &::before
         content ""
         display inline-block
+        width 3px
+        height @width
+        border-radius 100%
+        background-color alpha(#000, .45)
+        margin 0 .4em
         vertical-align middle
-        height 1px
-        width .8em
-        margin 0 .3em
-        background-color $black
+
 
 
 .topic
-    line-height 1.3
-    font-weight 900
+    font-weight 600
+    margin 0
+    font-size 1.2em
     font-family $secondary-font
-    font-size calc(.00848 * 100vw + 18.81818px)
-    &::after
-        content ""
-        display block
-        margin 1em auto 0 auto
-        width 1.6em
-        height .2em
-        background-color $white
+
 
 [data-visible="false"]
     transition all $appear ease-in
@@ -160,6 +106,4 @@ export default {
     transform translateY(0)
     opacity 1
 
-// .eh
-//     transform-origin 50% 0
 </style>

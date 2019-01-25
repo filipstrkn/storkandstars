@@ -25,6 +25,7 @@ import ProjectUnit from '~/components/Projects/ProjectUnit'
 import EventList from '~/components/Lists/EventList'
 import Top from '~/components/Home/Top'
 import Separator from '~/components/Home/_home/Separator'
+import UpperFooter from '~/components/Home/UpperFooter'
 
 
 
@@ -86,6 +87,7 @@ Vue.component('separator', Separator)
 
 Vue.component('horizont', Horizont)
 Vue.component('project_unit', ProjectUnit)
+Vue.component('upperfooter', UpperFooter)
 
 
 

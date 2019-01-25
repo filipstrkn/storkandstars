@@ -42,7 +42,15 @@ export default {
 
 
 
-<style lang="stylus">
+<style lang="stylus" scoped>
+
+@import '~assets/stylus/variables'
+
+#EventList
+    padding-bottom $spacing-flex
+
+    .events
+        padding-left 40%
 
 </style>
 

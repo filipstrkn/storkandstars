@@ -56,8 +56,6 @@ export default {
 
 <style lang="stylus">
 
-@import '~assets/stylus/variables'
-
 .date .to::before
     content ""
     display inline-block
@@ -65,7 +63,6 @@ export default {
     height 1px
     width .8em
     margin 0 .3em
-    background-color $black
-
+    background-color alpha(#000, .45)
 
 </style>

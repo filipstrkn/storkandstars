@@ -42,7 +42,7 @@ export default {
     justify-content space-between
     align-items center
     padding 5% 8%
-    padding 5em 7em
+    padding 4em 6.4em
     pointer-events none
     & > *
         pointer-events all

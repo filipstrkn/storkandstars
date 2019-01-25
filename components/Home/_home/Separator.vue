@@ -24,7 +24,7 @@ export default {
 
     span
         width 1px
-        height 20em
+        height 18em
         background-color $line
 
 
