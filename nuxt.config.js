@@ -32,12 +32,12 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  // loading: false,
-  loading: {
-    name: 'pulse',
-    color: '#000000',
-    background: '#000000',
-  },
+  loading: '~/components/Loading/index.vue',
+  // loading: {
+  //   name: 'pulse',
+  //   color: '#000000',
+  //   background: '#000000',
+  // },
   scrollToTop: false
   /*
   ** Build configuration

@@ -31,6 +31,9 @@ export default function createStore() {
             // States
             // ----------------------------------------------------------------
             state: {
+                loading: {
+                    is: false
+                },
                 menu: false,
                 theme: {
                     text: null,
@@ -93,13 +96,23 @@ export default function createStore() {
 
 
                 // ------------------------------------------------------------
+                //  Loading
+                // ------------------------------------------------------------
+                setPageLoading(state, payload) {
+                    state.loading = {
+                        ...state.loading,
+                        ...payload
+                    }
+                },
+
+
+                // ------------------------------------------------------------
                 //  Project
                 // ------------------------------------------------------------
                 setTopProjects(state, payload) {
                     state.projects.top = payload
                 },
                 setAllProjects(state, paylaod) {
-                    console.log('Setting all projects')
                     state.projects.all = paylaod
                 },
 

@@ -1,9 +1,9 @@
 <template>
     <nuxt-link v-if="blok.link_to.cached_url" :to="blok.link_to.cached_url">
 
-        <section id="UpperFooter">
+        <section id="UpperFooter" class="_clickable">
             <div class="_content">
-                <p class="_text--medium">{{ blok.title }}</p>
+                <p class="_text--medium" v-html="text"></p>
             </div>
         </section>
 
@@ -12,9 +12,17 @@
 
 
 <script>
+
+import marked from 'marked'
+
 export default {
     name: 'UpperFooter',
-    props: ['blok']
+    props: ['blok'],
+    computed: {
+        text() {
+            return marked(this.blok.title)
+        }
+    }
 }
 </script>
 
@@ -27,12 +35,16 @@ export default {
 #UpperFooter
     padding $spacing-flex 0
     margin-top $spacing-flex
+
     &:hover
         background-color alpha(#000, .03)
 
 
     p
         text-align center
+
+    *
+        pointer-events none
 
 
 </style>

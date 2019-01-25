@@ -1,0 +1,85 @@
+<template></template>
+
+<script>
+export default {
+    name: 'Loading',
+    data () {
+        return {
+            percent: 0,
+            duration: 5000
+        }
+    },
+    methods: {
+
+        start () {
+
+            if (this._timer) {
+                clearInterval(this._timer)
+                this.percent = 0
+            }
+            this._cut = 10000 / Math.floor(this.duration)
+            this._timer = setInterval(() => {
+                this.increase(this._cut * Math.random())
+                if (this.percent > 5) {
+                    this.$store.commit('setPageLoading', {is: true})
+                }
+                if (this.percent > 95) {
+                this.finish()
+                }
+            }, 100)
+            return this
+        },
+
+        set (num) {
+
+            this.$store.commit('setPageLoading', {is: true})
+            this.percent = Math.floor(num)
+            return this
+        },
+
+        get () {
+            return Math.floor(this.percent)
+        },
+
+        increase (num) {
+            this.percent = this.percent + Math.floor(num)
+            return this
+        },
+
+        decrease (num) {
+            this.percent = this.percent - Math.floor(num)
+            return this
+        },
+
+        finish () {
+            this.percent = 100
+            this.hide()
+            return this
+        },
+
+        pause () {
+            clearInterval(this._timer)
+            return this
+        },
+
+        hide () {
+            clearInterval(this._timer)
+            this._timer = null
+            setTimeout(() => {
+                this.show = false
+                this.$store.commit('setPageLoading', {is: false})
+                this.$nextTick(() => {
+                setTimeout(() => {
+                    this.percent = 0
+                }, 200)
+                })
+            }, 500)
+            return this
+        },
+
+        fail () {
+            return this
+        }
+    }
+}
+</script>
