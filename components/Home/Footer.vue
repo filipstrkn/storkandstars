@@ -1,5 +1,9 @@
 <template>
     <footer id="Footer">
+
+        <!-- UpperFooter = slot -->
+
+
         <logo class="footer__logo" />
         <span></span>
 

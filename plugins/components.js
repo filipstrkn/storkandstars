@@ -29,9 +29,6 @@ import UpperFooter from '~/components/Home/UpperFooter'
 
 
 
-// import FavoriteLink from '~/components/Draggable/_draggable/FavoriteLink'
-
-
 
 /*
 |==========================================================================

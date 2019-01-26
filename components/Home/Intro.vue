@@ -3,7 +3,7 @@
 
         <div class="_content">
             <div class="intro__content _text--large">
-                <title-block id="IntroTitle" :title="blok.text" :duration="{min: 200, max: 1200}" />
+                <title-block id="IntroTitle" :title="blok.text" :duration="{min: 200, max: 400}" />
                 <link-unit :to="blok.link_to.cached_url">{{ blok.link_name }}</link-unit>
             </div>
         </div>
@@ -39,6 +39,5 @@ export default {
 .intro__content
     max-width 14em
     margin 0 0 0 auto
-
 
 </style>

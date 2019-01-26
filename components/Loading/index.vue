@@ -21,7 +21,7 @@ export default {
             this._timer = setInterval(() => {
                 this.increase(this._cut * Math.random())
                 if (this.percent > 5) {
-                    this.$store.commit('setPageLoading', {is: true})
+                    this.$store.commit('setLoading', {page: true})
                 }
                 if (this.percent > 95) {
                 this.finish()
@@ -32,7 +32,7 @@ export default {
 
         set (num) {
 
-            this.$store.commit('setPageLoading', {is: true})
+            this.$store.commit('setLoading', {page: true})
             this.percent = Math.floor(num)
             return this
         },
@@ -67,7 +67,7 @@ export default {
             this._timer = null
             setTimeout(() => {
                 this.show = false
-                this.$store.commit('setPageLoading', {is: false})
+                this.$store.commit('setLoading', {page: false})
                 this.$nextTick(() => {
                 setTimeout(() => {
                     this.percent = 0

@@ -5,7 +5,6 @@
         <h3
             v-if="blok.title"
             v-editable="blok"
-            :style="{color: $store.state.theme.text}"
             class="title--h3">{{ blok.title }}</h3>
         <p v-editable="blok" class="_paragraph">{{ blok.text }}</p>
 

@@ -38,11 +38,13 @@ export default {
 @keyframes showUp
     0%
         opacity 0
-        height 0px
+        transform translateY(2em)
+        // height 0px
 
     100%
         opacity 1
-        height 100%
+        transform translateY(0)
+        // height 100%
 
 p
     display inline-block
@@ -51,14 +53,16 @@ p
 
 
 .start-the-show
-    animation showUp 1.2s ease-out forwards
+    animation showUp 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards
 
 span
     display inline-block
-    height 0
-    bottom 0
-    overflow-y hidden
-    transition color 250ms ease-in-out
+    // height 0
+    transform translateY(2em)
+    opacity 0
+    // bottom 0
+    // overflow-y hidden
+    // transition color 250ms ease-in-out
 
 
 </style>

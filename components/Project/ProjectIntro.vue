@@ -6,9 +6,7 @@
         <!-- Intro Text -->
         <p
             v-editable="blok"
-            :style="{color: $store.state.theme.text}"
-            v-html="intro"
-            class="_text--medium"></p>
+            class="_text--medium">{{ blok.intro }}</p>
 
 
         <!-- Columns -->
@@ -48,11 +46,6 @@ export default {
     props: ['blok'],
     components: {
         'link-unit': LinkUnit
-    },
-    computed: {
-        intro() {
-            return marked(this.blok.intro)
-        }
     }
 }
 </script>
@@ -78,8 +71,6 @@ export default {
 
 
 .columns
-    // font-size 1.2rem
-    // line-height 1.8em
     display flex
     justify-content space-between
     margin-top 4em

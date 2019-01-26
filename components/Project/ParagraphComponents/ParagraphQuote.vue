@@ -4,7 +4,7 @@
 
 
         <div class="title--h3">
-            <h3 v-if="content.title" :style="theme" class="_subtitle">{{ content.title }}</h3>
+            <h3 v-if="content.title" class="_subtitle">{{ content.title }}</h3>
             <p>{{ content.text }}</p>
         </div>
 
@@ -17,16 +17,7 @@
 <script>
 export default {
     name: 'ParagraphQuote',
-    props: ['content'],
-    computed: {
-        theme() {
-            if (!this.content.apply_theme) return
-            return {
-                color: this.$store.state.theme.text
-            }
-        }
-    }
-
+    props: ['content']
 }
 </script>
 

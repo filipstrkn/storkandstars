@@ -1,5 +1,5 @@
 <template>
-    <main id="Projects" class="_page">
+    <main id="Projects" class="_page __page">
 
         <div class="_page__content">
 

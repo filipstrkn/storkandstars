@@ -41,39 +41,17 @@ $arrow = 5px
 #Follower.isClickable
     width 46px
     height @width
-    background-color alpha($black, .1)
-
 
 #Follower
     position fixed
     z-index 1000
-    width 8px
+    width 0
     height @width
     border-radius 100%
-    background-color alpha($black, .2)
-    transition width $duration ease-out, height $duration ease-out, border $duration ease-out, background $duration ease-out
+    background-color alpha($black, .1)
+    transition width $duration ease-out, height $duration ease-out
     transform translate(-50%, -50%)
     pointer-events none
-
-    &::before,
-    &::after
-        content ""
-        position absolute
-        top 50%
-        transform translateY(-50%)
-        width 0
-        height @width
-        border-style solid
-        opacity 0
-        transition all 400ms ease-in-out
-    &::before
-        left -2em
-        border-width $arrow $arrow $arrow 0
-        border-color alpha($black, 0) $black alpha($black, 0) alpha($black, 0)
-    &::after
-        right -2em
-        border-width $arrow 0 $arrow $arrow
-        border-color alpha($black, 0) alpha($black, 0) alpha($black, 0) $black
 
 
 </style>

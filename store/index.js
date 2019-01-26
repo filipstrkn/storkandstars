@@ -32,7 +32,9 @@ export default function createStore() {
             // ----------------------------------------------------------------
             state: {
                 loading: {
-                    is: false
+                    page: false,
+                    preloading: true,
+                    pageReady: false
                 },
                 menu: false,
                 theme: {
@@ -98,7 +100,7 @@ export default function createStore() {
                 // ------------------------------------------------------------
                 //  Loading
                 // ------------------------------------------------------------
-                setPageLoading(state, payload) {
+                setLoading(state, payload) {
                     state.loading = {
                         ...state.loading,
                         ...payload

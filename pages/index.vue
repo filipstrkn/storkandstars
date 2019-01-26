@@ -1,21 +1,10 @@
 <template>
-    <div>
-
-
-
-        <component
-            v-if="story.content.component"
-            :key="story.content._uid"
-            :blok="story.content"
-            :is="story.content.component">
-        </component>
-
-
-        <footer-block />
-
-
-    </div>
-
+    <component
+        v-if="story.content.component"
+        :key="story.content._uid"
+        :blok="story.content"
+        :is="story.content.component">
+    </component>
 </template>
 
 
@@ -23,7 +12,6 @@
 <script>
 
 import storyblokLivePreview from '@/mixins/storyblokLivePreview'
-import FooterBlock from '~/components/Home/Footer'
 
 export default {
 
@@ -36,13 +24,7 @@ export default {
         }
     },
 
-    components: {
-        'footer-block': FooterBlock
-    },
-
-
     mixins: [storyblokLivePreview],
-
 
     asyncData (context) {
         // Check if we are in the editor mode

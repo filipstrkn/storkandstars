@@ -1,5 +1,5 @@
 <template>
-    <main id="ProjectPage">
+    <main id="ProjectPage" class="__page">
 
         <component
             :key="blok._uid"
@@ -27,36 +27,14 @@ export default {
     name: 'Page',
     props: ['blok'],
     scrollToTop: false,
+
     components: {
         'footer-block': FooterBlock,
         'related-projects': RelatedProjects
     },
 
-    created() {
-        this.$store.commit('setTheme', {
-            text: this.blok.theme_color,
-            background: this.blok.theme_color,
-        })
-    },
     beforeMount() {
         this.$store.commit('toggleMenu', false)
     }
 }
 </script>
-
-
-
-<style lang="stylus">
-
-@import '~assets/stylus/variables'
-
-#ProjectPage
-    min-height 100vh
-
-.page--dark
-    background-color $dark
-    color $white
-
-
-</style>
-

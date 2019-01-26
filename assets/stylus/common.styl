@@ -2,8 +2,6 @@
 @import '~assets/stylus/mixins'
 @import '~assets/stylus/transitions'
 
-
-
 .title--h2
     font-size: 1.8rem
 
@@ -27,7 +25,6 @@
 
 ._image--loading
     background-color alpha($black, .05)
-    animation loading 2s ease-in-out infinite
     width: 100%
     height @width
 
@@ -203,7 +200,11 @@
 
 
 
-
+.__page
+    &.light
+        background-color #fff
+    &.dark
+        background-color #000
 
 ._page
     display flex

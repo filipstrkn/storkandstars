@@ -3,7 +3,7 @@
 
         <section id="UpperFooter" class="_clickable">
             <div class="_content">
-                <p class="_text--medium" v-html="text"></p>
+                <div class="_text--medium" v-html="text"></div>
             </div>
         </section>
 
@@ -28,7 +28,7 @@ export default {
 
 
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 
 @import '~assets/stylus/variables'
 
@@ -39,12 +39,10 @@ export default {
     &:hover
         background-color alpha(#000, .03)
 
-
-    p
-        text-align center
-
     *
         pointer-events none
 
+    p
+        text-align center
 
 </style>
