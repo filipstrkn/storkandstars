@@ -40,7 +40,8 @@ export default function createStore() {
                 theme: {
                     text: null,
                     background: null,
-                    pallete: ['#cbe7fd', '#ffc5c8', '#bff9f2', '#19d8e9']
+                    pallete: ['#78EFFF', '#FFF679', '#9FFFD5', '#FFF7B3', '#0EEBDD']
+                    // pallete: ['#cbe7fd', '#ffc5c8', '#bff9f2', '#19d8e9', '#FF5964', '#FFE74C', '#3AB795', '#35A7FF']
                 },
                 projects: {
                     top: [],

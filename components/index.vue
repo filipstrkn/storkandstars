@@ -1,6 +1,6 @@
 <template>
 
-    <nuxt />
+    <nuxt/>
 
 </template>
 

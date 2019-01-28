@@ -21,7 +21,7 @@
                 <div class="menu__footer">
 
                     <rocket-button :color="randomColor" class="menu-footer__rocket"  />
-                    <span>Odstartuj svůj projekt</span>
+                    <span>Napiš nám na Slack</span>
 
                 </div>
 
@@ -63,11 +63,11 @@ export default {
                     title: 'Projekty',
                     subtitle: 'Dělali jsme'
                 },
-                {
-                    to: '/contact',
-                    title: 'Vzdělání',
-                    subtitle: 'Vše tě naučíme'
-                },
+                // {
+                //     to: '/contact',
+                //     title: 'Vzdělání',
+                //     subtitle: 'Vše tě naučíme'
+                // },
                 {
                     to: '/contact',
                     title: 'O nás',

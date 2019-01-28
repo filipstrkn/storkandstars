@@ -1,31 +1,23 @@
 <template>
-    <p class="_text--large">
-        <span :class="{'start-the-show': launcher}">{{ word }} </span>
-    </p>
+    <p :class="{'show': launcher}" :style="delay" class="_text--large">{{ word }}</p>
 </template>
 
 
 <script>
 export default {
     name: 'WordBlock',
-    props: ['word', 'duration'],
-    data() {
-        return {
-            launcher: false,
-            hovered: false,
+    props: ['word', 'duration', 'launcher'],
+    computed: {
+        delay() {
+            return {
+                animationDelay: this.getRandom(this.duration.min, this.duration.max) + 'ms'
+            }
         }
     },
     methods: {
         getRandom(min, max) {
             return Math.random() * (max - min) + min;
-        },
-        showWord() {
-            this.launcher = true
-            this.$el.getElementsByTagName('span')[0].style.animationDelay = this.getRandom(this.duration.min, this.duration.max) + 'ms'
         }
-    },
-    mounted() {
-        this.showWord()
     }
 }
 </script>
@@ -38,31 +30,25 @@ export default {
 @keyframes showUp
     0%
         opacity 0
-        transform translateY(2em)
-        // height 0px
+        transform translate(-1em, 1.4em) perspective(750px) rotateX(-10deg) rotateY(-30deg) rotateZ(8deg)
+
+
 
     100%
         opacity 1
-        transform translateY(0)
-        // height 100%
+        transform translate(0, 0) perspective(1000px) rotateX(0) rotateY(0) rotateZ(0)
 
 p
     display inline-block
     height 1.3em
     position relative
-
-
-.start-the-show
-    animation showUp 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards
-
-span
-    display inline-block
-    // height 0
-    transform translateY(2em)
     opacity 0
-    // bottom 0
-    // overflow-y hidden
-    // transition color 250ms ease-in-out
+    transform translate(-1em, 1.4em) perspective(750px) rotateX(-10deg) rotateY(-30deg) rotateZ(8deg)
+    perspective 1000px
+    perspective-origin 50% 50%
+    transform-origin 0 100%
 
+    &.show
+        animation showUp 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards
 
 </style>

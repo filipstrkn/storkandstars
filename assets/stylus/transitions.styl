@@ -19,30 +19,35 @@
 // ////////////////////////////////////////////////////////////////////////////
 //                                    PAGE                                   //
 // ////////////////////////////////////////////////////////////////////////////
-.page-enter-active,
-.page-leave-active
-    transition all 1s
-    &::after
-        content ""
-        position fixed
-        left 0
-        width 100%
-        height 100%
-        z-index 101
-        background-color #f9f9fa
-        transition all .6s
+// .page-enter-active,
+// .page-leave-active
+//     transition all 1s
+//     & > *
+//         transition opacity .4s
 
-.page-enter::after
-    top 0
+// .page-enter,
+// .page-leave-to
+//     & > *
+//         opacity 0
+//     &::after
+//         top 0
 
-.page-enter-to::after
-    top -100%
+// .page-enter-to
+//     & > *
+//         opacity 1
+//     &::after
+//         top -100%
 
-.page-leave::after
-    top 100%
+// .page-leave
+//     & > *
+//         opacity 1
+//     &::after
+//         top 100%
 
-.page-leave-to::after
-    top 0
+.page-enter-active, .page-leave-active
+  transition: opacity .6s
+.page-enter, .page-leave-active
+  opacity 0
 
 
 

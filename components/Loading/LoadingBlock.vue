@@ -33,7 +33,7 @@ export default {
 
     span
         flex-shrink 0
-        width .6em
+        width .7em
         height @width
         margin 0
         border-radius 100%

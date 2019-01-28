@@ -61,10 +61,11 @@ export default {
 #Text
     display block
     position relative
-    font-size 1.2rem
+    font-size 1.4rem
     font-weight 400
     line-height 1
     z-index 1
+    pointer-events none
 
 .line
     position absolute
@@ -75,5 +76,6 @@ export default {
     background-color rgba(0,0,0, 0.1)
     transition all 650ms $ease-in
     z-index 0
+    pointer-events none
 
 </style>

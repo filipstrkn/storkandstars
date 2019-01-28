@@ -63,6 +63,7 @@ export default {
     // margin 0 auto
     // padding 20% 6em 0 6em
     padding-top 20%
+    padding-top 16%
 
     .list__item
         margin-top 60%

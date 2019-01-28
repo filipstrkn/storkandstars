@@ -57,7 +57,8 @@ export default {
 @import '~assets/stylus/variables'
 
 #ProjectIntro
-    padding-top calc(10% + 4em)
+    // padding-top calc(10% + 4em)
+    padding calc(8em + 20vh) 0 0 0
     max-width 54em
     margin 0 auto
 

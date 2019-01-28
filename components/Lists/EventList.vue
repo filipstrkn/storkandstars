@@ -7,7 +7,13 @@
             Event list
         /////////////////////////////////////////////////////////////////// -->
         <div class="events" data-visible="false">
-            <event-block v-for="(event, index) in events" :event="event" :key="event._uid + index" />
+            <event-block
+                v-for="(event, index) in events"
+                :key="event._uid + index"
+                :event="event"
+                :index="index"
+                :launcher="visibleShown"
+                 />
         </div>
 
 
@@ -19,13 +25,23 @@
 
 <script>
 
+// mixins
+import isVisible from '~/mixins/isVisible'
+// components
 import EventBlock from '~/components/EventBlock'
+
 
 export default {
     name: 'EventList',
     props: ['blok'],
+    mixins: [isVisible],
     components: {
         'event-block': EventBlock
+    },
+    data() {
+        return {
+            visibleOnce: true
+        }
     },
     computed: {
         events() {
@@ -47,8 +63,6 @@ export default {
 @import '~assets/stylus/variables'
 
 #EventList
-    padding-bottom $spacing-flex
-
     .events
         padding-left 40%
 

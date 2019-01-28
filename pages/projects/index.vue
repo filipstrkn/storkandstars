@@ -81,7 +81,7 @@ export default {
 
 ._page__content
     margin-bottom 10%
-    padding calc(8em + 20vh) 0 0 0
+    padding calc(10em + 20vh) 0 0 0
 
 // .projects__intro
 //     padding-top calc(5em + 2%)

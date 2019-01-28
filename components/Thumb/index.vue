@@ -46,6 +46,11 @@ export default {
     components: {
         'image-block': ImageBlock
     },
+    data() {
+        return {
+            visibleAt: 60
+        }
+    },
     computed: {
         size() {
             const name = "thumb--"

@@ -1,6 +1,13 @@
 <template>
     <div class="title">
-        <word-block v-for="(word, index) in words" :key="index" :word="word" :duration="duration" />
+        <div data-visible="false">
+            <word-block
+                v-for="(word, index) in words"
+                :key="index"
+                :word="word"
+                :duration="duration"
+                :launcher="launcher || visibleShown" />
+        </div>
     </div>
 </template>
 
@@ -8,17 +15,22 @@
 
 <script>
 
+// mixins
+import isVisible from '~/mixins/isVisible'
+// components
 import WordBlock from './WordBlock'
 
 export default {
     name: 'TitleBlock',
+    mixins: [isVisible],
     components: {
         'word-block': WordBlock
     },
-    props: ['title', 'duration'],
+    props: ['title', 'duration', 'launcher'],
     data() {
         return {
-            words: []
+            words: [],
+            visibleOnce: true
         }
     },
     methods: {
@@ -26,7 +38,7 @@ export default {
             this.words = this.title.split(' ')
         }
     },
-    mounted() {
+    beforeMount() {
         this.splitTitle()
     }
 }
@@ -37,8 +49,6 @@ export default {
 <style lang="stylus" scoped>
 
 .title
-    clear both
-    float right
     display flex
     flex-wrap wrap
 

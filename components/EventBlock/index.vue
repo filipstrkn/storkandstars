@@ -1,7 +1,6 @@
 <template>
-    <nuxt-link :to="event.link.cached_url">
-        <article class="event-unit _clickable">
-
+    <nuxt-link class="EventUnit" :to="event.link.cached_url" :class="{'show': launcher}">
+        <article class="event-unit _clickable" :style="delay">
             <div class="event-unit__content">
                 <p class="topic">{{ event.topic }}</p>
                 <div class="info">
@@ -12,8 +11,6 @@
                 </div>
             </div>
 
-
-
         </article>
     </nuxt-link>
 </template>
@@ -22,21 +19,23 @@
 
 <script>
 
-// Mixin
-import isVisible from '~/mixins/isVisible'
-
 // Components
 import LinkUnit from '~/components/Home/_home/LinkUnit'
 import DateBlock from './_event/DateBlock'
 
 export default {
     name: 'EventBlock',
-    props: ['event'],
-    mixins: [isVisible],
-
+    props: ['event', 'index', 'launcher'],
     components: {
         'link-unit': LinkUnit,
         'date-block': DateBlock
+    },
+    computed: {
+        delay() {
+            return {
+                transitionDelay: (200 * this.index) + 'ms'
+            }
+        }
     }
 }
 </script>
@@ -45,19 +44,37 @@ export default {
 
 <style lang="stylus" scoped>
 
-
 @import '~assets/stylus/variables'
+
+
+.EventUnit
+    &.show
+        .event-unit
+            opacity 1
+            &::after
+                width 100%
 
 .event-unit
     position relative
-    border-bottom solid 1px rgba(0,0,0, 0.1)
-    // max-width 60%
     margin 0 0 1em 0
     padding 2em 0
-    transition border 250ms ease
+    transition opacity 1s ease-out
+    opacity 0
 
-    &:hover
-        border-color $black
+    &::after
+        content ""
+        position absolute
+        bottom 0
+        right 0
+        width 0
+        height 1px
+        background-color alpha(#000, .1)
+        transition width 1.2s ease-out
+        transition-delay inherit
+
+
+    &:hover::after
+        background-color $black
 
     *
         pointer-events none
@@ -87,23 +104,11 @@ export default {
         vertical-align middle
 
 
-
 .topic
     font-weight 600
     margin 0
     font-size 1.2em
     font-family $secondary-font
 
-
-[data-visible="false"]
-    transition all $appear ease-in
-    transform translateY(30%)
-    opacity 0
-
-
-[data-visible="true"]
-    transition all 600ms ease-out
-    transform translateY(0)
-    opacity 1
 
 </style>
