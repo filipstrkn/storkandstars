@@ -106,7 +106,7 @@ export default {
 
 .rocket-button__icon
     position absolute
-    width 40%
+    width 36%
     height @width
     top 50%
     left 50%
