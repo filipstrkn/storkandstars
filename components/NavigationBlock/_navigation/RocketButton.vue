@@ -26,6 +26,11 @@ export default {
     components: {
         'rocket-icon': RocketIcon
     },
+    data() {
+        return {
+            visibleAt: 64
+        }
+    },
     computed: {
         bgcolor() {
             if (this.color) {
@@ -95,14 +100,14 @@ export default {
 
         .rocket-button__icon
             opacity 1
-            transition opacity 250ms ease-in .4s
+            transition opacity 250ms ease-in .45s
 
 .rocket-button__rocket
     position absolute
     top 50%
     left 50%
     transform translate(-50%, -50%)
-    transition all 250ms ease-out
+    transition all 200ms ease-out
 
 .rocket-button__icon
     position absolute
@@ -112,7 +117,7 @@ export default {
     left 50%
     transform translate(-50%, -50%)
     opacity 0
-    transition opacity 100ms ease-in
+    // transition opacity 50ms ease-in
     svg
         fill $black
 

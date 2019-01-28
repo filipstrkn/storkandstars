@@ -5,7 +5,8 @@
 
             <div class="projects__intro _content">
                 <div class="projects-intro__title">
-                    <p>Vítejte v šuplíku našich projektů.</p>
+                    <!-- <p>Vítejte v šuplíku našich projektů.</p> -->
+                    <title-block :title="'Vítejte v šuplíku našich projektů.'" :duration="{min: 0, max: 600}" :launcher="true" />
                 </div>
 
                 <filter-block :filters="stories" @filtering="setFilters" />
@@ -30,6 +31,7 @@ import storyblokLivePreview from '@/mixins/storyblokLivePreview'
 import FilterBlock from '~/components/Lists/_lists/FilterBlock'
 import ProjectList from '~/components/Lists/ProjectList'
 import FooterBlock from '~/components/Home/Footer'
+import TitleBlock from '~/components/Home/_home/TitleBlock'
 
 export default {
 
@@ -42,7 +44,8 @@ export default {
     components: {
         'filter-block': FilterBlock,
         'footer-block': FooterBlock,
-        'project-list': ProjectList
+        'project-list': ProjectList,
+        'title-block': TitleBlock
     },
 
     mixins: [storyblokLivePreview],

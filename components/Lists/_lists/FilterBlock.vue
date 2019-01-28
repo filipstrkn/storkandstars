@@ -91,6 +91,7 @@ export default {
 
 .selected
     display inline-block
+    font-size 1.4em
 
 #Arrow
     position relative
