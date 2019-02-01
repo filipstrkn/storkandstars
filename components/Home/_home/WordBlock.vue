@@ -40,7 +40,7 @@ export default {
 
 p
     display inline-block
-    height 1.3em
+    height .9em
     position relative
     opacity 0
     transform translate(-1em, 1.4em) perspective(750px) rotateX(-10deg) rotateY(-30deg) rotateZ(8deg)

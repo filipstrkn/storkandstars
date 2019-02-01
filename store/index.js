@@ -38,10 +38,8 @@ export default function createStore() {
                 },
                 menu: false,
                 theme: {
-                    text: null,
-                    background: null,
+                    dark: false,
                     pallete: ['#78EFFF', '#FFF679', '#9FFFD5', '#FFF7B3', '#0EEBDD']
-                    // pallete: ['#cbe7fd', '#ffc5c8', '#bff9f2', '#19d8e9', '#FF5964', '#FFE74C', '#3AB795', '#35A7FF']
                 },
                 projects: {
                     top: [],
@@ -99,6 +97,18 @@ export default function createStore() {
 
 
                 // ------------------------------------------------------------
+                //  Theme
+                // ------------------------------------------------------------
+                setTheme(state, theme) {
+                    state.theme = {
+                        ...state.theme,
+                        ...theme
+                    }
+                },
+
+
+
+                // ------------------------------------------------------------
                 //  Loading
                 // ------------------------------------------------------------
                 setLoading(state, payload) {
@@ -109,73 +119,18 @@ export default function createStore() {
                 },
 
 
-                // ------------------------------------------------------------
-                //  Project
-                // ------------------------------------------------------------
-                setTopProjects(state, payload) {
-                    state.projects.top = payload
-                },
-                setAllProjects(state, paylaod) {
-                    state.projects.all = paylaod
-                },
-
 
                 // ------------------------------------------------------------
-                //  Updating Contact Form
+                //  Follower
                 // ------------------------------------------------------------
-                updateMessage(state, payload) {
-                    state.contactForm.body.message = payload
-                },
-                updateUser(state, payload) {
-                    state.contactForm.body.user = payload
-                },
-                updateStatus(state, payload) {
-                    state.contactForm.status = payload
-                },
-                setFormVisibility(state, payload) {
-                    state.contactForm.visible = payload
-                },
-
-                setWalk(state, payload) {
-                    state.scrolls = {
-                        ...state.scrolls,
-                        ...payload
-                    }
-                },
-
-                setProgress(state, payload) {
-                    state.scrolls.progress = payload
-                },
-
-
                 setFollower(state, payload) {
                     state.follower = payload
                 },
 
 
 
-                setTheme(state, theme) {
-                    state.theme = {
-                        ...state.theme,
-                        ...theme
-                    }
-                },
-
-                nextStep(state, form) {
-                    state.forms[form].current++
-                    console.log('STEPING')
-                },
-                previousStep(state, form) {
-                    state.forms[form].current--
-                },
-                saveStep(state, { form, name, value }) {
-                    state.forms[form].values[name] = value
-                },
-
-
-
                 // ------------------------------------------------------------
-                //  Toggleling Navigation Menu
+                //  Menu
                 // ------------------------------------------------------------
                 toggleMenu(state, payload) {
                     if (payload !== undefined) state.menu = payload
@@ -185,7 +140,20 @@ export default function createStore() {
 
 
                 // ------------------------------------------------------------
-                //  Setting Events in Events Calendar
+                //  Project
+                // ------------------------------------------------------------
+                setTopProjects(state, payload) {
+                    state.projects.top = payload
+                },
+
+                setAllProjects(state, paylaod) {
+                    state.projects.all = paylaod
+                },
+
+
+
+                // ------------------------------------------------------------
+                //  Events
                 // ------------------------------------------------------------
                 setEvents(state, events) {
                     let final = []
@@ -209,6 +177,51 @@ export default function createStore() {
 
                     // setting to the store's state
                     state.events = final
+                },
+
+
+
+                // ------------------------------------------------------------
+                //  Form
+                // ------------------------------------------------------------
+                updateMessage(state, payload) {
+                    state.contactForm.body.message = payload
+                },
+
+                updateUser(state, payload) {
+                    state.contactForm.body.user = payload
+                }
+                ,
+                updateStatus(state, payload) {
+                    state.contactForm.status = payload
+                },
+
+                setFormVisibility(state, payload) {
+                    state.contactForm.visible = payload
+                },
+
+                setWalk(state, payload) {
+                    state.scrolls = {
+                        ...state.scrolls,
+                        ...payload
+                    }
+                },
+
+                setProgress(state, payload) {
+                    state.scrolls.progress = payload
+                },
+
+                nextStep(state, form) {
+                    state.forms[form].current++
+                    console.log('STEPING')
+                },
+
+                previousStep(state, form) {
+                    state.forms[form].current--
+                },
+
+                saveStep(state, { form, name, value }) {
+                    state.forms[form].values[name] = value
                 }
 
 

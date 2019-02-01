@@ -2,22 +2,15 @@
     <main id="Projects" class="_page __page">
 
         <div class="_page__content">
+            <filter-block :filters="stories" @filtering="setFilters" />
 
-            <div class="projects__intro _content">
-                <div class="projects-intro__title">
-                    <!-- <p>Vítejte v šuplíku našich projektů.</p> -->
-                    <title-block :title="'Vítejte v šuplíku našich projektů.'" :duration="{min: 0, max: 600}" :launcher="true" />
-                </div>
-
-                <filter-block :filters="stories" @filtering="setFilters" />
-            </div>
 
 
             <project-list :projects="filtered" />
 
         </div>
 
-        <footer-block />
+        <!-- <footer-block /> -->
 
     </main>
 
@@ -84,13 +77,13 @@ export default {
 
 ._page__content
     margin-bottom 10%
-    padding calc(10em + 20vh) 0 0 0
+    // padding calc(10em + 16vh) 0 0 0
 
 // .projects__intro
 //     padding-top calc(5em + 2%)
 .projects-intro__title
     font-size calc(.01212*100vw + 1rem)
-    font-weight 600
+    // font-weight 600
 
 
 </style>

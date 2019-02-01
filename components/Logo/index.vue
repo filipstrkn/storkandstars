@@ -1,12 +1,27 @@
 <template>
 
-    <div id="LogoContainer">
+    <nuxt-link :to="'/'">
+    <div id="LogoContainer" @click="closeMenu">
         <loading-block v-if="$store.state.loading.page" />
 
-        <nuxt-link v-else :to="'/'" id="Logo" class="_clickable">
-            <svg viewBox="0 0 37 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><g><path d="M32.541,8.548c2.38,0 4.29,-1.862 4.29,-4.274c0,-2.412 -1.91,-4.274 -4.29,-4.274c-2.38,0 -4.29,1.862 -4.29,4.274c0,2.412 1.91,4.274 4.29,4.274Zm0,-2.364c-1.052,0 -1.862,-0.76 -1.862,-1.91c0,-1.149 0.81,-1.91 1.862,-1.91c1.052,0 1.862,0.761 1.862,1.91c0,1.15 -0.81,1.91 -1.862,1.91Z"/><path d="M26.526,7.331c-0.777,0.805 -1.841,1.217 -3.154,1.217c-2.768,0 -4.484,-1.862 -4.484,-4.274c0,-2.412 1.748,-4.274 4.306,-4.274c2.364,0 4.112,1.829 4.112,4.274c0,0.34 -0.032,0.664 -0.097,0.971l-5.747,0c0.308,0.842 1.052,1.134 1.943,1.134c0.664,0 1.23,-0.259 1.554,-0.616l1.567,1.568Zm-1.632,-3.899c-0.259,-0.939 -0.987,-1.279 -1.716,-1.279c-0.923,0 -1.538,0.454 -1.765,1.279l3.481,0Z"/><path d="M13.599,8.548c2.38,0 4.29,-1.862 4.29,-4.274c0,-2.412 -1.91,-4.274 -4.29,-4.274c-2.38,0 -4.29,1.862 -4.29,4.274c0,2.412 1.91,4.274 4.29,4.274Zm0,-2.364c-1.052,0 -1.862,-0.76 -1.862,-1.91c0,-1.149 0.81,-1.91 1.862,-1.91c1.053,0 1.862,0.761 1.862,1.91c0,1.15 -0.809,1.91 -1.862,1.91Z"/><path d="M7.638,7.331c-0.777,0.805 -1.841,1.217 -3.153,1.217c-2.769,0 -4.485,-1.862 -4.485,-4.274c0,-2.412 1.748,-4.274 4.306,-4.274c2.364,0 4.113,1.829 4.113,4.274c0,0.34 -0.033,0.664 -0.098,0.971l-5.747,0c0.308,0.842 1.052,1.134 1.943,1.134c0.664,0 1.23,-0.259 1.554,-0.616l1.567,1.568Zm-1.632,-3.899c-0.259,-0.939 -0.987,-1.279 -1.716,-1.279c-0.923,0 -1.538,0.454 -1.764,1.279l3.48,0Z" /></g></svg>
-        </nuxt-link>
+            <div
+                id="Logo"
+                :class="{ 'logo--dark' :$store.state.theme.dark }"
+                @mouseenter="blink"
+                @mouseleave="blink">
+
+                <transition name="logo-slide">
+                    <svg v-show="blinking" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M33.777,32.417c-3.436,3.558 -8.144,5.382 -13.947,5.382c-12.241,0 -19.83,-8.232 -19.83,-18.899c0,-10.667 7.732,-18.9 19.043,-18.9c10.452,0 18.184,8.09 18.184,18.9c0,1.503 -0.144,2.935 -0.43,4.295l-25.414,0c1.36,3.723 4.653,5.011 8.591,5.011c2.935,0 5.44,-1.145 6.872,-2.72l6.931,6.931Zm-7.217,-17.24c-1.146,-4.152 -4.367,-5.656 -7.589,-5.656c-4.08,0 -6.801,2.005 -7.803,5.656l15.392,0Z" /></svg>
+                </transition>
+
+                <transition name="logo-slide">
+                    <svg v-show="!blinking" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M18.971,37.799c10.524,0 18.972,-8.232 18.972,-18.899c0,-10.667 -8.448,-18.9 -18.972,-18.9c-10.523,0 -18.971,8.233 -18.971,18.9c0,10.667 8.448,18.899 18.971,18.899Zm0,-10.452c-4.653,0 -8.233,-3.364 -8.233,-8.447c0,-5.083 3.58,-8.448 8.233,-8.448c4.654,0 8.233,3.365 8.233,8.448c0,5.083 -3.579,8.447 -8.233,8.447Z" /></svg>
+                </transition>
+
+            </div>
+
     </div>
+    </nuxt-link>
 
 
 </template>
@@ -14,12 +29,38 @@
 
 <script>
 
+
 import LoadingBlock from '../Loading/LoadingBlock'
 
+
 export default {
+
+
     name: 'logo',
+
+
     components: {
         'loading-block': LoadingBlock
+    },
+
+
+    data() {
+        return {
+            blinking: true
+        }
+    },
+
+
+    methods: {
+
+        closeMenu() {
+            this.$store.commit('toggleMenu', false)
+        },
+
+        blink() {
+            this.blinking = !this.blinking
+        }
+
     }
 }
 </script>
@@ -29,33 +70,28 @@ export default {
 
 @import '~assets/stylus/variables'
 @import '~assets/stylus/mixins'
+@import '~assets/stylus/transitions'
+
 
 #LogoContainer
-    position relative
-    width 4.1em
-    height 2em
+    width 6em
+    height @width
 
-.box
-    height calc(.00848 * 100vw + 5rem)
-    width @height
-    display flex
-    justify-content center
-    align-items center
-    background-color #000
 
 #Logo
     absolute-centering()
-    width 100%
-    height 100%
-    display flex
-    align-items center
+    width 35%
+    height @width
 
     svg
+        position absolute
         width 100%
-        height 100%
-        fill: $black
-        pointer-events none
+        height @width
 
+    &.logo--dark
+
+        svg
+            fill $white !important
 
 </style>
 

@@ -1,5 +1,11 @@
 <template>
-    <span id="Follower" :style="position" :class="{'isClickable' : clickable, 'isMoving' : moving, 'isDown' : click}"></span>
+    <span
+        id="Follower"
+        :style="position"
+        :class="{
+            'isClickable' : clickable,
+            'follower--dark': $store.state.theme.dark,
+        }"></span>
 </template>
 
 
@@ -8,7 +14,6 @@ export default {
     name: 'Follower',
     computed: {
         position() {
-            // const { top, left } = this.$store.state.follower.position
             return {
                 'top': this.$store.state.follower.position.top + 'px',
                 'left': this.$store.state.follower.position.left + 'px'
@@ -16,12 +21,6 @@ export default {
         },
         clickable() {
             return this.$store.state.follower.clickable
-        },
-        moving() {
-            return this.$store.state.scrolls.walking
-        },
-        click() {
-            return this.$store.state.scrolls.current.isDown
         }
     }
 
@@ -35,8 +34,6 @@ export default {
 @import '~assets/stylus/variables'
 
 $duration = 200ms
-$arrow = 5px
-
 
 #Follower.isClickable
     width 46px
@@ -53,6 +50,13 @@ $arrow = 5px
     transform translate(-50%, -50%)
     pointer-events none
 
+
+    &.follower--dark
+        background-color alpha($white, .1)
+
+@media screen and (max-width: 760px)
+    #Follower
+        display none
 
 </style>
 

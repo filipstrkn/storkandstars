@@ -58,7 +58,7 @@ export default {
 
 #ProjectIntro
     // padding-top calc(10% + 4em)
-    padding calc(8em + 20vh) 0 0 0
+    padding calc(8em + 16vh) 0 0 0
     max-width 54em
     margin 0 auto
 
@@ -75,7 +75,7 @@ export default {
     display flex
     justify-content space-between
     margin-top 4em
-    font-family $main-font
+    font-family $font
     font-weight 400
 
     div

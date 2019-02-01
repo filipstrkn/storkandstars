@@ -1,5 +1,5 @@
 <template>
-    <div id="Burger" class="_clickable" @click="toggleMenu">
+    <div id="Burger" class="_clickable" @click="toggleMenu" :class="{ 'burger--dark': $store.state.theme.dark }">
         <div class="burger__body" :class="menu"></div>
     </div>
 </template>
@@ -34,6 +34,10 @@ export default {
     display flex
     justify-content center
     align-items center
+
+    &.burger--dark .burger__body
+        &::before, &::after
+            background-color $white
 
 
 .burger__body

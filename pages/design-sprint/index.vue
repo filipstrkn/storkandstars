@@ -32,7 +32,7 @@ export default {
 
         // Load the JSON from the API
 
-        return context.app.$storyapi.get('cdn/stories/contact', {
+        return context.app.$storyapi.get('cdn/stories/design-sprint', {
             version: version
         }).then((res) => {
             return res.data

@@ -49,9 +49,12 @@ export default {
 .project-gallery__images
     display flex
     align-items center
-    padding-left 5em
+    // padding-left 5em
     & > *
         margin-right 5em
+
+    *:last-of-type
+        margin-right 0 !important
 
 .project-gallery__image
     position relative

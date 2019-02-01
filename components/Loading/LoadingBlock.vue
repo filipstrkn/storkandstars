@@ -1,10 +1,15 @@
 <template>
     <div id="LoadingBlock">
 
-        <span
+        <!-- <span
             v-for="(color, index) of colors"
             :key="index"
-            :style="{backgroundColor: color, animationDelay: `${100 * index}ms`}"></span>
+            :style="{backgroundColor: color, animationDelay: `${100 * index}ms`}"></span> -->
+        <span
+            :class="{'loading-block--dark': $store.state.theme.dark}"
+            v-for="(ball, index) of 4"
+            :key="index"
+            :style="{animationDelay: `${100 * index}ms`}"></span>
 
     </div>
 </template>
@@ -33,13 +38,15 @@ export default {
 
     span
         flex-shrink 0
-        width .7em
+        width 8px
         height @width
         margin 0
         border-radius 100%
-        background-color alpha(#000, .1)
+        background-color #000
         animation bouncing 450ms linear infinite
 
+        &.loading-block--dark
+            background-color #fff
 
 @keyframes bouncing
     0%

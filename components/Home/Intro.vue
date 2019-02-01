@@ -4,12 +4,17 @@
         <div class="_content">
             <div class="intro__content _text--large">
                 <title-block id="IntroTitle" :title="blok.text" :duration="{min: 0, max: 600}" :launcher="true" />
-                <link-unit class="lu" :to="blok.link_to.cached_url">{{ blok.link_name }}</link-unit>
             </div>
+
+            <div class="intro__text lu">
+                <p>At Rally, we believe that we can't do our best work without a chance to recharge occasionally. A few times a year, we need to step away from our desks.</p>
+            </div>
+
         </div>
 
 
     </section>
+
 </template>
 
 
@@ -33,16 +38,34 @@ export default {
 
 <style lang="stylus" scoped>
 
+@import '~assets/stylus/variables'
+
+
+
+.intro__text
+    margin-top $spacing-flex
+    font-family $font
+    p
+        max-width 18em
+        font-size 1.2em
+        line-height 1.4
+        // margin-bottom 4em
+
+
+
+
+
 #Intro
-    padding calc(8em + 20vh) 0 0 0
+    padding calc(4em + 16vh) 0
+    // border-bottom solid 1px $line
 
-.intro__content
-    max-width 14em
-    max-width 8em
-    margin 0 0 0 auto
+// .intro__content
+//     max-width 14em
+//     max-width 8em
+//     margin 0 0 0 auto
 
-// #IntroTitle
-//     margin-bottom .2em
+// // #IntroTitle
+// //     margin-bottom .2em
 
 .lu
     opacity 0

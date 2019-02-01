@@ -12,12 +12,11 @@
     line-height: 1.8
     // font-weight 300
     font-weight 700
-    font-family $serif
     margin-bottom: 1em
 
 
 ._subtitle
-    font-family: $main-font
+    font-family: $font
     font-size: 1.2rem
     font-weight: 600
     color: $blue
@@ -88,9 +87,7 @@
         background-color alpha($black, .05)
 
 .__text
-    font-family $serif
-    // font-weight 600
-    // font-weight 700
+    font-family $font
     h1, h2, h3, h4, p
         font-weight: inherit
         font-size: inherit
@@ -99,13 +96,16 @@
 ._text--large
     @extend .__text
     // font-size calc(1.2rem + 11 * ((100vw - 320px) / 680))
+    font-weight 600
     font-size calc(.00848 * 100vw + 2.2rem)
-    font-size calc(.00848 * 100vw + 5rem)
+    font-size calc(.00848 * 100vw + 6rem)
+    font-size calc(.00848 * 100vw + 7rem)
+    // font-size calc(.00848 * 100vw + 4rem)
 
 ._text--medium
     @extend .__text
     font-size calc(.00848 * 100vw + 1.2rem)
-    font-size calc(.00848 * 100vw + 1.6rem)
+    font-size calc(.00848 * 100vw + 1rem)
 
 
 
@@ -113,8 +113,6 @@
     font-size: 1.1rem !important
     line-height: 1.8
     font-weight: 500 !important
-    font-family: $secondary-font
-    font-family: $serif-font
     color: $black
 
 
@@ -169,8 +167,8 @@
 
 ._content
     position relative
-    max-width 72em
-    padding: 0 1em
+    max-width 66em
+    padding: 0 5em
     width 100%
     margin: 0 auto
     clear both
@@ -213,16 +211,22 @@
     //     z-index 101
     //     background-color #f9f9fa
     //     transition all .6s
+
+
     &.light
         background-color #fff
-    &.dark
+    &--dark
         background-color #000
+        background-color #0d0d0d
 
-// ._page
-//     display flex
-//     flex-direction column
-//     min-height 100vh
+._page
+    display flex
+    flex-direction column
+    min-height 100vh
+    width calc(100% - 6em)
+    margin: 0 0 0 auto
 
-// ._page__content
-//     flex-shrink: 0
-//     flex-grow: 1
+
+._page__content
+    flex-shrink: 0
+    flex-grow: 1

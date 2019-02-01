@@ -1,11 +1,11 @@
 <template>
-    <footer id="Footer">
+    <footer id="Footer" :class="{'footer--dark': $store.state.theme.dark}">
 
         <!-- UpperFooter = slot -->
 
 
-        <logo class="footer__logo" />
-        <span></span>
+        <!-- <logo class="footer__logo" /> -->
+        <!-- <span></span> -->
 
         <div class="footer__socials">
 
@@ -25,10 +25,6 @@
                 <svg id="facebook" viewBox="0 0 15 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path id="Facebook-Icon" serif:id="Facebook Icon" d="M4.15,24.006l0,-10.982l-4.15,0l0,-4.195l4.151,0l0,-3.175c0,-3.649 2.469,-5.654 6.124,-5.654c1.751,0 3.287,0.106 3.725,0.158l0,3.871l-2.595,-0.001c-1.987,0 -2.359,0.842 -2.359,2.076l0,2.725l4.756,0l-0.617,4.195l-4.139,0l0,10.982l-4.896,0Z"/></svg>
             </nuxt-link>
 
-
-            <nuxt-link :to="'/'">
-                <svg id="slack" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><path d="M10.99,36.986c0,2.253 1.829,4.082 4.081,4.082c2.253,0 4.082,-1.829 4.082,-4.082l0,-10.99c0,-2.252 -1.829,-4.081 -4.082,-4.081c-2.252,0 -4.081,1.829 -4.081,4.081l0,10.99Zm14.676,-4.093c0.134,-0.013 0.269,-0.02 0.406,-0.02c2.261,0 4.097,1.836 4.097,4.097c0,2.262 -1.836,4.098 -4.097,4.098c-2.261,0 -4.097,-1.836 -4.097,-4.098l0,-4.077l3.691,0Zm-17.492,-7.287c0.013,0.134 0.02,0.269 0.02,0.406c0,2.261 -1.836,4.097 -4.097,4.097c-2.261,0 -4.097,-1.836 -4.097,-4.097c0,-2.261 1.836,-4.097 4.097,-4.097l4.077,0l0,3.691Zm28.812,-3.691c2.253,0 4.082,1.829 4.082,4.081c0,2.253 -1.829,4.082 -4.082,4.082l-10.99,0c-2.252,0 -4.081,-1.829 -4.081,-4.082c0,-2.252 1.829,-4.081 4.081,-4.081l10.99,0Zm-6.908,-17.834c0,-2.252 -1.829,-4.081 -4.082,-4.081c-2.252,0 -4.081,1.829 -4.081,4.081l0,10.99c0,2.253 1.829,4.082 4.081,4.082c2.253,0 4.082,-1.829 4.082,-4.082l0,-10.99Zm-15.007,6.909c2.253,0 4.082,1.829 4.082,4.081c0,2.253 -1.829,4.082 -4.082,4.082l-10.99,0c-2.252,0 -4.081,-1.829 -4.081,-4.082c0,-2.252 1.829,-4.081 4.081,-4.081l10.99,0Zm17.822,4.471c-0.013,-0.133 -0.02,-0.269 -0.02,-0.405c0,-2.262 1.836,-4.097 4.097,-4.097c2.262,0 4.098,1.835 4.098,4.097c0,2.261 -1.836,4.097 -4.098,4.097l-4.077,0l0,-3.692Zm-17.492,-7.287c-0.133,0.013 -0.269,0.02 -0.405,0.02c-2.262,0 -4.097,-1.836 -4.097,-4.097c0,-2.261 1.835,-4.097 4.097,-4.097c2.261,0 4.097,1.836 4.097,4.097l0,4.077l-3.692,0Z"/></svg>
-            </nuxt-link>
 
         </div>
     </footer>
@@ -56,12 +52,11 @@ export default {
 
 
 #Footer
-    border-top solid 1px $line
-    margin 0 10%
-    padding 4em 0
-    display flex
-    justify-content space-between
-    align-items center
+    // border-top solid 1px $line
+    // margin 0 10%
+    background-color #fff
+    padding 2em
+
 
 .footer__logo
     opacity .2
@@ -69,16 +64,22 @@ export default {
 .footer__socials
     display flex
     align-items center
+    justify-content flex-end
     a
         display block
     svg
-        width 1.2em
+        width 1em
         height @width
-        margin-right 2em
+        margin-left 2em
         opacity .2
         transition opacity 250ms ease-out
 
         &:hover
             opacity 1
 
+
+.footer--dark
+    // border-top-color alpha($white, .1) !important
+    .footer__socials svg
+        fill $white
 </style>

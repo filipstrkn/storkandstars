@@ -2,8 +2,9 @@
     <section id="ProjectParagraph">
 
 
-
-        <component :is="dynamicParagraph" :content="blok" v-editable="blok" />
+        <div class="_content">
+            <component :is="dynamicParagraph" :content="blok" v-editable="blok" />
+        </div>
 
 
 
@@ -57,6 +58,5 @@ export default {
     max-width 100em
     margin 0 auto
     padding: $spacing-flex 2rem
-
 </style>
 

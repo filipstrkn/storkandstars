@@ -1,7 +1,44 @@
 <template>
-    <div>
-        <nuxt-link :to="'/' + link" class="thumb-link" :class="size" data-visible="false">
-            <article class="thumb">
+    <nuxt-link :to="finalLink" class="thumb-link" :class="size" data-visible="false">
+        <article class="thumb-link__body" @mouseenter="showThumb" @mouseleave="hideThumb">
+            <div class="index">
+                <span>0{{index + 1 }}</span>
+            </div>
+
+
+
+
+
+            <div class="body">
+                <h3>{{ content.client }}</h3>
+
+                <p v-if="isHover && !content.available" class="not-available">
+                    <span>Brzy přidáme</span>
+                </p>
+                <p v-else >
+                    <span
+                        v-for="(service, index) in content.services"
+                        :key="index">{{ service }}</span>
+                </p>
+            </div>
+
+        </article>
+
+
+        <transition name="fade">
+            <div class="thumb-unit__image" v-show="isThumb">
+                <image-block
+                    class="_thumbnail thumbnail--projects"
+                    :image="content.thumbnail">
+                </image-block>
+            </div>
+        </transition>
+
+
+            <!-- <article
+                class="thumb"
+                @mouseenter="() => this.setHover(true)"
+                @mouseleave="() => this.setHover(false)">
 
 
                 <image-block
@@ -12,24 +49,27 @@
 
 
 
-            </article>
+            </article> -->
 
 
             <!-- //////////////////////////////////////////////////////////////
                 Title
             ////////////////////////////////////////////////////////////// -->
 
-            <div class="name">
+            <!-- <div v-if="isHover && !content.available" class="name not-available">
+                <h3>Brzy přidáme</h3>
+            </div>
+
+            <div v-else class="name">
                 <h3>{{ content.client }}</h3>
                 <p>
                     <span
                         v-for="(service, index) in content.services"
                         :key="index">{{ service }}</span>
                 </p>
-            </div>
-        </nuxt-link>
-    </div>
+            </div> -->
 
+        </nuxt-link>
 </template>
 
 
@@ -41,14 +81,16 @@ import ImageBlock from '~/components/Loaders/ImageLoader'
 
 export default {
     name: 'Thumb',
-    props: ['content', 'link'],
+    props: ['content', 'link', 'index'],
     mixins: [isVisible],
     components: {
         'image-block': ImageBlock
     },
     data() {
         return {
-            visibleAt: 60
+            visibleAt: 60,
+            isHover: false,
+            isThumb: false
         }
     },
     computed: {
@@ -64,6 +106,23 @@ export default {
                 default:
                     return name + '--square'
             }
+        },
+        finalLink() {
+            if ( !this.content.available ) return ''
+
+            return '/' + this.link
+
+        }
+    },
+    methods: {
+        setHover(val) {
+            this.isHover = val
+        },
+        showThumb() {
+            this.isThumb = this.isHover = true
+        },
+        hideThumb() {
+            this.isThumb = this.isHover = false
         }
     }
 }
@@ -76,15 +135,45 @@ export default {
 @import '~assets/stylus/variables'
 @import '~assets/stylus/mixins'
 
+.thumb-link__body
+    display flex
+    padding 2em 1rem
+    margin 3em 0
+    // border-bottom solid 1px $line
 
-.thumb-link
-    display inline-block
-    position relative
-    width 100%
-    height 0
+    &:hover
+        .index
+            width 4rem
+            opacity 0
+
+        .body
+            h3
+                color $black
+
+    .index
+        position relative
+        flex-grow 0
+        flex-shrink 1
+        font-family $font
+        color alpha(#000, .45)
+        width 2rem
+        transition all 240ms ease-in-out
+        span
+            font-size 1rem
+            top 1em
+            left 0
+            position absolute
+    .body
+
+        h3
+            font-family $font
+            font-weight 400
+            font-size calc(.00848 * 100vw + 4.6rem)
+            color alpha(#000, .45)
+
     p
         position relative
-        font-family $secondary-font
+        font-family $font
         margin-top .4em
         font-size 1rem
         transition all 400ms ease-out
@@ -92,15 +181,21 @@ export default {
 
         span
             font-weight 400
-            color alpha(#000, .6)
             color alpha(#000, .45)
 
             &::before
-                content "&"
+                content "/"
                 display inline-block
                 margin 0 .4em
-            &:first-of-type::before
-                display none
+
+            &:first-of-type
+                margin-left 0
+
+        &.not-available
+            span
+                // color red
+                &::before
+                    content ""
 
     &:hover
         ._thumbnail
@@ -110,21 +205,14 @@ export default {
             opacity 1
 
 
-    &[data-visible="false"] .thumb
-        transition all $appear ease-in
-        transform scale(.8)
+    // &[data-visible="false"] .thumb
+    //     transition all $appear ease-in
+    //     transform scale(.8)
 
 
-    &[data-visible="true"] .thumb
-        transition all 600ms ease-out
-        transform scale(1)
-
-.thumb--square
-    padding-bottom 100%
-.thumb--tall
-    padding-bottom 120%
-.thumb--taller
-    padding-bottom 150%
+    // &[data-visible="true"] .thumb
+    //     transition all 600ms ease-out
+    //     transform scale(1)
 
 
 .thumb
@@ -146,31 +234,39 @@ export default {
         margin-bottom .2em
 
         margin-top 1em
-        font-family $secondary-font
         // margin-bottom .2em
 
 
 
 .name
     position absolute
-    bottom -4em
+    top calc(100% + 1em)
     left 0
     pointer-events none
 
     h3
-        font-weight 600
+        // font-weight 600
         margin 0
-        font-size 1.2em
-        font-family $secondary-font
+        // font-size 1.2em
 
-    // p
-    //     opacity 0
+    // &.not-available h3
+    //     font-weight 400
+    //     color alpha(#000, .45)
+
 
 
 ._thumbnail
-    width 100%
-    height 100%
-    transition all 150ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+    // absolute-centering()
+    position absolute
+    right 0
+    top 50%
+    transform translateY(-50%)
+    width 60vh
+    height 100vh
+
+    // width 100%
+    // height 100%
+    // transition all 150ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
 
     img
 
@@ -179,6 +275,15 @@ export default {
         object-fit cover
         transition top 400ms ease-out
         pointer-events none
+
+
+.thumb-unit__image
+    position fixed
+    width 100%
+    height 100%
+    top 0
+    left 0
+    z-index -1
 
 
 

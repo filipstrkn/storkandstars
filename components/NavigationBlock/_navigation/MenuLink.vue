@@ -1,9 +1,9 @@
 <template>
-    <li id="MenuLink" @click="closeMenu">
-        <nuxt-link :to="to" class="_clickable">
+    <li id="MenuLink" class="menu-link" @click="closeMenu" :class="{'menu-link--dark': $store.state.theme.dark}">
+        <nuxt-link :to="to">
             <div class="menu-link__body">
                 <h3>{{ title }}</h3>
-                <span>{{ subtitle }}</span>
+                <!-- <span>{{ subtitle }}</span> -->
             </div>
         </nuxt-link>
     </li>
@@ -40,19 +40,16 @@ export default {
         transition transform 250ms ease-out
 
     h3
-        font-size 1.2rem
+        font-size 1em
         font-weight 600
-        font-family $secondary-font
     span
         display block
         font-weight 400
-        color alpha(#000, .45)
         font-size 1rem
         margin-top .6em
 
     &::before
         content ""
-        background-color alpha(#000, .1)
         position absolute
         left 0
         height 100%
@@ -67,6 +64,21 @@ export default {
 
         &::before
             width 10px
+
+
+.menu-link
+    &::before
+        background-color alpha(#000, .1)
+
+
+.menu-link--dark
+    &::before
+        background-color alpha(#fff, .1)
+    h3
+        color #fff
+    span
+        color alpha(#fff, .45)
+
 
 </style>
 

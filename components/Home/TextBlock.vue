@@ -6,9 +6,7 @@
         <div class="text-block__content _content">
 
             <title-block :title="blok.text" :duration="{min: 0, max: 600}" />
-            <link-unit v-if="blok.link_name" :to="blok.link_to.cached_url">
-                {{ blok.link_name }}
-            </link-unit>
+            <p class="_text--medium">{{ blok.subtitle }}</p>
 
         </div>
 
@@ -47,12 +45,16 @@ export default {
 
 #TextBlock
     padding $spacing-flex 2em
+    background-color #fafafa
+    background-color #fff
 
     p
-        max-width 13em
-        margin-bottom 1em
+
         // font-weight 600
-        // font-family $secondary-font
+        margin-top 3em
+        // font-size 2em
+        font-family $font
+        line-height 1.4
 
 
 </style>

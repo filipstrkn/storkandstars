@@ -1,30 +1,43 @@
 <template>
     <transition name="menu">
-        <section v-show="$store.state.menu" id="Menu" @click="closeOnBlur">
+        <section
+            v-show="$store.state.menu"
+            @click="closeOnBlur"
+            id="Menu"
+            class="menu"
+            :class="{'menu--dark': $store.state.theme.dark}">
 
+
+            <!-- Body -->
             <div id="MenuBody">
 
                 <div class="menu__content">
-
-                    <ul class="links">
-                        <menu-link
-                            v-for="(link, index) in links"
+                        <ul class="links">
+                            <menu-link
+                                v-for="(link, index) in links"
+                                :key="index"
+                                :to="link.to"
+                                :title="link.title"
+                                :subtitle="link.subtitle" />
+                        </ul>
+                </div>
+                <div class="menu__footer">
+                    <ul class="socials">
+                        <a
+                            v-for="(social, index) in socials"
                             :key="index"
-                            :to="link.to"
-                            :title="link.title"
-                            :subtitle="link.subtitle" />
+                            :href="social.to">
+                            <li>{{ social.title }}</li>
+                        </a>
                     </ul>
 
-                </div>
+                    <div class="additional">
+                        <span>+420 721 465 555</span>
+                        <span>studio@gmail.cz</span>
+                    </div>
 
-
-                <div class="menu__footer">
-
-                    <rocket-button :color="randomColor" class="menu-footer__rocket"  />
-                    <span>Napiš nám na Slack</span>
 
                 </div>
-
 
             </div>
 
@@ -39,22 +52,17 @@
 
 // Components
 import MenuLink from './MenuLink'
-import RocketButton from './RocketButton'
-// Mixins
-import randomColor from '~/mixins/randomColor'
 
 export default {
     name: 'MenuBlock',
-    mixins: [randomColor],
     components: {
-        'menu-link': MenuLink,
-        'rocket-button': RocketButton
+        'menu-link': MenuLink
     },
     data() {
         return {
             links: [
                 {
-                    to: '/contact',
+                    to: '/design-sprint',
                     title: 'Design Sprint',
                     subtitle: 'Nevíš, co sprinty jsou?'
                 },
@@ -63,20 +71,28 @@ export default {
                     title: 'Projekty',
                     subtitle: 'Dělali jsme'
                 },
-                // {
-                //     to: '/contact',
-                //     title: 'Vzdělání',
-                //     subtitle: 'Vše tě naučíme'
-                // },
                 {
-                    to: '/contact',
+                    to: '/about',
                     title: 'O nás',
                     subtitle: 'Poznej nás tým'
+                }
+            ],
+            socials: [
+                {
+                    title: 'Instagram',
+                    to: 'https://www.instagram.com/eoeo_studio/'
                 },
                 {
-                    to: '/contact',
-                    title: 'Kontakt',
-                    subtitle: 'Napiš nám'
+                    title: 'LinkedIn',
+                    to: 'https://www.linkedin.com/company/eoeo'
+                },
+                {
+                    title: 'Twitter',
+                    to: 'https://twitter.com/eoeostudio'
+                },
+                {
+                    title: 'Facebook',
+                    to: 'https://www.facebook.com/eoeostudio/'
                 }
             ]
         }
@@ -94,18 +110,12 @@ export default {
             }, () => {
 
                 if (s) {
-                    // Set new RandomColor
-                    this.setRandomColor()
-
                     // Show cascadecaly link in the menu
                     this.$el.querySelectorAll('.links li').forEach((link, index) => {
+                        link.classList.remove('show')
                         setTimeout(() => {
                             link.classList.add('show')
-                        }, (index + 1) * 100)
-                    })
-                } else {
-                    this.$el.querySelectorAll('.links li').forEach(link => {
-                        link.classList.remove('show')
+                        }, (index + 1) * 200)
                     })
                 }
 
@@ -129,7 +139,7 @@ export default {
     height 100%
     z-index 99
     display flex
-    justify-content flex-end
+    justify-content flex-start
     &::after
         content ""
         position absolute
@@ -137,9 +147,12 @@ export default {
         left 0
         min-height 100%
         width 100%
-        background-color alpha(#000, .2)
-        background-color alpha(#fafafa, .94)
         z-index 98
+
+
+.menu
+    &::after
+        background-color alpha(#fafafa, .94)
 
 
 #MenuBody
@@ -147,46 +160,73 @@ export default {
     display flex
     flex-direction column
     z-index 99
+    margin-left 6em
     max-width 36em
     width 100%
     overflow-y scroll
     background-color #fff
-    box-shadow -3px 0 30px 0 alpha($black, .04), -1px 0 0 0 alpha(#000, 0)
+    box-shadow 3px 0 30px 0 alpha($black, .04), 1px 0 0 0 alpha(#000, 0)
 
 
+.links,
+.menu__footer
+    padding calc(3rem + 5vh) 4rem 2rem 4rem
 
 
 .links
-    font-size 1.6em
-    padding calc(3em + 5vh) 4em 2em 4em
-
     li
+        font-size 1.6em
         opacity 0
-        transform translateX(2em)
+        transform translateX(-2em)
         transition all 400ms ease-out
         &.show
             opacity 1
             transform translateX(0)
 
+
 .menu__content
     flex-grow 1
     flex-shrink 0
     overflow-y scroll
+
+
 .menu__footer
     flex-grow 0
     flex-shrink 1
-    text-align center
+
+
+.socials
+    li
+        margin .4em 0
+        color alpha($black, .45)
+        &:hover
+            color $black
+
+
+.additional
+    margin-top 4em
+    font-size .9rem
     span
         display block
-        margin 1em 0
-        opacity 0
-        color alpha(#000, .45)
+        font-family 'Muli', sans-serif
 
-    .menu-footer__rocket
-        margin 0 auto
-        &:hover ~ span
-            opacity 1
 
+.menu--dark
+    &::after
+        background-color alpha(#000, .75) !important
+
+    #MenuBody
+        background-color $black !important
+
+    .menu__footer span
+        color alpha(#fff, .45)
+
+
+
+@media screen and (max-width: 760px)
+    #MenuBody
+        margin-left 0
+        max-width none
 
 </style>
 

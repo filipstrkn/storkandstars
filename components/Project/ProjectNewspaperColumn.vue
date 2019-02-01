@@ -1,5 +1,8 @@
 <template>
-    <section id="ProjectNewsletterColumn" class="newletter__column">
+    <section
+        id="ProjectNewsletterColumn"
+        class="newletter__column"
+        :class="{'newsletter-column--dark': $store.state.theme.dark}">
 
 
         <h3
@@ -32,6 +35,12 @@ export default {
     display inline-block
     vertical-align text-top
     padding 0 6% 5% 6%
+
+.newsletter-column--dark
+    color $white
+    *
+        color $white
+
 
 </style>
 

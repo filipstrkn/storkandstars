@@ -5,6 +5,11 @@
         <!-- //////////////////////////////////////////////////////////////
             Intro
         /////////////////////////////////////////////////////////////// -->
+        <!-- <div class="_content">
+            <div class="intro__content _text--large">
+                <title-block id="IntroTitle" :title="'Vybrané projekty'" :duration="{min: 0, max: 600}" :launcher="true" />
+            </div>
+        </div> -->
         <!-- <div class="top__intro" v-if="blok.title">
             <p class="_text--medium" v-editable="blok">{{ blok.title }}</p>
             <h3 class="_subtitle" v-editable="blok">{{ blok.subtitle }}</h3>
@@ -13,9 +18,17 @@
         <!-- //////////////////////////////////////////////////////////////
             List of content
         /////////////////////////////////////////////////////////////// -->
-        <project-list :projects="$store.state.projects.top" />
+
+        <div>
+            <project-list :projects="$store.state.projects.top" />
+        </div>
 
 
+        <!-- <div class="top__link">
+            <link-unit
+                :to="blok.link_to.cached_url"
+                class="lu">{{ blok.link_name }}</link-unit>
+        </div> -->
 
     </section>
 </template>
@@ -24,13 +37,17 @@
 
 <script>
 
+import TitleBlock from './_home/TitleBlock'
 import ProjectList from '~/components/Lists/ProjectList'
+import LinkUnit from './_home/LinkUnit'
 
 export default {
     name: 'Top',
     props: ['blok'],
     components: {
-        'project-list': ProjectList
+        'title-block': TitleBlock,
+        'project-list': ProjectList,
+        'link-unit': LinkUnit
     },
 
     created() {
@@ -122,7 +139,9 @@ export default {
 
 
 #Top
+    padding-top $spacing-flex
     padding-bottom $spacing-flex
+
     .list
         max-width 86em
         margin 0 auto
@@ -134,6 +153,7 @@ export default {
             // background blue
             .list__item:first-of-type
                 margin-top -20%
+
 
 </style>
 

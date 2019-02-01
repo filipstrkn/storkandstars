@@ -1,5 +1,5 @@
 <template>
-    <section id="ParagraphLeft">
+    <section id="ParagraphLeft" :class="{ 'paragraph-left--dark': $store.state.theme.dark }">
 
 
 
@@ -30,6 +30,13 @@ export default {
 #ParagraphLeft
     max-width 30em
     margin 0 auto 0 $spacing-flex
+    margin 0
+    padding 0
+
+.paragraph-left--dark
+    color $white
+    *
+        color $white
 
 </style>
 

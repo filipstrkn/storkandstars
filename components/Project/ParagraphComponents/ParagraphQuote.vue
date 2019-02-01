@@ -1,5 +1,5 @@
 <template>
-    <section id="ParagraphQuote">
+    <section id="ParagraphQuote" :class="{ 'paragraph-quote--dark': $store.state.theme.dark }">
 
 
 
@@ -25,6 +25,8 @@ export default {
 
 <style lang="stylus" scoped>
 
+@import '~assets/stylus/variables'
+
 #ParagraphQuote
     // max-width 52em
     // margin 0 auto
@@ -40,6 +42,11 @@ export default {
             &::before
                 margin-left -.5em
 
+
+.paragraph-quote--dark
+    color $white
+    *
+        color $white
 
 </style>
 

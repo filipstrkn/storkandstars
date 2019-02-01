@@ -31,7 +31,7 @@ export default {
     data() {
         return {
             filter: '',
-            defaultFilter: 'Vše',
+            defaultFilter: 'Filtrovat',
             areFilters: false
         }
     },
@@ -89,9 +89,15 @@ export default {
 
 @import '~assets/stylus/variables'
 
+
+#FilterBlock
+    max-width 78em
+    margin $spacing-flex auto
+    padding 0 5%
+
 .selected
     display inline-block
-    font-size 1.4em
+    font-size 1.2em
 
 #Arrow
     position relative
@@ -117,12 +123,13 @@ export default {
     overflow hidden
 
     ul
-        padding 3.6em 0 0 0
+        padding 2em 0
+        border-bottom solid 1px $line
 
     li
         display inline-block
         margin .6em 3em .6em 0
-        font-family $secondary-font
+        font-family $font
         color alpha(#000, .45)
         &:last-of-type
             margin-right 0

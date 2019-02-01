@@ -52,7 +52,7 @@ export default {
     position relative
     display inline-block
     font-size 1rem
-    font-family $secondary-font
+    font-family $font
 
     &:hover
         .line
@@ -62,7 +62,9 @@ export default {
     display block
     position relative
     font-size 1.4rem
+    font-size 1.2rem
     font-weight 400
+    font-weight 600
     line-height 1
     z-index 1
     pointer-events none

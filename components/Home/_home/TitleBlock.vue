@@ -51,6 +51,7 @@ export default {
 .title
     display flex
     flex-wrap wrap
+    // max-width 46em
 
     p
         margin-right .3em

@@ -6,7 +6,7 @@
         <!-- //////////////////////////////////////////////////////////////////
             Event list
         /////////////////////////////////////////////////////////////////// -->
-        <div class="events" data-visible="false">
+        <div class="events _content" data-visible="false">
             <event-block
                 v-for="(event, index) in events"
                 :key="event._uid + index"
@@ -63,8 +63,11 @@ export default {
 @import '~assets/stylus/variables'
 
 #EventList
-    .events
-        padding-left 40%
+    background-color #fff
+    padding-bottom: $spacing-flex
+//     padding-bottom $spacing-flex
+    // .events
+    //     padding-left 30%
 
 </style>
 

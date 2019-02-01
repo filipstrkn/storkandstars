@@ -19,6 +19,7 @@ import ProjectPhotoBooth from '~/components/Project/ProjectPhotoBooth'
 
 
 import Intro from '~/components/Home/Intro'
+import IntroLeft from '~/components/Intro/IntroLeft'
 import TextBlock from '~/components/Home/TextBlock'
 import Horizont from '~/components/Home/Horizont'
 import ProjectUnit from '~/components/Projects/ProjectUnit'
@@ -77,6 +78,7 @@ Vue.component('p_paragraph', ProjectParagraph)
 |
 |*/
 Vue.component('intro', Intro)
+Vue.component('intro_left', IntroLeft)
 Vue.component('text_block', TextBlock)
 Vue.component('projects', Top)
 Vue.component('separator', Separator)

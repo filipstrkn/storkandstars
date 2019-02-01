@@ -43,7 +43,7 @@ export default {
 @import '~assets/stylus/mixins'
 
 #ProjectImage
-    padding $spacing-flex 0
+    padding 5% 0
 
     [data-visible="false"]
         opacity 0
