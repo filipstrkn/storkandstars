@@ -75,7 +75,7 @@ export default {
         bottom 0
         right 0
         width 0
-        height 2px
+        height 1px
         background-color alpha(#000, .1)
         transition width 1.2s ease-out
         transition-delay inherit
@@ -102,7 +102,7 @@ export default {
 .info
     flex-grow 0
     flex-shrink 1
-    margin-right 2em
+    margin-right 4em
     text-align right
     // color alpha(#000, .45)
     font-family $font
@@ -110,8 +110,9 @@ export default {
 
 
 .city
-    display inline-block
     display block
+    margin-top .6em
+
 
 
 

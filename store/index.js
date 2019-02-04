@@ -266,7 +266,6 @@ export default function createStore() {
                 // ------------------------------------------------------------
                 async getAllProjects({ commit, ctx }) {
                     if (this.state.projects.all === undefined || this.state.projects.all.length === 0) {
-                        console.log('There is nothing')
                         await this.$storyapi.get(`cdn/stories`,
                         {
                             version: 'draft',

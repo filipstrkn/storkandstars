@@ -72,7 +72,7 @@ export default {
     flex-direction column
     background-color #fff
     z-index 101
-    transition background-color .6s ease
+    transition background-color .6s
 
 
 .logo

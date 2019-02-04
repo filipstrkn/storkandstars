@@ -4,7 +4,7 @@
 
 
         <div class="text">
-            <h3 v-if="content.title" class="title--h3">{{ content.title }}</h3>
+            <h3 v-if="content.title">{{ content.title }}</h3>
             <p class="_paragraph">{{ content.text }}</p>
         </div>
 
@@ -29,9 +29,14 @@ export default {
 
 #ParagraphRight
     max-width 30em
-    margin 0 $spacing-flex 0 auto
     margin 0 0 0 auto
     padding 0 4em 0 0
+
+    .text
+        h3
+            font-size 2em
+            font-weight 400
+            margin-bottom 1em
 
 .paragraph-right--dark
     color $white

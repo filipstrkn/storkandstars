@@ -1,12 +1,15 @@
 <template>
-    <p :class="{'show': launcher}" :style="delay" class="_text--large">{{ word }}</p>
+    <p
+        :class="{'show': launcher}"
+        :style="delay"
+        class="_text--title">{{ word }}</p>
 </template>
 
 
 <script>
 export default {
     name: 'WordBlock',
-    props: ['word', 'duration', 'launcher'],
+    props: ['word', 'duration', 'launcher', 'size'],
     computed: {
         delay() {
             return {
@@ -40,7 +43,7 @@ export default {
 
 p
     display inline-block
-    height .9em
+    height 1.2em
     position relative
     opacity 0
     transform translate(-1em, 1.4em) perspective(750px) rotateX(-10deg) rotateY(-30deg) rotateZ(8deg)

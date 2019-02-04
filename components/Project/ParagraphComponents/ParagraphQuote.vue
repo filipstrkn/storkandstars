@@ -1,13 +1,7 @@
 <template>
     <section id="ParagraphQuote" :class="{ 'paragraph-quote--dark': $store.state.theme.dark }">
 
-
-
-        <div class="title--h3">
-            <h3 v-if="content.title" class="_subtitle">{{ content.title }}</h3>
-            <p>{{ content.text }}</p>
-        </div>
-
+        <p class="_text--medium">{{ content.text }}</p>
 
 
     </section>
@@ -28,19 +22,19 @@ export default {
 @import '~assets/stylus/variables'
 
 #ParagraphQuote
-    // max-width 52em
-    // margin 0 auto
-
-    .title--h3
-        max-width 28em
+    padding $spacing-flex 0 0 0
+    p
+        font-family $serif
+        max-width 34em
         margin 0 auto
-        p
-            &::before,
-            &::after
-                content '"'
-                display inline
-            &::before
-                margin-left -.5em
+        line-height 1.6
+
+        &::before,
+        &::after
+            content '"'
+            display inline
+        &::before
+            margin-left -.5em
 
 
 .paragraph-quote--dark

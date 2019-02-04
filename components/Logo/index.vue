@@ -2,7 +2,6 @@
 
     <nuxt-link :to="'/'">
     <div id="LogoContainer" @click="closeMenu">
-        <loading-block v-if="$store.state.loading.page" />
 
             <div
                 id="Logo"
@@ -28,29 +27,13 @@
 
 
 <script>
-
-
-import LoadingBlock from '../Loading/LoadingBlock'
-
-
 export default {
-
-
     name: 'logo',
-
-
-    components: {
-        'loading-block': LoadingBlock
-    },
-
-
     data() {
         return {
             blinking: true
         }
     },
-
-
     methods: {
 
         closeMenu() {
@@ -78,10 +61,13 @@ export default {
     height @width
 
 
+
 #Logo
     absolute-centering()
-    width 35%
+    width 30%
     height @width
+    @media screen and (max-width: 500px)
+        pointer-events none
 
     svg
         position absolute

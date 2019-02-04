@@ -33,7 +33,7 @@
 
                     <div class="additional">
                         <span>+420 721 465 555</span>
-                        <span>studio@gmail.cz</span>
+                        <span>studio@eoeo.cz</span>
                     </div>
 
 
@@ -167,6 +167,9 @@ export default {
     background-color #fff
     box-shadow 3px 0 30px 0 alpha($black, .04), 1px 0 0 0 alpha(#000, 0)
 
+    @media screen and (max-width: 760px)
+        margin-left 0
+        max-width none
 
 .links,
 .menu__footer
@@ -221,12 +224,14 @@ export default {
     .menu__footer span
         color alpha(#fff, .45)
 
+    .socials
+        li
+            color alpha($white, .45)
+            &:hover
+                color $white
 
 
-@media screen and (max-width: 760px)
-    #MenuBody
-        margin-left 0
-        max-width none
+
 
 </style>
 

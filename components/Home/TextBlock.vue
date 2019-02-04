@@ -1,11 +1,18 @@
 <template>
-    <section id="TextBlock">
+    <section id="TextBlock" :class="{ 'is-intro': blok.is_intro}">
 
 
 
         <div class="text-block__content _content">
 
-            <title-block :title="blok.text" :duration="{min: 0, max: 600}" />
+            <title-block
+                id="IntroTitle"
+                :title="blok.text"
+                :options="{
+                    duration: {min: 0, max: 600},
+                    launcher: blok.is_intro || false,
+                    size: 'title'
+                }"/>
             <p class="_text--medium">{{ blok.subtitle }}</p>
 
         </div>
@@ -45,14 +52,16 @@ export default {
 
 #TextBlock
     padding $spacing-flex 2em
-    background-color #fafafa
     background-color #fff
+    @media screen and (max-width: 500px)
+        padding $spacing-flex-mb 0 $spacing-flex-mb 0
+        &.is-intro
+            padding 10em 0 $spacing-flex-mb 0
+
 
     p
 
-        // font-weight 600
         margin-top 3em
-        // font-size 2em
         font-family $font
         line-height 1.4
 

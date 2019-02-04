@@ -7,8 +7,7 @@
 
         <h3
             v-if="blok.title"
-            v-editable="blok"
-            class="title--h3">{{ blok.title }}</h3>
+            v-editable="blok">{{ blok.title }}</h3>
         <p v-editable="blok" class="_paragraph">{{ blok.text }}</p>
 
 
@@ -35,6 +34,11 @@ export default {
     display inline-block
     vertical-align text-top
     padding 0 6% 5% 6%
+
+    h3
+        font-size 1.6em
+        font-weight 400
+        margin-bottom 1em
 
 .newsletter-column--dark
     color $white

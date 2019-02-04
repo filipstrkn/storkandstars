@@ -1,7 +1,7 @@
 <template>
-    <section id="ProjectGallery" :style="{backgroundColor: $store.state.theme.background}">
-        <draggable>
+    <section id="ProjectGallery">
 
+        <draggable>
 
             <div class="project-gallery__images">
                 <image-loader
@@ -44,23 +44,35 @@ export default {
 
 #ProjectGallery
     // padding 4em 0
+    max-width 100%
+    overflow hidden
     padding $spacing-flex 0
+    @media screen and (max-width: 500px)
+        padding $spacing-flex-mb 0
 
 .project-gallery__images
     display flex
     align-items center
     // padding-left 5em
-    & > *
-        margin-right 5em
 
-    *:last-of-type
-        margin-right 0 !important
+    .project-gallery__image
+        margin-right 5em
+        // &:first-of-type
+
+        &:last-of-type
+            margin-right 0 !important
 
 .project-gallery__image
+    flex-grow 1
+    flex-shrink 0
+    display inline-block
     position relative
     width 64vh
-    height 64vh
+    height @width
     overflow hidden
+    @media screen and (max-width: 500px)
+        width 30vh
+        height @width
 
 
     img

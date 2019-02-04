@@ -1,14 +1,13 @@
 <template>
     <section id="ProjectImage">
 
-
-        <image-loader
-            v-editable="blok"
-            class="project-image__image"
-            :class="`project-image__image--${blok.type}`"
-            :image="'https:' + blok.image"/>
-
-
+        <div class="project-image" data-visible="false">
+            <image-loader
+                v-editable="blok"
+                class="project-image__image"
+                :class="`project-image__image--${blok.type}`"
+                :image="'https:' + blok.image"/>
+        </div>
 
     </section>
 </template>
@@ -26,7 +25,8 @@ export default {
     mixins: [isVisible],
     data() {
         return {
-            visibleAt: 80
+            visibleAt: 80,
+            visibleOnce: true,
         }
     },
     components: {
@@ -51,6 +51,8 @@ export default {
     [data-visible="true"]
         opacity 1
 
+.project-image
+    transition opacity .4s ease-in
 
 .project-image__image
     position relative
@@ -85,15 +87,16 @@ export default {
 
 .project-image__image--right
     margin 0 $spacing-flex 0 auto
-    // max-width 50em
-    // padding-bottom 60%
+    @media screen and (max-width: 500px)
+        padding-bottom 80%
 
 .project-image__image--full
-    // width 100%
-    // padding-bottom 46%
-    // max-width 54em
-    // padding-bottom 50%
-    margin 0 auto
+    width 100%
+    padding-bottom 46%
+    max-width none
+    @media screen and (max-width: 500px)
+        padding-bottom 80%
+
 
 
 

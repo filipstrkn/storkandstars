@@ -95,6 +95,11 @@ export default {
     margin $spacing-flex auto
     padding 0 5%
 
+    @media screen and (max-width: 500px)
+        padding 0 2em
+        margin 8em auto $spacing-flex auto
+
+
 .selected
     display inline-block
     font-size 1.2em

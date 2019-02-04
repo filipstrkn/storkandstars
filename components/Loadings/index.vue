@@ -12,7 +12,6 @@ export default {
     methods: {
 
         start () {
-
             if (this._timer) {
                 clearInterval(this._timer)
                 this.percent = 0

@@ -86,7 +86,6 @@ export default {
     left 50%
     width 40%
     padding-top $spacing-flex
-    // padding-top 26%
     padding-left 1em
 
     &::before
@@ -141,6 +140,9 @@ export default {
 #Top
     padding-top $spacing-flex
     padding-bottom $spacing-flex
+    @media screen and (max-width: 500px)
+        padding-top $spacing-flex-mb
+        padding-bottom $spacing-flex-mb
 
     .list
         max-width 86em

@@ -11,8 +11,6 @@
 
         <related-projects :current="blok" />
 
-        <footer-block />
-
     </main>
 </template>
 
@@ -20,7 +18,6 @@
 
 <script>
 
-import FooterBlock from '~/components/Home/Footer'
 import RelatedProjects from '~/components/Project/RelatedProjects'
 
 export default {
@@ -29,7 +26,6 @@ export default {
     scrollToTop: false,
 
     components: {
-        'footer-block': FooterBlock,
         'related-projects': RelatedProjects
     },
 

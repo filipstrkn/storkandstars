@@ -5,8 +5,9 @@
                 v-for="(word, index) in words"
                 :key="index"
                 :word="word"
-                :duration="duration"
-                :launcher="launcher || visibleShown" />
+                :size="options.size || ''"
+                :duration="options.duration"
+                :launcher="options.launcher || visibleShown" />
         </div>
     </div>
 </template>
@@ -26,7 +27,7 @@ export default {
     components: {
         'word-block': WordBlock
     },
-    props: ['title', 'duration', 'launcher'],
+    props: ['title', 'options'],
     data() {
         return {
             words: [],

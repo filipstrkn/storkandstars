@@ -42,7 +42,7 @@ export default {
 @import '~assets/stylus/variables'
 
 #ProjectNewsletter
-    padding $spacing-flex 0 0 0
+    padding $spacing-flex 0
 
 
 .columns

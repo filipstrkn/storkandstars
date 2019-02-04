@@ -1,16 +1,12 @@
 <template>
-    <main id="Page" class="_page" :class="$store.state.theme.dark ? '__page--dark' : '__page'">
+    <main id="Page" class="_page" :class="$store.state.theme.dark && 'page--dark'">
 
-        <div class="_page__content">
-            <component
-                :key="blok._uid"
-                v-for="blok in blok.body"
-                :blok="blok"
-                :is="blok.component">
-            </component>
-        </div>
-
-        <!-- <footer-block /> -->
+        <component
+            :key="blok._uid"
+            v-for="blok in blok.body"
+            :blok="blok"
+            :is="blok.component">
+        </component>
 
     </main>
 </template>
@@ -42,3 +38,14 @@ export default {
     }
 }
 </script>
+
+
+<style lang="stylus" scoped>
+
+@import '~assets/stylus/variables'
+
+.page--dark
+    background-color $black
+
+
+</style>

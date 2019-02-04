@@ -34,47 +34,11 @@
             </div>
         </transition>
 
-
-            <!-- <article
-                class="thumb"
-                @mouseenter="() => this.setHover(true)"
-                @mouseleave="() => this.setHover(false)">
-
-
-                <image-block
-                    class="_clickable _thumbnail thumbnail--projects"
-                    :image="content.thumbnail">
-                </image-block>
-
-
-
-
-            </article> -->
-
-
-            <!-- //////////////////////////////////////////////////////////////
-                Title
-            ////////////////////////////////////////////////////////////// -->
-
-            <!-- <div v-if="isHover && !content.available" class="name not-available">
-                <h3>Brzy přidáme</h3>
-            </div>
-
-            <div v-else class="name">
-                <h3>{{ content.client }}</h3>
-                <p>
-                    <span
-                        v-for="(service, index) in content.services"
-                        :key="index">{{ service }}</span>
-                </p>
-            </div> -->
-
-        </nuxt-link>
+    </nuxt-link>
 </template>
 
 
 <script>
-
 
 import isVisible from '~/mixins/isVisible'
 import ImageBlock from '~/components/Loaders/ImageLoader'
@@ -109,9 +73,7 @@ export default {
         },
         finalLink() {
             if ( !this.content.available ) return ''
-
             return '/' + this.link
-
         }
     },
     methods: {
@@ -139,7 +101,6 @@ export default {
     display flex
     padding 2em 1rem
     margin 3em 0
-    // border-bottom solid 1px $line
 
     &:hover
         .index
@@ -170,6 +131,11 @@ export default {
             font-weight 400
             font-size calc(.00848 * 100vw + 4.6rem)
             color alpha(#000, .45)
+            @media screen and (max-width: 760px)
+                font-size calc(.00848 * 100vw + 3rem)
+
+            @media screen and (max-width: 400px)
+                font-size calc(.00848 * 100vw + 2.4rem)
 
     p
         position relative
@@ -193,7 +159,6 @@ export default {
 
         &.not-available
             span
-                // color red
                 &::before
                     content ""
 
@@ -222,20 +187,12 @@ export default {
     height 100%
     transform-origin center
 
-
-
-
-
-
-
     h3
         font-weight 400
         pointer-events none
         margin-bottom .2em
 
         margin-top 1em
-        // margin-bottom .2em
-
 
 
 .name
@@ -245,18 +202,11 @@ export default {
     pointer-events none
 
     h3
-        // font-weight 600
         margin 0
-        // font-size 1.2em
-
-    // &.not-available h3
-    //     font-weight 400
-    //     color alpha(#000, .45)
 
 
 
 ._thumbnail
-    // absolute-centering()
     position absolute
     right 0
     top 50%
@@ -264,9 +214,11 @@ export default {
     width 60vh
     height 100vh
 
-    // width 100%
-    // height 100%
-    // transition all 150ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+    @media screen and (max-width: 760px)
+        absolute-centering()
+        height 60vh
+        width 40vh
+
 
     img
 

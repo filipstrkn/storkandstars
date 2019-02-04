@@ -6,7 +6,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'eoeo - design sprints & digital art',
+    title: 'eoeo - Design sprints & Digital art',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -32,12 +32,11 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: '~/components/Loading/index.vue',
-  // loading: {
-  //   name: 'pulse',
-  //   color: '#000000',
-  //   background: '#000000',
-  // },
+  loading: {
+    name: 'pulse',
+    color: '#000000',
+    background: '#000000',
+  },
   scrollToTop: false
   /*
   ** Build configuration

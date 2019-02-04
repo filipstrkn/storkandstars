@@ -1,0 +1,1 @@
+Rename the folder to 'loading' to trigger the custom loading component

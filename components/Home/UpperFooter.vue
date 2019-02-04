@@ -1,33 +1,26 @@
 <template>
-    <nuxt-link
-        v-if="blok.link_to.cached_url"
-        :to="blok.link_to.cached_url">
+    <section
+        id="UpperFooter"
+        class="upperfooter _content"
+        :class="{'upperfooter--dark': $store.state.theme.dark}">
 
-        <section
-            id="UpperFooter"
-            class="upperfooter _clickable"
-            :class="{'upperfooter--dark': $store.state.theme.dark}">
-            <div class="_content">
-                <div class="_text--medium" v-html="text"></div>
-            </div>
-        </section>
 
-    </nuxt-link>
+        <h3>{{ blok.title }}</h3>
+        <div class="upperfooter__list">
+            <p v-for="content in blok.body" :key="content._uid">{{ content.text }}</p>
+        </div>
+
+
+    </section>
 </template>
 
 
 <script>
 
-import marked from 'marked'
-
 export default {
     name: 'UpperFooter',
-    props: ['blok'],
-    computed: {
-        text() {
-            return marked(this.blok.title)
-        }
-    }
+    props: ['blok']
+
 }
 </script>
 
@@ -38,25 +31,46 @@ export default {
 @import '~assets/stylus/variables'
 
 #UpperFooter
-    padding $spacing-flex 0
-    margin-top $spacing-flex
+    display flex
+    align-content flex-start
+    padding $spacing-flex 4em
 
-.upperfooter
-    &:hover
-        background-color alpha(#000, .03)
+    h3
+        flex-grow 0
+        flex-shrink 0
+        width 20%
+        min-width 10em
+        font-size 1.6em
+        font-weight 400 !important
 
-    *
-        pointer-events none
+    @media screen and (max-width: 760px)
+        flex-direction column
+        padding $spacing-flex-mb 2em
+        h3
+            width 100%
+            margin 0 0 2em 2rem
+        .upperfooter__list
+            p
+                padding 1.4em 2rem
 
-    // p
-    //     text-align center
+.upperfooter__list
+    flex-grow 1
+    flex-shrink 0
+    p
+        border-bottom solid 1px alpha(#000, .1)
+        padding 2rem
+        font-family 'Muli', sans-serif
+
+        &:first-of-type
+            padding-top 0
 
 
 .upperfooter--dark
-    background-color alpha(#fff, .03) !important
     color $white
     *
         color $white
-    // &:hover
+
+    p
+        border-bottom solid 1px alpha(#fff, .1) !important
 
 </style>

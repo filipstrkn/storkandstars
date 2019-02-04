@@ -89,7 +89,8 @@ export default {
     height @width
     position relative
     pointer-events none
-    font-size calc(.00848 * 100vw + 3rem)
+    font-size calc(.00848 * 100vw + 2rem)
+
     svg
         position absolute
         width 100%

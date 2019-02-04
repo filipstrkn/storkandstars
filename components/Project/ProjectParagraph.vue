@@ -55,8 +55,8 @@ export default {
 @import '~assets/stylus/variables'
 
 #ProjectParagraph
-    max-width 100em
-    margin 0 auto
-    padding: $spacing-flex 2rem
+//     max-width 100em
+//     margin 0 auto
+    padding: 0 0 $spacing-flex 0
 </style>
 

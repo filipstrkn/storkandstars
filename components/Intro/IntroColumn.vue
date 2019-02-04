@@ -1,5 +1,5 @@
 <template>
-    <section id="ProjectIntro">
+    <section id="ProjectIntro" :class="{ 'is-intro': blok.is_intro }">
 
 
 
@@ -38,11 +38,10 @@
 
 
 import LinkUnit from '~/components/Home/_home/LinkUnit'
-import marked from 'marked'
 
 
 export default {
-    name: 'ProjectIntro',
+    name: 'IntroColumn',
     props: ['blok'],
     components: {
         'link-unit': LinkUnit
@@ -57,10 +56,11 @@ export default {
 @import '~assets/stylus/variables'
 
 #ProjectIntro
-    // padding-top calc(10% + 4em)
-    padding calc(8em + 16vh) 0 0 0
+    padding $spacing-flex 0 0 0
     max-width 54em
     margin 0 auto
+    @media screen and (max-width: 750px)
+        padding $spacing-flex 2em 0 2em
 
     &::after
         content ""
@@ -70,13 +70,20 @@ export default {
         height 10em
         background-color $line
 
+    &.is-intro
+        padding calc(8em + 16vh) 0 0 0 !important
 
 .columns
     display flex
     justify-content space-between
-    margin-top 4em
+    margin-top 5em
     font-family $font
     font-weight 400
+    @media screen and (max-width: 500px)
+        flex-direction column
+        div
+            width 100% !important
+            margin 2em 0 !important
 
     div
         flex-shrink 1

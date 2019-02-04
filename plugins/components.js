@@ -11,15 +11,20 @@ import FormStep from '~/components/Form/_form/Step'
 
 import ProjectGallery from '~/components/Project/ProjectGallery'
 import ProjectImage from '~/components/Project/ProjectImage'
-import ProjectIntro from '~/components/Project/ProjectIntro'
 import ProjectNewspaper from '~/components/Project/ProjectNewspaper'
 import ProjectNewspaperColumn from '~/components/Project/ProjectNewspaperColumn'
 import ProjectParagraph from '~/components/Project/ProjectParagraph'
 import ProjectPhotoBooth from '~/components/Project/ProjectPhotoBooth'
 
 
-import Intro from '~/components/Home/Intro'
+import IntroHome from '~/components/Intro/IntroHome'
 import IntroLeft from '~/components/Intro/IntroLeft'
+import IntroColumn from '~/components/Intro/IntroColumn'
+
+
+// import StepBlock from '~/components/StepBlock'
+import StepBlock from '~/components/Steps/StepBlock'
+
 import TextBlock from '~/components/Home/TextBlock'
 import Horizont from '~/components/Home/Horizont'
 import ProjectUnit from '~/components/Projects/ProjectUnit'
@@ -28,6 +33,8 @@ import Top from '~/components/Home/Top'
 import Separator from '~/components/Home/_home/Separator'
 import UpperFooter from '~/components/Home/UpperFooter'
 
+
+import ColorBox from '~/components/ColorBox'
 
 
 
@@ -63,7 +70,6 @@ Vue.component('form_step', FormStep)
 Vue.component('p_gallery', ProjectGallery)
 Vue.component('p_photobooth', ProjectPhotoBooth)
 Vue.component('p_image', ProjectImage)
-Vue.component('p_intro', ProjectIntro)
 Vue.component('p_newspaper', ProjectNewspaper)
 Vue.component('p_newspaper_column', ProjectNewspaperColumn)
 Vue.component('p_paragraph', ProjectParagraph)
@@ -77,11 +83,15 @@ Vue.component('p_paragraph', ProjectParagraph)
 |==========================================================================
 |
 |*/
-Vue.component('intro', Intro)
+Vue.component('intro', IntroHome)
 Vue.component('intro_left', IntroLeft)
+Vue.component('intro_column', IntroColumn)
 Vue.component('text_block', TextBlock)
 Vue.component('projects', Top)
 Vue.component('separator', Separator)
+Vue.component('step_block', StepBlock)
+Vue.component('color_box', ColorBox)
+
 
 
 Vue.component('horizont', Horizont)

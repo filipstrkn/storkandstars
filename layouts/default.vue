@@ -13,7 +13,7 @@
 <script>
 import Wrapper from "~/components/"
 import NavigationBlock from "~/components/NavigationBlock"
-import Preloader from "~/components/Loading/Preloader"
+import Preloader from "~/components/Loadings/Preloader"
 import RapidContact from "~/components/NavigationBlock/_navigation/RapidContact"
 
 export default {
@@ -30,7 +30,7 @@ export default {
 
 
 <style lang="stylus">
-@import url('https://fonts.googleapis.com/css?family=Cabin:400,500,600|Muli:400,400i,600,600i,700,700i,800,900&amp;subset=latin-ext')
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,500,600|Muli:400,400i,600,600i,700,700i,800,900|Libre+Baskerville&amp;subset=latin-ext')
 @import '~assets/stylus/reset'
 @import '~assets/stylus/common'
 @import '~assets/stylus/variables'
@@ -41,6 +41,9 @@ html
   user-select none
   font-family $font
   color $black
+
+  @media screen and (max-width: 760px)
+    font-size 15px
 
 </style>
 
