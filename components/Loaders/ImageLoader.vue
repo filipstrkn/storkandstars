@@ -6,7 +6,11 @@
         <!-- //////////////////////////////////////////////////////////////
             Image Loading screen
         ////////////////////////////////////////////////////////////// -->
-        <div  v-if="isLoading" class="_image--loading"></div>
+        <div
+            v-if="isLoading"
+            class="_image--loading"
+            :class="theme"
+            ></div>
 
 
         <!-- //////////////////////////////////////////////////////////////
@@ -45,18 +49,28 @@ import loadingImage from '~/mixins/loadingImage'
 export default {
     name: 'ImageLoader',
     props: ['image'],
-    mixins: [loadingImage]
+    mixins: [loadingImage],
+    computed: {
+        theme() {
+            return this.$store.state.theme.dark && 'image-loading--dark'
+        }
+    }
 }
 </script>
 
 
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
-.fade-enter-active, .fade-leave-active
-    transition: opacity .5s
 
-.fade-enter, .fade-leave-to
-    opacity: 0
+@import '~assets/stylus/variables'
+
+._image--loading
+    background-color alpha($black, .05)
+    width: 100%
+    height @width
+
+.image-loading--dark
+    background-color alpha($white, .05)
 
 </style>

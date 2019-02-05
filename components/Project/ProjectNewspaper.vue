@@ -5,7 +5,7 @@
 
             <masonry
                 :columnClass="['column']"
-                :cols="2"
+                :cols="{default: 2, 550: 1}"
                 :gutter="{
                     default: '7em',
                     800: 40
